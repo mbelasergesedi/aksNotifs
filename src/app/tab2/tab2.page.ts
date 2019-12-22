@@ -41,8 +41,6 @@ export class Tab2Page implements OnInit, OnDestroy {
     this.form = this.formBuilder.group({
       votretext: [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])]
     });
-
-
     this.geolocation.getCurrentPosition().then((resp) => {
     }).catch((error) => {
       // console.log('Error getting location', error);

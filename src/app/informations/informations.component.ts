@@ -10,9 +10,9 @@ import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
   styleUrls: ['./informations.component.scss'],
 })
 export class InformationsComponent implements OnInit, OnDestroy {
+  title = 'angular-http-spinner-loader';
   code: Subscription;
   [x: string]: any;
-  title = 'Angular8Firebase';
   itemValue = '';
   notifs: Observable<any[]>;
   itemCollection: any;
