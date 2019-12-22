@@ -1,0 +1,8 @@
+{
+  "name": "aksantimed",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "bb4e82f6"
+}

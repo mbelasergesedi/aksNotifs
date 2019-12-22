@@ -1,0 +1,125 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="secondary">
+            <ion-button [routerLink]="['/login']">
+                <ion-icon
+                    slot="icon-only"
+                    name="person"
+                ></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Nouvelles</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button [routerLink]="['/cartographie']">
+                <ion-icon
+                    slot="icon-only"
+                    name="pin"
+                ></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12">
+                <ion-icon name="arrow-back"></ion-icon>
+                <a [routerLink]="['/tabs/tab1']">Retour</a>
+            </ion-col>
+            <ion-col size="12">
+                <ion-label>Informations</ion-label>
+            </ion-col>
+            <ion-col>
+                <!-- Skeleton screen -->
+                <div *ngIf="!notifs |async">
+                    <div class="ion-padding custom-skeleton">
+                        <ion-skeleton-text
+                            animated
+                            style="width: 60%"
+                        ></ion-skeleton-text>
+                        <ion-skeleton-text animated></ion-skeleton-text>
+                        <ion-skeleton-text
+                            animated
+                            style="width: 88%"
+                        ></ion-skeleton-text>
+                        <ion-skeleton-text
+                            animated
+                            style="width: 70%"
+                        ></ion-skeleton-text>
+                        <ion-skeleton-text
+                            animated
+                            style="width: 60%"
+                        ></ion-skeleton-text>
+                    </div>
+                    <ion-list>
+                        <ion-list-header>
+                            <ion-skeleton-text
+                                animated
+                                style="width: 20%"
+                            ></ion-skeleton-text>
+                        </ion-list-header>
+                        <ion-item>
+                            <ion-thumbnail slot="start">
+                                <ion-skeleton-text animated></ion-skeleton-text>
+                            </ion-thumbnail>
+                            <ion-label>
+                                <h3>
+                                    <ion-skeleton-text
+                                        animated
+                                        style="width: 50%"
+                                    ></ion-skeleton-text>
+                                </h3>
+                                <p>
+                                    <ion-skeleton-text
+                                        animated
+                                        style="width: 80%"
+                                    ></ion-skeleton-text>
+                                </p>
+                                <p>
+                                    <ion-skeleton-text
+                                        animated
+                                        style="width: 60%"
+                                    ></ion-skeleton-text>
+                                </p>
+                            </ion-label>
+                        </ion-item>
+                        <ion-item>
+                            <ion-skeleton-text
+                                animated
+                                style="width: 27px; height: 27px"
+                                slot="start"
+                            >
+                            </ion-skeleton-text>
+                            <ion-label></ion-label>
+                        </ion-item>
+                    </ion-list>
+                </div>
+                <ion-col
+                    size="12"
+                    *ngFor="let item of notifs |async"
+                >
+                    <ion-row>
+                        <ion-label>
+                            <strong>{{item.titre}}</strong>
+                            <br>
+                        </ion-label>
+                        <ion-col size="12">
+                            <ion-label>
+                                <a
+                                    [routerLink]="['/infosdetails']"
+                                    [queryParams]=" {
+                                    key: item.key
+                                  }"
+                                >
+                                    <ion-icon name="more"></ion-icon>
+                                    Article complet
+                                </a>
+                                <br>
+                            </ion-label>
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
