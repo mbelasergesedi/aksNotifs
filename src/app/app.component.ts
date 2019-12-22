@@ -25,6 +25,11 @@ export class AppComponent implements OnInit {
     private connectionService: ConnectionService,
     private menu: MenuController
   ) { }
+
+
+  // tslint:disable-next-line: member-ordering
+  isConnected: any;
+  status: string;
   ngOnInit() {
     firebase.initializeApp(environment.firebase);
     this.connectionService.monitor().subscribe(isConnected => {
@@ -43,11 +48,6 @@ export class AppComponent implements OnInit {
     });
   }
 
-
-  // tslint:disable-next-line: member-ordering
-  isConnected: any;
-  status: string;
-
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
@@ -60,13 +60,13 @@ export class AppComponent implements OnInit {
     });
 
     this.fcm.onNotification().subscribe(data => {
-     // console.log(data);
-      if (data.wasTapped) {
-      // console.log('Received in background');
-      this.router.navigate([data.landing_page, data.price]);
+     console.log(data);
+     if (data.wasTapped) {
+       console.log('Received in background');
+       this.router.navigate([data.landing_page, data.price]);
       } else {
-      // console.log('Received in foreground');
-      this.router.navigate([data.landing_page, data.price]);
+       console.log('Received in foreground');
+       this.router.navigate([data.landing_page, data.price]);
       }
       });
   }
