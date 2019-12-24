@@ -29,6 +29,22 @@ export class AppComponent implements OnInit {
   isConnected: any;
   status: string;
   ngOnInit() {
+    this.fcm.getToken().then(token => {
+      console.log(token);
+    });
+    this.fcm.onTokenRefresh().subscribe(token => {
+      console.log(token);
+    });
+    this.fcm.onNotification().subscribe(data => {
+      console.log(data);
+      if (data.wasTapped) {
+        console.log('Received in background');
+        this.router.navigate([data.landing_page, data.price]);
+      } else {
+        console.log('Received in foreground');
+        this.router.navigate([data.landing_page, data.price]);
+      }
+    });
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
     });
@@ -52,27 +68,11 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
     });
-    this.fcm.getToken().then(token => {
-      console.log(token);
-    });
-    this.fcm.onTokenRefresh().subscribe(token => {
-      console.log(token);
-    });
-    this.fcm.onNotification().subscribe(data => {
-     console.log(data);
-     if (data.wasTapped) {
-       console.log('Received in background');
-       this.router.navigate([data.landing_page, data.price]);
-      } else {
-       console.log('Received in foreground');
-       this.router.navigate([data.landing_page, data.price]);
-      }
-      });
   }
-  backButtonEvent(){
-    this.platform.backButton.subscribe(()  => {
-       console.log ('exit should happen');
-       navigator['app'].exitApp();
+  backButtonEvent() {
+    this.platform.backButton.subscribe(() => {
+      console.log('exit should happen');
+      navigator['app'].exitApp();
     });
   }
 }
