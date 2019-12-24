@@ -17,7 +17,7 @@ export class InformationsComponent implements OnInit, OnDestroy {
   notifs: Observable<any[]>;
   itemCollection: any;
   items: Observable<[any]>;
-  constructor(private db: AngularFirestore, private route: ActivatedRoute){ }
+  constructor(private db: AngularFirestore, private route: ActivatedRoute) { }
   ngOnInit() {
     const queryParamMap = this.route.snapshot['queryParamMap'];
     this.itemCollection = this.db.collection<any[]>('notifications', ref => ref.where('categorie', '==',
