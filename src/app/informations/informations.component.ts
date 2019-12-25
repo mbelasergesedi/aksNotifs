@@ -10,6 +10,7 @@ import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
   styleUrls: ['./informations.component.scss'],
 })
 export class InformationsComponent implements OnInit, OnDestroy {
+  loading = false;
   title = 'angular-http-spinner-loader';
   code: Subscription;
   [x: string]: any;
@@ -19,9 +20,8 @@ export class InformationsComponent implements OnInit, OnDestroy {
   items: Observable<[any]>;
   constructor(private db: AngularFirestore, private route: ActivatedRoute) { }
   ngOnInit() {
+    this.loading = true;
     const queryParamMap = this.route.snapshot['queryParamMap'];
-    this.itemCollection = this.db.collection<any[]>('notifications', ref => ref.where('categorie', '==',
-      'alertes'));
     this.notifs = this.db.collection('notifications',
       ref => ref.where('categorie', '==', queryParamMap['params'].categorie)).valueChanges();
   }

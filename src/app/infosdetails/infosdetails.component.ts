@@ -25,9 +25,12 @@ export class InfosdetailsComponent implements OnInit {
   ngOnInit() {
     const queryParamMap = this.route.snapshot['queryParamMap'];
     // console.log(queryParamMap['params'].key);
-    this.itemCollection = this.db.collection<any[]>('notifications', ref => ref.where('key', '==',
-      queryParamMap['params'].key));
+    //this.itemCollection = this.db.collection<any[]>('notifications', ref => ref.where('key', '==',
+     // queryParamMap['params'].key));
     this.notifs = this.db.collection('notifications',
       ref => ref.where('key', '==', queryParamMap['params'].key)).valueChanges();
+  }
+  ngOnDestroy() {
+    // We'll throw an error if it doesn't
   }
 }
