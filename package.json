@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "@angular/service-worker": "^8.2.14",
+    "@ionic-native/app-minimize": "^5.18.0",
     "@ionic-native/app-version": "^5.18.0",
     "@ionic-native/camera": "^5.17.1",
     "@ionic-native/core": "^5.18.0",
@@ -52,6 +53,7 @@
     "cordova-android": "^8.1.0",
     "cordova-android-firebase-gradle-release": "^4.0.0",
     "cordova-plugin-app-version": "^0.1.9",
+    "cordova-plugin-appminimize": "^1.0.1",
     "cordova-plugin-camera": "^4.1.0",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-fcm": "^2.1.2",
@@ -151,7 +153,8 @@
         "FCM_VERSION": "18.0.0",
         "GRADLE_TOOLS_VERSION": "3.5.0",
         "GOOGLE_SERVICES_VERSION": "4.2.0"
-      }
+      },
+      "cordova-plugin-appminimize": {}
     },
     "platforms": [
       "android"

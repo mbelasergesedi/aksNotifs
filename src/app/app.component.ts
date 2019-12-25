@@ -9,6 +9,7 @@ import { ConnectionService } from 'ng-connection-service';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { AppMinimize } from '@ionic-native/app-minimize/ngx';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     public authenticationService: AuthService,
     private connectionService: ConnectionService,
+    private appMinimize: AppMinimize,
     private menu: MenuController
   ) { }
   // tslint:disable-next-line: member-ordering

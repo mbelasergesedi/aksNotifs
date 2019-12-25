@@ -17,6 +17,7 @@ import { Device } from '@ionic-native/device/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { AppVersion } from '@ionic-native/app-version/ngx';
+import { AppMinimize } from '@ionic-native/app-minimize/ngx';
 // Services
 import { AlldciService } from './services/alldci.service';
 import { DataService } from './services/item.service';
@@ -79,6 +80,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     QryStatNotifs,
     QryQuotationsService,
     Device,
+    AppMinimize,
     Geolocation,
     AuthenticateService,
     ManageUsers,
