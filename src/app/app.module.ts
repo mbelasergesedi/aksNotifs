@@ -58,13 +58,12 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
   entryComponents: [],
   imports: [BrowserModule,
     FormsModule,
-    BrowserModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     AngularFirestoreModule, // Only required for database features
     AngularFireModule.initializeApp(environment.firebase), NgHttpLoaderModule.forRoot(),
-    IonicModule.forRoot(), IonicStorageModule.forRoot(), AppRoutingModule],
+    IonicModule.forRoot({hardwareBackButton: false}), IonicStorageModule.forRoot(), AppRoutingModule],
   providers: [
     StatusBar,
     FirebaseCrashlytics,
