@@ -9,6 +9,7 @@ import { Customers } from '../model/customers.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastController } from '@ionic/angular';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 @AutoUnsubscribe()
 @Component({
   selector: 'app-quotations',
@@ -41,12 +42,14 @@ export class QuotationsComponent implements OnInit, OnDestroy {
   ville: any;
   successMessage: string;
   constructor(private formBuilder: FormBuilder,
-    private villeService: VilleService,
-    private db: AngularFirestore,
-    private qryQuotationsService: QryQuotationsService,
-    private toastController: ToastController,
-    private router: Router) { }
+              private villeService: VilleService,
+              private db: AngularFirestore,
+              private statusBar: StatusBar,
+              private qryQuotationsService: QryQuotationsService,
+              private toastController: ToastController,
+              private router: Router) { }
   ngOnInit() {
+    this.statusBar.overlaysWebView(true);
     this.initForm();
     this.getVille();
   }

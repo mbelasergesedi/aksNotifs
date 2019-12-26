@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { AuthenticateService } from '../services/authentication.service';
 import { ToastController } from '@ionic/angular';
 import * as firebase from 'firebase';
-
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 @Component({
   selector: 'app-lostpassword',
   templateUrl: './lostpassword.component.html',
@@ -17,6 +17,7 @@ export class LostpasswordComponent implements OnInit {
 
   constructor(private authenticateService: AuthenticateService,
               private formBuilder: FormBuilder,
+              private statusBar: StatusBar,
               private toastController: ToastController) { }
 
   // tslint:disable-next-line: variable-name
@@ -26,11 +27,8 @@ export class LostpasswordComponent implements OnInit {
       { type: 'pattern', message: 'Entrer une  adresse valide.' }
     ]
   };
-
   ngOnInit() {
-
-
-    // Validations patterns
+    this.statusBar.overlaysWebView(true);
     this.resetPassword_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required,
@@ -43,10 +41,9 @@ export class LostpasswordComponent implements OnInit {
     let auth = firebase.auth();
 
     // tslint:disable-next-line: no-unused-expression
-    //console.log(this.resetPassword_form.value);
+    // console.log(this.resetPassword_form.value);
     return auth.sendPasswordResetEmail(this.resetPassword_form.value.email);
   }
-
   async lostPassword() {
     const toast = await this.toastController.create({
       message: 'Un email vous a été envoyé.',

@@ -7,6 +7,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { map } from 'rxjs/operators';
 import { Storage } from '@ionic/storage';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 @AutoUnsubscribe()
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private geolocation: Geolocation,
     public storage: Storage,
+    private statusBar: StatusBar,
     public toastController: ToastController,
     private schoolsService: SchoolsService
   ) {  // set a key/value
@@ -67,6 +69,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     toast.present();
   }
   ngOnInit() {
+    this.statusBar.overlaysWebView(true);
     this.schoolsService.getSchool().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
