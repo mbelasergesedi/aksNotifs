@@ -35,7 +35,6 @@ import { QryQuotationsService } from './services/quotation.services';
 import { QryStatNotifs } from './tab1/statnotif.service';
 import { ManageUsers } from './services/manageUsers.service';
 import { RoiService } from './services/roi.service';
-import { InfosService } from './services/information.service';
 // Captcha
 import { QrySignalementService } from './services/signalement.service';
 import { InteractionSearch } from './services/interaction.service';
@@ -90,7 +89,6 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     InteractionSearch,
     QryInteractionService,
     ResultatInteractionService,
-    InfosService,
     QrySignalementService,
     DciSearch,
     VilleService,
