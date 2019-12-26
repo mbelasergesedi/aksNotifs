@@ -68,13 +68,14 @@ export class AppComponent implements OnInit {
   }
   initializeApp() {
     this.platform.ready().then(() => {
+      this.platform.backButton.subscribeWithPriority(9999, () => {
+        document.addEventListener('backbutton', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          console.log('hello');
+        }, false);
+      });
       this.statusBar.styleDefault();
-    });
-  }
-  backButtonEvent() {
-    this.platform.backButton.subscribe(() => {
-      console.log('exit should happen');
-      navigator['app'].exitApp();
     });
   }
 }
