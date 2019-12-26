@@ -28,9 +28,11 @@ export class AppComponent implements OnInit {
     private menu: MenuController
   ) { }
   // tslint:disable-next-line: member-ordering
+  
   isConnected: any;
   status: string;
   ngOnInit() {
+    this.statusBar.overlaysWebView(true);
     firebase.initializeApp(environment.firebase);
     this.connectionService.monitor().subscribe(isConnected => {
       this.isConnected = isConnected;

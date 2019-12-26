@@ -24,7 +24,7 @@
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="show-splash-screen-spinner" value="true" />
     <preference name="AutoHideSplashScreen" value="true" />
-    <preference name="fullscreen" value="true"/>
+    <preference name="fullscreen" value="true" />
     <platform name="android">
         <resource-file src="google-services.json" target="app/google-services.json" />
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">

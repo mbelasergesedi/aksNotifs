@@ -18,6 +18,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { AppMinimize } from '@ionic-native/app-minimize/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 // Services
 import { AlldciService } from './services/alldci.service';
 import { DataService } from './services/item.service';
@@ -63,7 +64,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     ReactiveFormsModule,
     AngularFirestoreModule, // Only required for database features
     AngularFireModule.initializeApp(environment.firebase), NgHttpLoaderModule.forRoot(),
-    IonicModule.forRoot({hardwareBackButton: false}), IonicStorageModule.forRoot(), AppRoutingModule],
+    IonicModule.forRoot({ hardwareBackButton: false }), IonicStorageModule.forRoot(), AppRoutingModule],
   providers: [
     StatusBar,
     FirebaseCrashlytics,
@@ -71,6 +72,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     GaleniqueService,
     DataService,
     AnatomiqueService,
+    StatusBar,
     TextSearchService,
     NotificationsService,
     RoiService,

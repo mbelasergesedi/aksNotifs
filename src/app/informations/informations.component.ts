@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, Subscription } from 'rxjs';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 @AutoUnsubscribe()
 @Component({
   selector: 'app-informations',
@@ -18,8 +19,9 @@ export class InformationsComponent implements OnInit, OnDestroy {
   notifs: Observable<any[]>;
   itemCollection: any;
   items: Observable<[any]>;
-  constructor(private db: AngularFirestore, private route: ActivatedRoute) { }
+  constructor(private db: AngularFirestore, private statusBar: StatusBar , private route: ActivatedRoute) { }
   ngOnInit() {
+    this.statusBar.overlaysWebView(true);
     this.loading = true;
     const queryParamMap = this.route.snapshot['queryParamMap'];
     this.notifs = this.db.collection('notifications',

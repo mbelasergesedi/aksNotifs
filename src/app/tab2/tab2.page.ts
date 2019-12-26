@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 @AutoUnsubscribe()
 @Component({
   selector: 'app-tab2',
@@ -27,6 +28,7 @@ export class Tab2Page implements OnInit, OnDestroy {
   cordonnees: number;
   constructor(private formBuilder: FormBuilder,
               private geolocation: Geolocation,
+              private statusBar: StatusBar,
               private uniqueDeviceID: UniqueDeviceID,
               private resultatVerificationService: ResultatVerificationService,
   ) { }
@@ -38,16 +40,17 @@ export class Tab2Page implements OnInit, OnDestroy {
     ]
   };
   ngOnInit() {
-    this.form = this.formBuilder.group({
+     this.statusBar.overlaysWebView(true);
+     this.form = this.formBuilder.group({
       votretext: [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])]
     });
-    this.geolocation.getCurrentPosition().then((resp) => {
+     this.geolocation.getCurrentPosition().then((resp) => {
     }).catch((error) => {
       // console.log('Error getting location', error);
     });
 
-    const watch = this.geolocation.watchPosition();
-    watch.subscribe((data) => {
+     const watch = this.geolocation.watchPosition();
+     watch.subscribe((data) => {
       // console.log(data.coords.latitude);
       // this.latitude = data.coords.latitude;
       // console.log(data.coords.longitude);
@@ -55,7 +58,7 @@ export class Tab2Page implements OnInit, OnDestroy {
       // this.cordonnees = this.latitude;
       // console.log(this.cordonnees);
     });
-    this.uniqueDeviceID.get()
+     this.uniqueDeviceID.get()
       .then((uuid: any) => this.uuid = uuid)
       .catch((error: any) => this.error = error);
   }

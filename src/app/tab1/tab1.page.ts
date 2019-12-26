@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NotificationsService } from './notification.service';
 import { map } from 'rxjs/operators';
 import { AuthService } from './../services/AuthService';
@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import { Platform } from '@ionic/angular';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { RoiService } from './../services/roi.service';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 @Component({
   selector: 'app-tab1',
   templateUrl: './tab1.page.html',
@@ -85,6 +86,7 @@ export class Tab1Page implements OnInit {
     public authService: AuthService,
     private appVersion: AppVersion,
     private roiService: RoiService,
+    private statusBar: StatusBar,
     public plt: Platform,
     public connectionService: ConnectionService
   ) {
@@ -98,6 +100,8 @@ export class Tab1Page implements OnInit {
     });
   }
   ngOnInit() {
+
+    this.statusBar.overlaysWebView(true);
     this.appVersion.getAppName();
     this.appVersion.getPackageName();
     this.appVersion.getVersionCode();

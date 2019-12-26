@@ -14,6 +14,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { ToastController } from '@ionic/angular';
 import * as firebase from 'firebase';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 @Component({
   selector: 'app-tab4',
   templateUrl: './tab4.page.html',
@@ -45,6 +46,7 @@ export class Tab4Page {
               private villeService: VilleService,
               private db: AngularFirestore,
               private camera: Camera,
+              private statusBar: StatusBar,
               private geolocation: Geolocation,
               private uniqueDeviceID: UniqueDeviceID,
               private file: File,
@@ -55,6 +57,7 @@ export class Tab4Page {
   }
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
+    this.statusBar.overlaysWebView(true);
     this.initForm();
     this.getVille();
     this.geolocation.getCurrentPosition().then((resp) => {

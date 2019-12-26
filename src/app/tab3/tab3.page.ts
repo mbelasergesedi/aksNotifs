@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { ModalPagePage } from './modal-page/modal-page.page';
 import { AuthService } from './../services/AuthService';
 import { ConnectionService } from 'ng-connection-service';
-
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 @Component({
   selector: 'app-tab3',
   templateUrl: './tab3.page.html',
@@ -21,9 +20,11 @@ export class Tab3Page implements OnInit {
   logged: any;
   constructor(private modalController: ModalController,
               public authService: AuthService,
+              private statusBar: StatusBar,
               public connectionService: ConnectionService) { }
 
   ngOnInit() {
+    this.statusBar.overlaysWebView(true);
     // tslint:disable-next-line: no-unused-expression
     this.userEmail;
     // tslint:disable-next-line: no-unused-expression
