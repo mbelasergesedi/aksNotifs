@@ -31,6 +31,20 @@ export class AppComponent implements OnInit {
   isConnected: any;
   status: string;
   ngOnInit() {
+    firebase.initializeApp(environment.firebase);
+    this.connectionService.monitor().subscribe(isConnected => {
+      this.isConnected = isConnected;
+      if (this.isConnected) {
+        this.status = 'Connecté à Internet';
+        // tslint:disable-next-line: no-unused-expression
+      } else {
+        // tslint:disable-next-line: no-unused-expression
+        !this.isConnected;
+      }
+      {
+        this.status = 'Pas Connecté à Internet';
+      }
+    });
     this.fcm.getToken().then(token => {
       console.log(token);
     });
@@ -46,27 +60,7 @@ export class AppComponent implements OnInit {
         console.log('Received in foreground');
         this.router.navigate([data.landing_page, data.price]);
       }
-    });
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-    });
-    firebase.initializeApp(environment.firebase);
-    this.connectionService.monitor().subscribe(isConnected => {
-      this.isConnected = isConnected;
-      if (this.isConnected) {
-        this.status = 'Connecté à Internet';
-
-        // tslint:disable-next-line: no-unused-expression
-      } else {
-        // tslint:disable-next-line: no-unused-expression
-        !this.isConnected;
-      }
-      {
-        this.status = 'Pas Connecté à Internet';
-      }
-    });
-  }
-  initializeApp() {
+    }); 
     this.platform.ready().then(() => {
       this.platform.backButton.subscribeWithPriority(9999, () => {
         document.addEventListener('backbutton', function (event) {
