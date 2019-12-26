@@ -71,7 +71,6 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     GaleniqueService,
     DataService,
     AnatomiqueService,
-    StatusBar,
     TextSearchService,
     NotificationsService,
     RoiService,
