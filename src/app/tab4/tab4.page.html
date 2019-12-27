@@ -19,7 +19,10 @@
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
-<ion-content fullscreen>
+<ion-content
+    fullscreen
+    class="ion-padding"
+>
     <ion-grid>
         <ion-row>
             <ion-col size="12">
@@ -57,7 +60,8 @@
                             type="text"
                             placeholder
                             id="nom"
-                            autocapitalize placeholder="Entrer un nom de famille"
+                            autocapitalize
+                            placeholder="Entrer un nom de famille"
                             formControlName="nom"
                             required
                         ></ion-input>
@@ -72,7 +76,8 @@
                         Recherchez
                     </ion-button>
                 </form>
-               
+
+
                 <ion-col
                     size="12"
                     *ngFor="let item of enregistrement"
@@ -101,7 +106,13 @@
                         </ion-col>
                     </ion-row>
                 </ion-col>
-                <ion-col size="12"></ion-col>
+                <!-- -Pas de résultat -->
+                <ion-col
+                    size="12"
+                    *ngIf="enregistrement?.length == 0"
+                >
+                <ion-icon name="information"></ion-icon>  Aucun résultat.
+                </ion-col>
             </ion-col>
             <hr>
             <!-- Formulaire de signalement -->
@@ -123,7 +134,7 @@
                     <ion-item>
                         <ion-input
                             type="text"
-                            placeholder= "Entrer le nom du médicament"
+                            placeholder="Entrer le nom du médicament"
                             id="medicament"
                             formControlName="medicament"
                         ></ion-input>
@@ -146,7 +157,7 @@
                     <ion-item>
                         <ion-input
                             type="number"
-                            placeholder= "Votre Gsm"
+                            placeholder="Votre Gsm"
                             id="telephone"
                             placeholder="Gsm..."
                             formControlName="telephone"
@@ -157,7 +168,7 @@
                             placeholder
                             id="latitude"
                             placeholder="Gsm..."
-                            value=""
+                            value
                         ></ion-input>
                         <ion-input
                             type="hidden"

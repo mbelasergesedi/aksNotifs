@@ -67,17 +67,17 @@ export class Tab4Page {
       // resp.coords.longitude
       console.log(resp.coords.longitude);
       this.longitude = resp.coords.longitude;
-     }).catch((error) => {
-       console.log('Error getting location', error);
-     });
-     
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+
     const watch = this.geolocation.watchPosition();
     watch.subscribe((data) => {
       // data can be a set of coordinates, or an error (if an error occurred).
       // data.coords.latitude
       // data.coords.longitude
-     }
-     );
+    }
+    );
   }
   async pickImage() {
     const options: CameraOptions = {
@@ -198,14 +198,11 @@ export class Tab4Page {
       description: new FormControl('', Validators.compose([
         Validators.required
       ])),
-
       telephone: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(8),
       ])),
     });
-
-
     // Validations patterns ListProf
     this.profform = this.formBuilder.group({
       nom: new FormControl('', Validators.compose([Validators.required,
@@ -214,18 +211,25 @@ export class Tab4Page {
         Validators.required,
       ])),
     });
-
   }
   tryRegister() {
     const data = this.profform.value;
+    //console.log(data);
+    //console.log(data.categorie);
+    //console.log(data.nom);
+    const lenom = data.nom;
+   // console.log(lenom.toUpperCase( ));
+    const nomS = lenom.toUpperCase( );
+    this.nom = data.nom;
+    this.categorie = data.categorie;
     this.itemCollection = this.db.collection<any[]>('customers', ref => ref.where('profession', '==',
-      this.prof_form.get('categorie').value).where('nom', '==', this.profform.get('nom').value));
+     data.categorie).where('nom', '==', nomS));
     this.items = this.itemCollection.valueChanges().subscribe((val: any) => {
       this.enregistrement = val;
+      //console.log(this.enregistrement);
     }
     );
   }
-
   async Signalement() {
     const data = this.signalement_form.value;
     //console.log(data);
