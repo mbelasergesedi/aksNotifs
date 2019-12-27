@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Platform } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './services/AuthService';
 import { environment } from './environments/environment';
@@ -8,7 +9,6 @@ import * as firebase from 'firebase';
 import { ConnectionService } from 'ng-connection-service';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
 import { AppMinimize } from '@ionic-native/app-minimize/ngx';
 @Component({
   selector: 'app-root',
@@ -18,17 +18,15 @@ import { AppMinimize } from '@ionic-native/app-minimize/ngx';
 export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
+    private navCtrl: NavController,
     private fcm: FCM,
     private router: Router,
-    private toastCtrl: ToastController,
     private statusBar: StatusBar,
     public authenticationService: AuthService,
     private connectionService: ConnectionService,
-    private appMinimize: AppMinimize,
     private menu: MenuController
   ) { }
   // tslint:disable-next-line: member-ordering
-  
   isConnected: any;
   status: string;
   ngOnInit() {
@@ -62,12 +60,13 @@ export class AppComponent implements OnInit {
         console.log('Received in foreground');
         this.router.navigate([data.landing_page, data.price]);
       }
-    }); 
+    });
     this.platform.ready().then(() => {
       this.platform.backButton.subscribeWithPriority(9999, () => {
-        document.addEventListener('backbutton', function (event) {
+        document.addEventListener('backbutton', function(event) {
           event.preventDefault();
           event.stopPropagation();
+          this.navCtrl.navigateForward('tabs/tab1');
           console.log('hello');
         }, false);
       });
