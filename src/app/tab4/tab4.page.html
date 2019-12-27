@@ -215,17 +215,17 @@
                             formControlName="description"
                         ></ion-textarea>
                     </ion-item>
-                    <ion-button
-                        expand="block"
-                        color="primary"
-                        class="submit-btn"
-                        type="submit"
-                        (click)="Signalement('top')"
-                        [disabled]="!signalement_form.valid"
-                    >
-                        Postez votre signalement
-                    </ion-button>
                 </ion-col>
+                <ion-button
+                expand="block"
+                color="primary"
+                class="submit-btn"
+                type="submit"
+                (click)="Signalement('top')"
+                [disabled]="!signalement_form.valid"
+            >
+                Postez votre signalement
+            </ion-button>
             </form>
         </ion-row>
     </ion-grid>

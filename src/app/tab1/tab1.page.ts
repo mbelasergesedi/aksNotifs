@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { AuthService } from './../services/AuthService';
 import { ConnectionService } from 'ng-connection-service';
 import { Subject } from 'rxjs';
+import { FCM } from '@ionic-native/fcm/ngx';
 import { Platform } from '@ionic/angular';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { RoiService } from './../services/roi.service';
@@ -84,12 +85,14 @@ export class Tab1Page implements OnInit {
   constructor(
     public notificationService: NotificationsService,
     public authService: AuthService,
+    private fcm: FCM,
     private appVersion: AppVersion,
     private roiService: RoiService,
     private statusBar: StatusBar,
     public plt: Platform,
     public connectionService: ConnectionService
   ) {
+
     this.connectionService.monitor().subscribe(isConnected => {
       this.isConnected = isConnected;
       if (this.isConnected) {
@@ -144,5 +147,35 @@ export class Tab1Page implements OnInit {
       .subscribe(rois => {
         this.rois = rois;
       });
+
+
+    this.plt.ready()
+      .then(() => {
+        this.fcm.onNotification().subscribe(data => {
+          if (data.wasTapped) {
+            console.log("Received in background");
+          } else {
+            console.log("Received in foreground");
+          };
+        });
+
+        this.fcm.onTokenRefresh().subscribe(token => {
+          // Register your new token in your back-end if you want
+          // backend.registerToken(token);
+        });
+      })
+  }
+  subscribeToTopic() {
+    this.fcm.subscribeToTopic('enappd');
+  }
+  getToken() {
+    this.fcm.getToken().then(token => {
+      // Register your new token in your back-end if you want
+      // backend.registerToken(token);
+    });
+  }
+  unsubscribeFromTopic() {
+    this.fcm.unsubscribeFromTopic('enappd');
   }
 }
+
