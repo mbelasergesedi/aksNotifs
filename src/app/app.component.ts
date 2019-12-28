@@ -28,7 +28,10 @@ export class AppComponent implements OnInit {
   ) { }
   // tslint:disable-next-line: member-ordering
   isConnected: any;
+  
   status: string;
+  Gettoken: string;
+  RefreshGettoken: string;
   ngOnInit() {
     this.statusBar.overlaysWebView(true);
     firebase.initializeApp(environment.firebase);
@@ -47,9 +50,11 @@ export class AppComponent implements OnInit {
     });
     this.fcm.getToken().then(token => {
       console.log(token);
+      this.Gettoken= token;
     });
     this.fcm.onTokenRefresh().subscribe(token => {
       console.log(token);
+  
     });
     this.fcm.onNotification().subscribe(data => {
       console.log(data);

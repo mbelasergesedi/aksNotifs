@@ -97,6 +97,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     AngularFireDatabase,
     FCM,
     Camera,
+   
     AppVersion,
     File,
     SplashScreen,
