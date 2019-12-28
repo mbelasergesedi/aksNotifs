@@ -50,6 +50,7 @@
     "angular-ng-autocomplete": "^1.1.14",
     "angular-validation-match": "^1.9.0",
     "circular-json": "^0.5.9",
+    "cordova-android": "^8.1.0",
     "cordova-android-firebase-gradle-release": "^4.0.0",
     "cordova-plugin-app-version": "^0.1.9",
     "cordova-plugin-appminimize": "^1.0.1",
