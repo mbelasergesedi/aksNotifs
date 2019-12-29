@@ -56,11 +56,6 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2"/>
     <plugin name="cordova-plugin-ionic-webview" spec="^4.0.0"/>
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5"/>
-    <plugin name="cordova-plugin-firebase" 
-        spec="https://github.com/Pliciweb/cordova-plugin-firebase.git">
-        <variable name="APP_GOOGLE_API_ID" value="1:192224088026:android:bc7bb841abf4f086" />
-        <variable name="APP_GOOGLE_API_KEY" value="AIzaSyCrgdOdHV_uovf_bD9vMjucImWf0X9Tkz4" />
-    </plugin>
     <feature name="SocialSharing">
         <param name="android-package" value="nl.xservices.plugins.SocialSharing"/>
     </feature>
