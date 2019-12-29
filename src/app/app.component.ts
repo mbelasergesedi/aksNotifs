@@ -9,6 +9,7 @@ import * as firebase from 'firebase';
 import { ConnectionService } from 'ng-connection-service';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { Router } from '@angular/router';
+import { AppMinimize } from '@ionic-native/app-minimize/ngx';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
