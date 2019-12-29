@@ -27,12 +27,7 @@
         <ion-row>
             <ion-col size="12">
                 <ion-icon name="book"></ion-icon>
-                <ion-label>Annuaire des professionnels</ion-label>
-            </ion-col>
-            <ion-col size="12">
-                <ion-note>
-                    Les données fournies sont validées par les autorités compétentes.
-                </ion-note>
+                <ion-label>ANNUAIRE DES PROFESSIONELS</ion-label>
             </ion-col>
             <ion-col>
                 <form
@@ -78,6 +73,7 @@
                 </form>
 
 
+
                 <ion-col
                     size="12"
                     *ngFor="let item of enregistrement"
@@ -111,14 +107,15 @@
                     size="12"
                     *ngIf="enregistrement?.length == 0"
                 >
-                <ion-icon name="information"></ion-icon>  Aucun résultat.
+                    <ion-icon name="information"></ion-icon>
+                    Aucun résultat.
                 </ion-col>
             </ion-col>
             <hr>
             <!-- Formulaire de signalement -->
             <ion-col size="12">
                 <ion-icon name="hand"></ion-icon>
-                <ion-label>Anomalie/Signalement</ion-label>
+                <ion-label>ANOMALIE ET SIGNALEMENT</ion-label>
             </ion-col>
             <ion-col size="12">
                 <ion-note>
@@ -217,15 +214,15 @@
                     </ion-item>
                 </ion-col>
                 <ion-button
-                expand="block"
-                color="primary"
-                class="submit-btn"
-                type="submit"
-                (click)="Signalement('top')"
-                [disabled]="!signalement_form.valid"
-            >
-                Postez votre signalement
-            </ion-button>
+                    expand="block"
+                    color="primary"
+                    class="submit-btn"
+                    type="submit"
+                    (click)="Signalement('top')"
+                    [disabled]="!signalement_form.valid"
+                >
+                    Postez votre signalement
+                </ion-button>
             </form>
         </ion-row>
     </ion-grid>

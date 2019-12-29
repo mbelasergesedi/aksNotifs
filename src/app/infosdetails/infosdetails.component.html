@@ -1,6 +1,12 @@
 <ion-header>
     <ion-toolbar color="primary">
         <ion-buttons slot="secondary">
+            <ion-button [routerLink]="['/tabs/tab1']">
+                <ion-icon
+                    slot="icon-only"
+                    name="home"
+                ></ion-icon>
+            </ion-button>
             <ion-button [routerLink]="['/login']">
                 <ion-icon
                     slot="icon-only"
@@ -19,7 +25,10 @@
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
-<ion-content fullscreen class="ion-padding">
+<ion-content
+    fullscreen
+    class="ion-padding"
+>
     <ion-grid>
         <ion-row>
             <ion-col size="12">
@@ -136,10 +145,13 @@
 </ion-content>
 <ion-footer>
     <ion-toolbar padding>
-         <ion-buttons left>
-        <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button>      
-      </ion-buttons>
+        <ion-buttons left>
+            <button
+                ion-button
+                menuToggle
+            >
+                <ion-icon name="menu"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-toolbar>
-  </ion-footer>
+</ion-footer>
