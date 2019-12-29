@@ -143,6 +143,7 @@
         "UPDATE_API": "https://api.ionicjs.com"
       },
       "cordova-plugin-firebase-crashlytics": {},
+      "cordova-support-google-services": {},
       "cordova-plugin-app-version": {},
       "cordova-plugin-fcm-with-dependecy-updated": {
         "FCM_CORE_VERSION": "16.0.9",
