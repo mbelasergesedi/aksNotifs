@@ -45,6 +45,11 @@ const routes: Routes = [
     loadChildren: () => import('./tab3/interaction/interaction.module').then(m => m.InteractionModule)
   }
   ,
+  {
+    path: 'signalement',
+    loadChildren: () => import('./signalement/signalement.module').then(m => m.SignalementModule)
+  }
+  ,
 
   {
     path: 'dci',

@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { SchoolsService } from '../../services/school.service';
 import { VilleService } from '../../services/city.service';
 import { QryCustomerService } from '../../services/customers.service';
-
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Customers } from '../../model/customers.model';
@@ -16,12 +15,9 @@ import { ToastController } from '@ionic/angular';
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss'],
 })
-
-
 export class AccountComponent implements OnInit {
   // tslint:disable-next-line: variable-name
   account_form: FormGroup;
-
   errorMessage = '';
   // tslint:disable-next-line: variable-name
   validation_messages = {
@@ -43,18 +39,13 @@ export class AccountComponent implements OnInit {
   list: Customers[];
   signupForm: FormGroup;
   ville: any;
-
   successMessage: string;
-
   constructor(private formBuilder: FormBuilder,
               private authenticateService: AuthenticateService,
-              private schoolsService: SchoolsService,
               private villeService: VilleService,
               private db: AngularFirestore,
               private qryCustomerService: QryCustomerService,
-              private toastController: ToastController,
-              private router: Router) {
-
+              private toastController: ToastController) {
   }
   async logInToast() {
     const toast = await this.toastController.create({
@@ -77,7 +68,6 @@ export class AccountComponent implements OnInit {
     ).subscribe(ville => {
       this.villeRef = ville;
       this.ville = ville;
-
     });
   }
   initForm() {
@@ -110,11 +100,9 @@ export class AccountComponent implements OnInit {
         Validators.minLength(5),
         Validators.required
       ])),
-
       validate: new FormControl('', Validators.compose([
         Validators.required
       ])),
-
       gsm: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(8),

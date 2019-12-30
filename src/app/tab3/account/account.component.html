@@ -19,6 +19,7 @@
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
+
 <ion-content fullscreen class="ion-padding">
     <ion-grid>
         <ion-row>
@@ -52,6 +53,7 @@
                             formControlName="nom"
                             required
                             placeholder="Nom"
+                            style="text-transform: uppercase"
                         >
                         </ion-input>
                     </ion-item>
@@ -63,6 +65,7 @@
                             formControlName="prenom"
                             required
                             placeholder="Prénom"
+                            style="text-transform: uppercase"
                         >
                         </ion-input>
                     </ion-item>
@@ -153,4 +156,9 @@
         </ion-row>
     </ion-grid>
 </ion-content>
-<ion-footer></ion-footer>
+
+<ion-footer>
+    <ion-toolbar color="primary">
+      <ion-title>Footer</ion-title>
+    </ion-toolbar>
+  </ion-footer>

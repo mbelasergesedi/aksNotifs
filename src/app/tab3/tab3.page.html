@@ -34,7 +34,6 @@
             </ion-col>
         </ion-row>
         <ion-list>
-            {{this.userEmail}}
             <ion-list-header>3 Options</ion-list-header>
             <ion-item>
                 <ion-label>
@@ -64,6 +63,20 @@
             </ion-item>
             <ion-note>
                 Nous reherchons pour vous les meilleurs prix sur le marché national et international.
+            </ion-note>
+            <br>
+            <br>
+            <ion-col size="12">
+                <ion-icon name="hand"></ion-icon>
+                <ion-label>SIGNALEMENT FAUX MEDICAMENTS</ion-label>
+            </ion-col>
+            <ion-item>
+                <ion-label>
+                    <a [routerLink]="['/signalement']">Envoyer votre signalement</a>
+                </ion-label>
+            </ion-item>
+            <ion-note>
+            
             </ion-note>
         </ion-list>
     </ion-grid>
