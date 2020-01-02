@@ -12,6 +12,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class Tab2Page implements OnInit, OnDestroy {
   code: Subscription;
+  lat: any;
+  long: any;
   two: Subscription;
   UniqueDeviceID: Subscription;
   uuid: any;
@@ -38,25 +40,31 @@ export class Tab2Page implements OnInit, OnDestroy {
     ]
   };
   ngOnInit() {
-     this.statusBar.overlaysWebView(true);
-     this.form = this.formBuilder.group({
+    this.statusBar.overlaysWebView(true);
+    this.form = this.formBuilder.group({
       votretext: [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])]
     });
-     this.geolocation.getCurrentPosition().then((resp) => {
-    }).catch((error) => {
-      // console.log('Error getting location', error);
-    });
+    this.geolocation.getCurrentPosition(
+      {
+        maximumAge: 1000, timeout: 5000,
+        enableHighAccuracy: true
+      }
+    ).then((resp) => {
+      // resp.coords.latitude
+      // resp.coords.longitude
+      // alert("r succ"+resp.coords.latitude)
+      alert(JSON.stringify(resp.coords));
 
-     const watch = this.geolocation.watchPosition();
-     watch.subscribe((data) => {
-      // console.log(data.coords.latitude);
-      // this.latitude = data.coords.latitude;
-      // console.log(data.coords.longitude);
-      // this.longitude = data.coords.longitude;
-       this.cordonnees = this.latitude;
-       // console.log(this.cordonnees);
+      this.lat = resp.coords.latitude;
+      this.lng = resp.coords.longitude;
+    }, er => {
+      // alert("error getting location")
+      alert('Can not retrieve Location');
+    }).catch((error) => {
+      // alert('Error getting location'+JSON.stringify(error));
+      alert('Error getting location - ' + JSON.stringify(error));
     });
-     this.uniqueDeviceID.get()
+    this.uniqueDeviceID.get()
       .then((uuid: any) => this.uuid = uuid)
       .catch((error: any) => this.error = error);
   }
