@@ -10,6 +10,7 @@ import { ConnectionService } from 'ng-connection-service';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { Router } from '@angular/router';
 import { AppMinimize } from '@ionic-native/app-minimize/ngx';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
     private navCtrl: NavController,
+    private splashScreen: SplashScreen,
     private fcm: FCM,
     private router: Router,
     private statusBar: StatusBar,
@@ -30,7 +32,9 @@ export class AppComponent implements OnInit {
   isConnected: any;
   status: string;
   ngOnInit() {
-    this.statusBar.overlaysWebView(true);
+    this.splashScreen.show();
+    this.splashScreen.hide();
+    this.statusBar.overlaysWebView(false);
     firebase.initializeApp(environment.firebase);
     this.connectionService.monitor().subscribe(isConnected => {
       this.isConnected = isConnected;
