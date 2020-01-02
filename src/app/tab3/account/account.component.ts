@@ -49,6 +49,7 @@ export class AccountComponent implements OnInit {
   }
   async logInToast() {
     const toast = await this.toastController.create({
+      position: 'middle',
       message: 'Vous êtes deconnecté.',
       duration: 2000
     });
@@ -134,6 +135,7 @@ export class AccountComponent implements OnInit {
         // console.log('Utilisateur déjà présent');
         const toast = this.toastController.create({
           message: 'Ce compte existe déjà.',
+          position: 'middle',
           duration: 2000
         });
         (await toast).present();

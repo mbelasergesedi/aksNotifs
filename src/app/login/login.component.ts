@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   async logoutToast() {
     const toast = await this.toastController.create({
       message: 'Vous êtes deconnecté.',
+      position: 'middle',
       duration: 2000
     });
     toast.present();

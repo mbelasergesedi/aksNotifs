@@ -103,6 +103,7 @@ export class QuotationsComponent implements OnInit, OnDestroy {
   async quotationToast() {
     const toast = await this.toastController.create({
       message: 'Vous demande de quotation des prix a été envoyée.',
+      position: 'middle',
       duration: 3000
     });
     toast.present();

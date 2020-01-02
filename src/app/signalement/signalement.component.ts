@@ -220,6 +220,7 @@ async Signalement() {
   this.qrySignalementService.signalmentCreate(data);
   const toast = await this.toastController.create({
     message: 'Vous signalement a été envoyé.',
+    position: 'middle',
     duration: 4000
   });
   toast.present();

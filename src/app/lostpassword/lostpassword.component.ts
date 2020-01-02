@@ -47,7 +47,8 @@ export class LostpasswordComponent implements OnInit {
   async lostPassword() {
     const toast = await this.toastController.create({
       message: 'Un email vous a été envoyé.',
-      duration: 2000
+      position: 'middle',
+      duration: 6000
     });
     toast.present();
   }
