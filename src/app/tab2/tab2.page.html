@@ -44,7 +44,7 @@
                 </ion-note>
             </ion-col>
         </ion-row>
-        <ion-col size="12">{{this.uuid}}
+        <ion-col size="12">
             <form
                 class="form"
                 [formGroup]="form"
@@ -76,9 +76,9 @@
                 ></ion-input>
                 <ion-input
                     type="hidden"
-                    id="deviceid"
+                    id="device"
                     class="form-control"
-                    formControlName="deviceid"
+                    formControlName="device"
                     value="{{this.uuid}}"
                 ></ion-input>
                 <div class="validation-errors">

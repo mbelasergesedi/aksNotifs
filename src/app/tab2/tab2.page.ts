@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { ResultatVerificationService, User } from '../services/verifcode.service';
+import { QryValidationService, DeviceData } from '../services/datavalidation.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { QryValidationService, DeviceData } from '../services/datavalidation.service';
+
 @Component({
   selector: 'app-tab2',
   templateUrl: './tab2.page.html',
@@ -13,12 +14,11 @@ import { QryValidationService, DeviceData } from '../services/datavalidation.ser
 })
 export class Tab2Page implements OnInit, OnDestroy {
   code: Subscription;
-  dataV: any;
   lat: any;
+  device: any;
   lng: any;
   two: Subscription;
   UniqueDeviceID: Subscription;
-  uuid: any;
   [x: string]: any;
   title = 'angular-http-spinner-loader';
   status = true;
@@ -26,15 +26,17 @@ export class Tab2Page implements OnInit, OnDestroy {
   formValidation: FormGroup;
   med: any;
   myResponse;
+  uuid: any;
   latitude: number;
   longitude: number;
+  iddevice: number;
   cordonnees: number;
   constructor(private formBuilder: FormBuilder,
-    private geolocation: Geolocation,
-    private qryValidationService: QryValidationService,
-    private statusBar: StatusBar,
-    private uniqueDeviceID: UniqueDeviceID,
-    private resultatVerificationService: ResultatVerificationService,
+              private geolocation: Geolocation,
+              private qryValidationService: QryValidationService,
+              private statusBar: StatusBar,
+              private uniqueDeviceID: UniqueDeviceID,
+              private resultatVerificationService: ResultatVerificationService,
   ) { }
   // tslint:disable-next-line: variable-name
   validation_messages = {
@@ -44,12 +46,13 @@ export class Tab2Page implements OnInit, OnDestroy {
     ]
   };
   ngOnInit() {
+    //this.iddevice = 667777;
     this.statusBar.overlaysWebView(false);
     this.form = this.formBuilder.group({
       votretext: [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])],
       latitude: [],
-      longitude: [],
-      deviceid: []
+      device: [],
+      longitude: []
     });
     this.geolocation.getCurrentPosition(
       {
@@ -69,10 +72,11 @@ export class Tab2Page implements OnInit, OnDestroy {
   }
   submit() {
     if (this.form.valid) {
-      const mycode = (this.form.value.votretext);
-      this.code = this.resultatVerificationService.getResponse(mycode, this.lat).subscribe((MYdata) => {
-        this.myResponse = MYdata;
         const data = this.form.value;
+        const mycode = (data.votretext);
+        this.code = this.resultatVerificationService.getResponse(mycode, this.lat).subscribe((MYdata) => {
+        this.myResponse = MYdata;
+        console.log(data);
         this.qryValidationService.ValidationCreate(data);
       });
     }

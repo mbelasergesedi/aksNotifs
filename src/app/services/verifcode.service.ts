@@ -6,10 +6,8 @@ export interface User {
   code: string;
   latitude: string;
   longitude: string;
-  deviceid: string;
+  device: string;
   cordonnees: string;
-  simid: string;
-  roaming: string;
   mycode: string;
   lat: string;
   lng: string;
