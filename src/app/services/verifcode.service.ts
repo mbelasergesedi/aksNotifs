@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpClientModule, HttpParams } from '@angular/common/http';
-import { Observable, of, Subject } from 'rxjs';
+import { HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 export interface User {
   code: string;

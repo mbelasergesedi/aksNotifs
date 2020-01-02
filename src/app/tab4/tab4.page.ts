@@ -140,7 +140,6 @@ export class Tab4Page {
    * @param _imageBlobInfo
    */
   uploadToFirebase(_imageBlobInfo) {
-
     // console.log('uploadToFirebase');
     return new Promise((resolve, reject) => {
       const fileRef = firebase.storage().ref('images/' + _imageBlobInfo.fileName);
@@ -156,7 +155,6 @@ export class Tab4Page {
             (_snapshot.bytesTransferred / _snapshot.totalBytes) * 100
           );
           this.progress = (_snapshot.bytesTransferred / _snapshot.totalBytes) * 100;
-
         },
         // tslint:disable-next-line: variable-name
         _error => {
@@ -169,7 +167,6 @@ export class Tab4Page {
       );
     });
   }
-
   getVille() {
     this.villeService.getVille().snapshotChanges().pipe(
       map(changes =>

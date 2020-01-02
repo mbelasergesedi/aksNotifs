@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { QryValidationService } from '../services/datavalidation.service';
+import { QryValidationService, DeviceData } from '../services/datavalidation.service';
 @Component({
   selector: 'app-tab2',
   templateUrl: './tab2.page.html',
@@ -36,7 +36,7 @@ export class Tab2Page implements OnInit, OnDestroy {
               private uniqueDeviceID: UniqueDeviceID,
               private resultatVerificationService: ResultatVerificationService,
   ) { }
-  private votretext: Observable<User>;
+  // tslint:disable-next-line: variable-name
   validation_messages = {
     votretext: [
       { type: 'required', message: 'Vous devez renseigner un code de 12 chiffres.' },
@@ -44,9 +44,12 @@ export class Tab2Page implements OnInit, OnDestroy {
     ]
   };
   ngOnInit() {
-    this.statusBar.overlaysWebView(true);
+    this.statusBar.overlaysWebView(false);
     this.form = this.formBuilder.group({
-      votretext: [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])]
+      votretext: [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])],
+      latitude : [],
+      longitude : [],
+      deviceid : []
     });
     this.geolocation.getCurrentPosition(
       {
@@ -54,19 +57,11 @@ export class Tab2Page implements OnInit, OnDestroy {
         enableHighAccuracy: true
       }
     ).then((resp) => {
-      // resp.coords.latitude
-      // resp.coords.longitude
-      // alert("r succ"+resp.coords.latitude)
       alert(JSON.stringify(resp.coords));
-
       this.lat = resp.coords.latitude;
       this.lng = resp.coords.longitude;
     }, er => {
-      // alert("error getting location")
-      alert('Can not retrieve Location');
     }).catch((error) => {
-      // alert('Error getting location'+JSON.stringify(error));
-      alert('Error getting location - ' + JSON.stringify(error));
     });
     this.uniqueDeviceID.get()
       .then((uuid: any) => this.uuid = uuid)
@@ -75,12 +70,11 @@ export class Tab2Page implements OnInit, OnDestroy {
   submit() {
     if (this.form.valid) {
         const mycode = (this.form.value.votretext);
-        this.code = this.resultatVerificationService.getResponse(mycode, this.cordonnees).subscribe((data) => {
-        this.myResponse = data;
-        // console.log(data);
-          //console.log(data);
-        this.qryValidationService.ValidationCreate(this.form);
-      });
+        this.code = this.resultatVerificationService.getResponse(mycode, this.lat).subscribe((MYdata) => {
+        this.myResponse = MYdata;
+        const data = this.form.value;
+        this.qryValidationService.ValidationCreate(data);
+       });
     }
   }
   ngOnDestroy() {

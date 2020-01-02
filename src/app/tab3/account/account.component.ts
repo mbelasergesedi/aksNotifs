@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthenticateService } from '../../services/authentication.service';
-import { Router } from '@angular/router';
-import { SchoolsService } from '../../services/school.service';
 import { VilleService } from '../../services/city.service';
 import { QryCustomerService } from '../../services/customers.service';
 import { Observable } from 'rxjs';
