@@ -37,8 +37,11 @@
             <form class="form" [formGroup]="form" (ngSubmit)="submit()">
                 <ion-item>
                     <ion-input type="tel" placeholder="Entre votre code" id="votretext" class="form-control" formControlName="votretext"
-                        maxlength="12"></ion-input>
+                        maxlength="12"></ion-input>                    
                 </ion-item>
+                <ion-input type="hidden" id="lat" class="form-control" value="{{this.lat}}"></ion-input>
+                <ion-input type="hidden" id="lng" class="form-control" value="{{this.lng}}"></ion-input>
+                <ion-input type="hidden" id="uuid" class="form-control" value="this.uuid"></ion-input>
                 <div class="validation-errors">
                     <ng-container *ngFor="let validation of validation_messages.votretext">
                         <div class="error-message"
@@ -56,7 +59,6 @@
             <div *ngFor="let i  of myResponse">
                 <div>
                     <ion-label>
-
                         <div *ngIf="i.dci">
                             <div>
                                 <ion-icon name="thumbs-up"></ion-icon>
@@ -92,10 +94,24 @@
                                 </strong>
                             </div>
                         </div>
-                        {{this.uuid}}
-                        {{this.UniqueDeviceID}}
-                        {{this.lat}}
-                        {{this.long}}
+                        <!--
+                        <form class="form" [formGroup]="formValidation" (ngSubmit)="submit()">
+                            <ion-item>
+                                <ion-label>Devise</ion-label>
+                                <ion-select
+                                    placeholder="Devise"
+                                    id="devise"
+                                >
+                                    <ion-select-option>Dollar</ion-select-option>
+                                    <ion-select-option selected>Franc Congolais</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                            <ion-input type="hidden" id="lat" class="form-control" value="{{this.lat}}"></ion-input>
+                            <ion-input type="hidden" id="lng" class="form-control" value="{{this.lng}}"></ion-input>
+                            <ion-input type="text" id="prix" class="form-control" value="" placeholder="Prix proposé"></ion-input>
+                            <ion-input type="hidden" id="uuid" class="form-control" value="this.uuid"></ion-input>
+                            <ion-input type="hidden" id="uuid" class="form-control" value="this.UniqueDeviceID"></ion-input>                     
+                        </form>-->
                     </ion-label>
                 </div>
             </div>

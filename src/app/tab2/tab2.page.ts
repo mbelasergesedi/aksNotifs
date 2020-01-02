@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { QryValidationService } from '../services/datavalidation.service';
 @Component({
   selector: 'app-tab2',
   templateUrl: './tab2.page.html',
@@ -12,8 +13,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class Tab2Page implements OnInit, OnDestroy {
   code: Subscription;
+  dataV: any;
   lat: any;
-  long: any;
+  lng: any;
   two: Subscription;
   UniqueDeviceID: Subscription;
   uuid: any;
@@ -21,6 +23,7 @@ export class Tab2Page implements OnInit, OnDestroy {
   title = 'angular-http-spinner-loader';
   status = true;
   form: FormGroup;
+  formValidation: FormGroup;
   med: any;
   myResponse;
   latitude: number;
@@ -28,6 +31,7 @@ export class Tab2Page implements OnInit, OnDestroy {
   cordonnees: number;
   constructor(private formBuilder: FormBuilder,
               private geolocation: Geolocation,
+              private qryValidationService: QryValidationService,
               private statusBar: StatusBar,
               private uniqueDeviceID: UniqueDeviceID,
               private resultatVerificationService: ResultatVerificationService,
@@ -70,10 +74,12 @@ export class Tab2Page implements OnInit, OnDestroy {
   }
   submit() {
     if (this.form.valid) {
-      const mycode = (this.form.value.votretext);
-      this.code = this.resultatVerificationService.getResponse(mycode, this.cordonnees).subscribe((data) => {
+        const mycode = (this.form.value.votretext);
+        this.code = this.resultatVerificationService.getResponse(mycode, this.cordonnees).subscribe((data) => {
         this.myResponse = data;
         // console.log(data);
+          //console.log(data);
+        this.qryValidationService.ValidationCreate(this.form);
       });
     }
   }

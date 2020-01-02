@@ -1,14 +1,28 @@
 <ion-header>
     <ion-toolbar color="primary">
         <ion-buttons slot="secondary">
+            <ion-button [routerLink]="['/tabs/tab1']">
+                <ion-icon
+                    slot="icon-only"
+                    name="home"
+                ></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="secondary">
             <ion-button [routerLink]="['/login']">
-                <ion-icon slot="icon-only" name="person"></ion-icon>
+                <ion-icon
+                    slot="icon-only"
+                    name="person"
+                ></ion-icon>
             </ion-button>
         </ion-buttons>
         <ion-title>Etudiants</ion-title>
         <ion-buttons slot="primary">
             <ion-button [routerLink]="['/cartographie']">
-                <ion-icon slot="icon-only" name="pin"></ion-icon>
+                <ion-icon
+                    slot="icon-only"
+                    name="pin"
+                ></ion-icon>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
@@ -27,52 +41,111 @@
                 </ion-note>
             </ion-col>
             <ion-col>
-                <form class="form" [formGroup]="account_form" (ngSubmit)="tryRegister(account_form)">
+                <form
+                    class="form"
+                    [formGroup]="account_form"
+                    (ngSubmit)="tryRegister(account_form)"
+                >
                     <ion-item>
                         <ion-label>Civilité</ion-label>
-                        <ion-select placeholder="civilite" id="civilite" formControlName="civilite">
+                        <ion-select
+                            placeholder="civilite"
+                            id="civilite"
+                            formControlName="civilite"
+                        >
                             <ion-select-option value="f">Madame, Mademoiselle</ion-select-option>
                             <ion-select-option value="m">Monsieur</ion-select-option>
                         </ion-select>
                     </ion-item>
                     <ion-item>
-                  
-                        <ion-input type="text" placeholder="Nom" id="nom" formControlName="nom" required style="text-transform: uppercase">
+
+
+                        <ion-input
+                            type="text"
+                            placeholder="Nom"
+                            id="nom"
+                            formControlName="nom"
+                            required
+                            style="text-transform: uppercase"
+                        >
                         </ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input type="text" placeholder="Prénom" id="prenom" formControlName="prenom" required style="text-transform: uppercase">
+                        <ion-input
+                            type="text"
+                            placeholder="Prénom"
+                            id="prenom"
+                            formControlName="prenom"
+                            required
+                            style="text-transform: uppercase"
+                        >
                         </ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-label>Institutions</ion-label>
 
-                        <ion-select placeholder="Institutions" id="ecole" formControlName="ecole">
-                            <ion-select-option *ngFor="let item of school" [value]="item.value">
+
+                        <ion-select
+                            placeholder="Institutions"
+                            id="ecole"
+                            formControlName="ecole"
+                        >
+                            <ion-select-option
+                                *ngFor="let item of school"
+                                [value]="item.value"
+                            >
                                 {{item.value}}
                             </ion-select-option>
                         </ion-select>
                     </ion-item>
                     <ion-item>
-                        <ion-input type="text" placeholder="Adresse Email" id="email" class="form-control" formControlName="email">
+                        <ion-input
+                            type="text"
+                            placeholder="Adresse Email"
+                            id="email"
+                            class="form-control"
+                            formControlName="email"
+                        >
                         </ion-input>
                     </ion-item>
                     <ion-item>
 
-                        <ion-input type="password" placeholder="Mot de passe" id="password" class="form-control"
-                            formControlName="password">
+
+                        <ion-input
+                            type="password"
+                            placeholder="Mot de passe"
+                            id="password"
+                            class="form-control"
+                            formControlName="password"
+                        >
                         </ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input type="password" placeholder="Entrer de nouveau le mot de passe" id="password" class="form-control"
-                            formControlName="password">
+                        <ion-input
+                            type="password"
+                            placeholder="Entrer de nouveau le mot de passe"
+                            id="password"
+                            class="form-control"
+                            formControlName="password"
+                        >
                         </ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input type="number" placeholder="Gsm" id="gsm" class="form-control">
+                        <ion-input
+                            type="number"
+                            placeholder="Gsm"
+                            id="gsm"
+                            class="form-control"
+                        >
                         </ion-input>
                     </ion-item>
-                    <ion-button expand="block" color="primary" ion-button type="submit" block>
+                    <ion-button
+                        expand="block"
+                        color="primary"
+                        ion-button
+                        type="submit"
+                        block
+                    >
                         Validez votre inscription
                     </ion-button>
                 </form>

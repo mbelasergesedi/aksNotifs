@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Platform } from '@ionic/angular';
-import { NavController, ToastController } from '@ionic/angular';
+import { NavController} from '@ionic/angular';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './services/AuthService';
 import { environment } from './environments/environment';
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     public authenticationService: AuthService,
     private connectionService: ConnectionService,
     private menu: MenuController
-  ) { }
+  ) {}
   // tslint:disable-next-line: member-ordering
   isConnected: any;
   status: string;

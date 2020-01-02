@@ -15,7 +15,6 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { ToastController } from '@ionic/angular';
 import * as firebase from 'firebase';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
 @Component({
   selector: 'app-signalement',
   templateUrl: './signalement.component.html',
@@ -27,8 +26,7 @@ export class SignalementComponent implements OnInit {
     profform: FormGroup;
     result;
     latitude: any;
-    longitude: any;
-  
+    longitude: any; 
     errorMessage = '';
     enr: any;
     itemCollection: any;
@@ -36,12 +34,10 @@ export class SignalementComponent implements OnInit {
     items: Observable<[any]>;
     enregistrement: any;
     [x: string]: any;
-    list: Customers[];
-  
+    list: Customers[]; 
     progress: number;
     imageDoc: string;
     successMessage: string;
-
   constructor(private formBuilder: FormBuilder,
               private authenticateService: AuthenticateService,
               private villeService: VilleService,
@@ -54,9 +50,7 @@ export class SignalementComponent implements OnInit {
               private toastController: ToastController,
               private qrySignalementService: QrySignalementService,
               private router: Router) {
-
 }
-
 ngOnInit() {
   this.statusBar.overlaysWebView(true);
   this.initForm();
@@ -96,7 +90,6 @@ async pickImage() {
     // console.log(e.message);
   }
 }
-
 // FILE STUFF
 // tslint:disable-next-line: variable-name
 makeFileIntoBlob(_imagePath: string) {
@@ -112,10 +105,8 @@ makeFileIntoBlob(_imagePath: string) {
         const path = nativeURL.substring(0, nativeURL.lastIndexOf('/'));
         // console.log('path', path);
         // console.log('fileName', name);
-
         fileName = name;
         this.imageDoc = fileName;
-
         // we are provided the name, so now read the file into
         // a buffer
         return this.file.readAsArrayBuffer(path, name);
@@ -134,7 +125,6 @@ makeFileIntoBlob(_imagePath: string) {
       .catch(e => reject(e));
   });
 }
-
 /**
  *
  // tslint:disable-next-line: jsdoc-format
@@ -147,9 +137,7 @@ uploadToFirebase(_imageBlobInfo) {
   // console.log('uploadToFirebase');
   return new Promise((resolve, reject) => {
     const fileRef = firebase.storage().ref('images/' + _imageBlobInfo.fileName);
-
     const uploadTask = fileRef.put(_imageBlobInfo.imgBlob);
-
     uploadTask.on(
       'state_changed',
       // tslint:disable-next-line: variable-name
@@ -159,7 +147,6 @@ uploadToFirebase(_imageBlobInfo) {
           (_snapshot.bytesTransferred / _snapshot.totalBytes) * 100
         );
         this.progress = (_snapshot.bytesTransferred / _snapshot.totalBytes) * 100;
-
       },
       // tslint:disable-next-line: variable-name
       _error => {
@@ -173,7 +160,6 @@ uploadToFirebase(_imageBlobInfo) {
     );
   });
 }
-
 getVille() {
   this.villeService.getVille().snapshotChanges().pipe(
     map(changes =>
@@ -184,7 +170,6 @@ getVille() {
   ).subscribe(ville => {
     this.villeRef = ville;
     this.ville = ville;
-
   });
 }
 initForm() {
@@ -213,7 +198,6 @@ initForm() {
     ])),
   });
 }
-
 async Signalement() {
   const data = this.signalement_form.value;
   //console.log(data);

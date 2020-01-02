@@ -11,6 +11,9 @@ export interface User {
   simid: string;
   roaming: string;
   mycode: string;
+  lat: string;
+  lng: string;
+  uuid: string;
 }
 const CodeObject = {
   votrecode: '',
