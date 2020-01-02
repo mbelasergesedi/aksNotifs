@@ -38,7 +38,6 @@
                         L'accès à certaines fonctionalités requiert que vous soyez authentifié.
                     </ion-note>
                 </div>
-                <br>
                 <ion-note>
                     <div *ngIf="this.userEmail">
                         <span>Bienvenue {{this.userEmail}}</span>
@@ -52,9 +51,9 @@
                         </ion-button>
                     </div>
                 </ion-note>
-                <br>
             </ion-col>
             <!-- Skeleton screen -->
+
             <div *ngIf="!interactions">
                 <div class="ion-padding custom-skeleton">
                     <ion-skeleton-text

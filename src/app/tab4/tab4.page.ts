@@ -136,9 +136,7 @@ export class Tab4Page {
 
   /**
    *
-   // tslint:disable-next-line: jsdoc-format
-   // tslint:disable-next-line: no-redundant-jsdoc
-   // tslint:disable-next-line: no-redundant-jsdoc
+
    * @param _imageBlobInfo
    */
   uploadToFirebase(_imageBlobInfo) {
@@ -162,7 +160,6 @@ export class Tab4Page {
         },
         // tslint:disable-next-line: variable-name
         _error => {
-          //console.log(_error);
           reject(_error);
         },
         () => {
@@ -214,9 +211,6 @@ export class Tab4Page {
   }
   tryRegister() {
     const data = this.profform.value;
-    //console.log(data);
-    //console.log(data.categorie);
-    //console.log(data.nom);
     const lenom = data.nom;
    // console.log(lenom.toUpperCase( ));
     const nomS = lenom.toUpperCase( );
@@ -226,13 +220,11 @@ export class Tab4Page {
      data.categorie).where('nom', '==', nomS));
     this.items = this.itemCollection.valueChanges().subscribe((val: any) => {
       this.enregistrement = val;
-      //console.log(this.enregistrement);
     }
     );
   }
   async Signalement() {
     const data = this.signalement_form.value;
-    //console.log(data);
     this.qrySignalementService.signalmentCreate(data);
     const toast = await this.toastController.create({
       message: 'Vous signalement a été envoyé.',

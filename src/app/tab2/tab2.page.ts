@@ -4,9 +4,7 @@ import { ResultatVerificationService, User } from '../services/verifcode.service
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
-import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-@AutoUnsubscribe()
 @Component({
   selector: 'app-tab2',
   templateUrl: './tab2.page.html',
@@ -16,7 +14,7 @@ export class Tab2Page implements OnInit, OnDestroy {
   code: Subscription;
   two: Subscription;
   UniqueDeviceID: Subscription;
-
+  uuid: any;
   [x: string]: any;
   title = 'angular-http-spinner-loader';
   status = true;
@@ -55,8 +53,8 @@ export class Tab2Page implements OnInit, OnDestroy {
       // this.latitude = data.coords.latitude;
       // console.log(data.coords.longitude);
       // this.longitude = data.coords.longitude;
-      // this.cordonnees = this.latitude;
-      // console.log(this.cordonnees);
+       this.cordonnees = this.latitude;
+       // console.log(this.cordonnees);
     });
      this.uniqueDeviceID.get()
       .then((uuid: any) => this.uuid = uuid)
@@ -68,7 +66,7 @@ export class Tab2Page implements OnInit, OnDestroy {
       this.code = this.resultatVerificationService.getResponse(mycode, this.cordonnees).subscribe((data) => {
         this.myResponse = data;
         // console.log(data);
-      });    
+      });
     }
   }
   ngOnDestroy() {

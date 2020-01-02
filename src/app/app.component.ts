@@ -11,6 +11,7 @@ import { FCM } from '@ionic-native/fcm/ngx';
 import { Router } from '@angular/router';
 import { AppMinimize } from '@ionic-native/app-minimize/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -34,7 +35,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.splashScreen.show();
     this.splashScreen.hide();
-    this.statusBar.overlaysWebView(false);
     firebase.initializeApp(environment.firebase);
     this.connectionService.monitor().subscribe(isConnected => {
       this.isConnected = isConnected;
@@ -71,7 +71,6 @@ export class AppComponent implements OnInit {
           event.preventDefault();
           event.stopPropagation();
           this.navCtrl.navigateForward('tabs/tab1');
-          console.log('hello');
         }, false);
       });
       this.statusBar.styleDefault();

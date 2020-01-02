@@ -19,10 +19,16 @@
         <ion-title>Authentification</ion-title>
     </ion-toolbar>
 </ion-header>
+
 <ion-content
     fullscreen
     class="ion-padding"
 >
+<ion-col size="12">
+    <ion-label>
+        <strong>Authentification</strong>
+    </ion-label>
+</ion-col>
     <form
         class="form"
         [formGroup]="validations_form"
@@ -46,9 +52,6 @@
             </ng-container>
         </div>
         <ion-item>
-
-
-
             <ion-input
                 type="password"
                 formControlName="password"
@@ -67,9 +70,6 @@
                 </div>
             </ng-container>
         </div>
-
-
-
         <ion-button
             expand="block"
             color="primary"
