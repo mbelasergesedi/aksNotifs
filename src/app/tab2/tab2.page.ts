@@ -30,11 +30,11 @@ export class Tab2Page implements OnInit, OnDestroy {
   longitude: number;
   cordonnees: number;
   constructor(private formBuilder: FormBuilder,
-              private geolocation: Geolocation,
-              private qryValidationService: QryValidationService,
-              private statusBar: StatusBar,
-              private uniqueDeviceID: UniqueDeviceID,
-              private resultatVerificationService: ResultatVerificationService,
+    private geolocation: Geolocation,
+    private qryValidationService: QryValidationService,
+    private statusBar: StatusBar,
+    private uniqueDeviceID: UniqueDeviceID,
+    private resultatVerificationService: ResultatVerificationService,
   ) { }
   // tslint:disable-next-line: variable-name
   validation_messages = {
@@ -47,9 +47,9 @@ export class Tab2Page implements OnInit, OnDestroy {
     this.statusBar.overlaysWebView(false);
     this.form = this.formBuilder.group({
       votretext: [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])],
-      latitude : [],
-      longitude : [],
-      deviceid : []
+      latitude: [],
+      longitude: [],
+      deviceid: []
     });
     this.geolocation.getCurrentPosition(
       {
@@ -57,7 +57,7 @@ export class Tab2Page implements OnInit, OnDestroy {
         enableHighAccuracy: true
       }
     ).then((resp) => {
-      alert(JSON.stringify(resp.coords));
+      // alert(JSON.stringify(resp.coords));
       this.lat = resp.coords.latitude;
       this.lng = resp.coords.longitude;
     }, er => {
@@ -69,12 +69,12 @@ export class Tab2Page implements OnInit, OnDestroy {
   }
   submit() {
     if (this.form.valid) {
-        const mycode = (this.form.value.votretext);
-        this.code = this.resultatVerificationService.getResponse(mycode, this.lat).subscribe((MYdata) => {
+      const mycode = (this.form.value.votretext);
+      this.code = this.resultatVerificationService.getResponse(mycode, this.lat).subscribe((MYdata) => {
         this.myResponse = MYdata;
         const data = this.form.value;
         this.qryValidationService.ValidationCreate(data);
-       });
+      });
     }
   }
   ngOnDestroy() {
