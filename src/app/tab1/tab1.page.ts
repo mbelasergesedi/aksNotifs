@@ -92,22 +92,6 @@ export class Tab1Page implements OnInit {
     public plt: Platform,
     public connectionService: ConnectionService
   ) {
-    this.plt.ready()
-      .then(() => {
-        this.fcm.onNotification().subscribe(data => {
-          if (data.wasTapped) {
-            console.log("Received in background");
-          } else {
-            console.log("Received in foreground");
-          };
-        });
-
-        this.fcm.onTokenRefresh().subscribe(token => {
-          // Register your new token in your back-end if you want
-          // backend.registerToken(token);
-        });
-      })
-
     this.connectionService.monitor().subscribe(isConnected => {
       this.isConnected = isConnected;
       if (this.isConnected) {
@@ -117,11 +101,8 @@ export class Tab1Page implements OnInit {
       }
     });
   }
-  subscribeToTopic() {
-    this.fcm.subscribeToTopic('enappd');
-  }
-  ngOnInit() {
 
+  ngOnInit() {
     this.statusBar.overlaysWebView(true);
     this.appVersion.getAppName();
     this.appVersion.getPackageName();
@@ -165,21 +146,37 @@ export class Tab1Page implements OnInit {
       .subscribe(rois => {
         this.rois = rois;
       });
+
     this.plt.ready()
       .then(() => {
         this.fcm.onNotification().subscribe(data => {
           if (data.wasTapped) {
-            console.log("Received in background");
+            console.log(data);
+            console.log('Received in background');
+            this.pushes.push({
+              body: data.body,
+              title: data.title
+            });
+            console.log(this.pushes);
           } else {
-            console.log("Received in foreground");
-          };
+            console.log(data);
+            console.log('Received in foreground');
+            this.pushes.push({
+              body: data.body,
+              title: data.title
+            });
+            console.log(this.pushes);
+          }
         });
 
         this.fcm.onTokenRefresh().subscribe(token => {
           // Register your new token in your back-end if you want
           // backend.registerToken(token);
         });
-      })
+      });
+  }
+  subscribeToTopic() {
+    this.fcm.subscribeToTopic('enappd');
   }
   getToken() {
     this.fcm.getToken().then(token => {
@@ -191,4 +188,3 @@ export class Tab1Page implements OnInit {
     this.fcm.unsubscribeFromTopic('enappd');
   }
 }
-

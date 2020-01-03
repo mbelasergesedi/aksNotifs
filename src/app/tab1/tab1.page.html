@@ -19,7 +19,10 @@
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
-<ion-content fullscreen class="ion-padding">
+<ion-content
+    fullscreen
+    class="ion-padding"
+>
     <ion-grid>
         <ion-row>
             <ion-col size="12">
@@ -38,6 +41,25 @@
                         L'accès à certaines fonctionalités requiert que vous soyez authentifié.
                     </ion-note>
                 </div>
+                <div>
+                    <ion-list>
+                        <ion-list-header color="medium">Push Notifications</ion-list-header>
+                        <ion-item *ngFor="let push of pushes">
+                            <ion-label text-wrap>
+                                <ion-text color="primary">
+                                    <h3>{{push.title}}</h3>
+                                </ion-text>
+                                <p>{{push.body}}</p>
+                            </ion-label>
+                        </ion-item>
+                    </ion-list>
+                </div>
+                <div
+                    *ngIf="!pushes.length"
+                    class="empty"
+                >
+                    You have no notifications. Send a new notification to see it in the app.
+                </div>
                 <ion-note>
                     <div *ngIf="this.userEmail">
                         <span>Bienvenue {{this.userEmail}}</span>
@@ -53,6 +75,7 @@
                 </ion-note>
             </ion-col>
             <!-- Skeleton screen -->
+
 
             <div *ngIf="!interactions">
                 <div class="ion-padding custom-skeleton">
