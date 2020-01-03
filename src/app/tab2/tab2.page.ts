@@ -3,9 +3,10 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { ResultatVerificationService, User } from '../services/verifcode.service';
 import { QryValidationService } from '../services/datavalidation.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+
 
 @Component({
   selector: 'app-tab2',
@@ -31,6 +32,9 @@ export class Tab2Page implements OnInit, OnDestroy {
   longitude: number;
   device: number;
   cordonnees: number;
+  date: Date;
+  datepostee: any;
+
   constructor(private formBuilder: FormBuilder,
               private geolocation: Geolocation,
               private qryValidationService: QryValidationService,
@@ -46,12 +50,14 @@ export class Tab2Page implements OnInit, OnDestroy {
     ]
   };
   ngOnInit() {
-
+    // tslint:disable-next-line: no-unused-expression
+    this.date = new Date();
     this.statusBar.overlaysWebView(false);
     this.form = this.formBuilder.group({
       votretext: [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])],
       latitude: [],
       device: [],
+      datepostee: [],
       longitude: []
     });
     this.geolocation.getCurrentPosition(
@@ -72,11 +78,11 @@ export class Tab2Page implements OnInit, OnDestroy {
   }
   submit() {
     if (this.form.valid) {
-        const data = this.form.value;
-        const mycode = (data.votretext);
-        this.code = this.resultatVerificationService.getResponse(mycode, this.lat).subscribe((MYdata) => {
+      const data = this.form.value;
+      const mycode = (data.votretext);
+      this.code = this.resultatVerificationService.getResponse(mycode, this.lat).subscribe((MYdata) => {
         this.myResponse = MYdata;
-        // console.log(data);
+        console.log(data);
         this.qryValidationService.ValidationCreate(data);
       });
     }

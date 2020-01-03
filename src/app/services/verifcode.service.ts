@@ -7,6 +7,7 @@ export interface User {
   latitude: string;
   longitude: string;
   device: string;
+  datepostee: string;
   cordonnees: string;
   mycode: string;
   lat: string;

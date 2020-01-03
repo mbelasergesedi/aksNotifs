@@ -81,6 +81,13 @@
                     formControlName="device"
                     value="{{this.uuid}}"
                 ></ion-input>
+                <ion-input
+                type="hidden"
+                id="datepostee"
+                class="form-control"
+                formControlName="datepostee"
+                value="{{this.date | amLocal | amDateFormat: 'YYYY-MM-DD HH:mm'}}"
+            ></ion-input>
                 <div class="validation-errors">
                     <ng-container *ngFor="let validation of validation_messages.votretext">
                         <div

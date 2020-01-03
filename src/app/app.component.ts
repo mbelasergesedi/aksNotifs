@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   ) { }
   // tslint:disable-next-line: member-ordering
   isConnected: any;
+ 
   status: string;
   ngOnInit() {
     this.splashScreen.show();

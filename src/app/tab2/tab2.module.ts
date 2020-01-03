@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { Tab2Page } from './tab2.page';
+import { MomentModule } from 'ngx-moment';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    MomentModule,
     ReactiveFormsModule,
     IonicModule,
     NgHttpLoaderModule,
