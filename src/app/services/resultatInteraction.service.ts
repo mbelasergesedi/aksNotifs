@@ -5,6 +5,7 @@ import { Observable, of, Subject } from 'rxjs';
 export interface User {
   code: string;
   mycode: string;
+  device: string;
 }
 const CodeObject = {
   votrecode: '',

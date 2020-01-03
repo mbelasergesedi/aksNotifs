@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { ResultatVerificationService, User } from '../services/verifcode.service';
-import { QryValidationService, DeviceData } from '../services/datavalidation.service';
+import { QryValidationService } from '../services/datavalidation.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
@@ -15,8 +15,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class Tab2Page implements OnInit, OnDestroy {
   code: Subscription;
   lat: any;
-  device: any;
   lng: any;
+  uuid: any;
+  iddevice: any;
   two: Subscription;
   UniqueDeviceID: Subscription;
   [x: string]: any;
@@ -26,10 +27,9 @@ export class Tab2Page implements OnInit, OnDestroy {
   formValidation: FormGroup;
   med: any;
   myResponse;
-  uuid: any;
   latitude: number;
   longitude: number;
-  iddevice: number;
+  device: number;
   cordonnees: number;
   constructor(private formBuilder: FormBuilder,
               private geolocation: Geolocation,
@@ -46,7 +46,7 @@ export class Tab2Page implements OnInit, OnDestroy {
     ]
   };
   ngOnInit() {
-    //this.iddevice = 667777;
+
     this.statusBar.overlaysWebView(false);
     this.form = this.formBuilder.group({
       votretext: [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])],
@@ -76,7 +76,7 @@ export class Tab2Page implements OnInit, OnDestroy {
         const mycode = (data.votretext);
         this.code = this.resultatVerificationService.getResponse(mycode, this.lat).subscribe((MYdata) => {
         this.myResponse = MYdata;
-        console.log(data);
+        // console.log(data);
         this.qryValidationService.ValidationCreate(data);
       });
     }

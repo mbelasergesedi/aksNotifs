@@ -5,12 +5,7 @@ import { Injectable } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
-export interface DeviceData {
-    latitude: string;
-    longitude: string;
-    uuid: string;
-    device: string;
-  }
+
 @Injectable()
 export class QryValidationService {
     private dbPath = '/DataValidation';

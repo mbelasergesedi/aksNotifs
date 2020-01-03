@@ -28,7 +28,7 @@
     "@ionic-native/camera": "^5.17.1",
     "@ionic-native/core": "^5.18.0",
     "@ionic-native/device": "^5.19.0",
-    "@ionic-native/fcm": "^5.18.0",
+    "@ionic-native/fcm": "^5.19.0",
     "@ionic-native/file": "^5.17.1",
     "@ionic-native/file-path": "^5.17.1",
     "@ionic-native/firebase": "^5.18.0",
@@ -145,12 +145,7 @@
       "cordova-plugin-firebase-crashlytics": {},
       "cordova-support-google-services": {},
       "cordova-plugin-app-version": {},
-      "cordova-plugin-fcm-with-dependecy-updated": {
-        "FCM_CORE_VERSION": "16.0.9",
-        "FCM_VERSION": "18.0.0",
-        "GRADLE_TOOLS_VERSION": "3.5.0",
-        "GOOGLE_SERVICES_VERSION": "4.2.0"
-      },
+      "cordova-plugin-fcm-with-dependecy-updated": {},
       "cordova-plugin-appminimize": {}
     },
     "platforms": [

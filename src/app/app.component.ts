@@ -1,17 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Platform } from '@ionic/angular';
-import { NavController} from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './services/AuthService';
 import { environment } from './environments/environment';
 import * as firebase from 'firebase';
 import { ConnectionService } from 'ng-connection-service';
-import { FCM } from '@ionic-native/fcm/ngx';
 import { Router } from '@angular/router';
-import { AppMinimize } from '@ionic-native/app-minimize/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -22,13 +19,12 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private navCtrl: NavController,
     private splashScreen: SplashScreen,
-    private fcm: FCM,
     private router: Router,
     private statusBar: StatusBar,
     public authenticationService: AuthService,
     private connectionService: ConnectionService,
     private menu: MenuController
-  ) {}
+  ) { }
   // tslint:disable-next-line: member-ordering
   isConnected: any;
   status: string;
@@ -49,25 +45,9 @@ export class AppComponent implements OnInit {
         this.status = 'Pas Connecté à Internet';
       }
     });
-    this.fcm.getToken().then(token => {
-      console.log(token);
-    });
-    this.fcm.onTokenRefresh().subscribe(token => {
-      console.log(token);
-    });
-    this.fcm.onNotification().subscribe(data => {
-      console.log(data);
-      if (data.wasTapped) {
-        console.log('Received in background');
-        this.router.navigate([data.landing_page, data.price]);
-      } else {
-        console.log('Received in foreground');
-        this.router.navigate([data.landing_page, data.price]);
-      }
-    });
     this.platform.ready().then(() => {
       this.platform.backButton.subscribeWithPriority(9999, () => {
-        document.addEventListener('backbutton', function(event) {
+        document.addEventListener('backbutton', function (event) {
           event.preventDefault();
           event.stopPropagation();
           this.navCtrl.navigateForward('tabs/tab1');

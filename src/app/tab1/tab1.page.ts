@@ -92,6 +92,21 @@ export class Tab1Page implements OnInit {
     public plt: Platform,
     public connectionService: ConnectionService
   ) {
+    this.plt.ready()
+      .then(() => {
+        this.fcm.onNotification().subscribe(data => {
+          if (data.wasTapped) {
+            console.log("Received in background");
+          } else {
+            console.log("Received in foreground");
+          };
+        });
+
+        this.fcm.onTokenRefresh().subscribe(token => {
+          // Register your new token in your back-end if you want
+          // backend.registerToken(token);
+        });
+      })
 
     this.connectionService.monitor().subscribe(isConnected => {
       this.isConnected = isConnected;
@@ -101,6 +116,9 @@ export class Tab1Page implements OnInit {
         this.status = 'OFFLINE';
       }
     });
+  }
+  subscribeToTopic() {
+    this.fcm.subscribeToTopic('enappd');
   }
   ngOnInit() {
 
@@ -147,8 +165,6 @@ export class Tab1Page implements OnInit {
       .subscribe(rois => {
         this.rois = rois;
       });
-
-
     this.plt.ready()
       .then(() => {
         this.fcm.onNotification().subscribe(data => {
@@ -164,9 +180,6 @@ export class Tab1Page implements OnInit {
           // backend.registerToken(token);
         });
       })
-  }
-  subscribeToTopic() {
-    this.fcm.subscribeToTopic('enappd');
   }
   getToken() {
     this.fcm.getToken().then(token => {
