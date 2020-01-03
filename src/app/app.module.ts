@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MomentModule } from 'ngx-moment';
-
 // Environments
 import { environment } from './environments/environment';
 import { HttpClientModule } from '@angular/common/http';

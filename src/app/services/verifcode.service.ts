@@ -33,4 +33,3 @@ export class ResultatVerificationService {
 
   }
 }
-//medcode:medcode,latitude:latitude,phoneNumber:phoneNumber,deviceid:deviceid

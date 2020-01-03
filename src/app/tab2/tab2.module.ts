@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { Tab2Page } from './tab2.page';
 import { MomentModule } from 'ngx-moment';
-
 const routes: Routes = [
   {
     path: '',

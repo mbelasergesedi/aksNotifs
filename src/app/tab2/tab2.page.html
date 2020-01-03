@@ -58,6 +58,7 @@
                         class="form-control"
                         formControlName="votretext"
                         maxlength="12"
+                        [(ngModel)]="data.votretexte"
                     ></ion-input>
                 </ion-item>
                 <ion-input
@@ -81,13 +82,6 @@
                     formControlName="device"
                     value="{{this.uuid}}"
                 ></ion-input>
-                <ion-input
-                type="text"
-                id="datepostee"
-                class="form-control"
-                formControlName="datepostee"
-                value="{{this.date | amLocal | amDateFormat: 'YYYY-MM-DD HH:mm'}}"
-            ></ion-input>
                 <div class="validation-errors">
                     <ng-container *ngFor="let validation of validation_messages.votretext">
                         <div
@@ -109,7 +103,9 @@
                     Validez votre code
                 </ion-button>
             </form>
-            <br>
+            <ion-col text-center>
+                <h2>{{data.votretexte | number }}</h2>
+            </ion-col>
             <br>
             <div *ngFor="let i  of myResponse">
                 <div>

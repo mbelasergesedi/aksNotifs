@@ -6,14 +6,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
-
+import { AppData } from '../model/validation.model';
+import { AppDate } from '../model/date.model';
 @Component({
   selector: 'app-tab2',
   templateUrl: './tab2.page.html',
   styleUrls: ['./tab2.page.scss'],
 })
 export class Tab2Page implements OnInit, OnDestroy {
+  votretexte: any;
+  date: Date;
+  data = new AppData('');
+  mydate = new AppDate('');
   code: Subscription;
   lat: any;
   lng: any;
@@ -32,8 +36,7 @@ export class Tab2Page implements OnInit, OnDestroy {
   longitude: number;
   device: number;
   cordonnees: number;
-  date: Date;
-  datepostee: Date;
+  datepostee: any;
   constructor(private formBuilder: FormBuilder,
               private geolocation: Geolocation,
               private qryValidationService: QryValidationService,
@@ -56,7 +59,6 @@ export class Tab2Page implements OnInit, OnDestroy {
       votretext: [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])],
       latitude: [],
       device: [],
-      datepostee: [],
       longitude: []
     });
     this.geolocation.getCurrentPosition(
@@ -81,7 +83,7 @@ export class Tab2Page implements OnInit, OnDestroy {
       const mycode = (data.votretext);
       this.code = this.resultatVerificationService.getResponse(mycode, this.lat).subscribe((MYdata) => {
         this.myResponse = MYdata;
-        console.log(data);
+        // console.log(data);
         this.qryValidationService.ValidationCreate(data);
       });
     }
