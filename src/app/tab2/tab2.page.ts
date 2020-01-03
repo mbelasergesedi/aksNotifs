@@ -33,8 +33,7 @@ export class Tab2Page implements OnInit, OnDestroy {
   device: number;
   cordonnees: number;
   date: Date;
-  datepostee: any;
-
+  datepostee: Date;
   constructor(private formBuilder: FormBuilder,
               private geolocation: Geolocation,
               private qryValidationService: QryValidationService,
