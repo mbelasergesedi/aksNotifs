@@ -55,9 +55,8 @@ import { File } from '@ionic-native/file/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { FirebaseCrashlytics } from '@ionic-native/firebase-crashlytics/ngx';
 import { NgHttpLoaderModule } from 'ng-http-loader';
-import { FooPipe } from './foo.pipe';
 @NgModule({
-  declarations: [AppComponent, FooPipe],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule,
     FormsModule,
