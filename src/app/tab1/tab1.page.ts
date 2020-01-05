@@ -6,7 +6,6 @@ import { ConnectionService } from 'ng-connection-service';
 import { Subject } from 'rxjs';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { Platform } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { RoiService } from './../services/roi.service';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -16,7 +15,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['./tab1.page.scss']
 })
 export class Tab1Page implements OnInit {
-  [x: string]: any;
   pushes: any = [];
   // Nouvelles
   ObjNouvelles = {
@@ -92,7 +90,6 @@ export class Tab1Page implements OnInit {
     private roiService: RoiService,
     private statusBar: StatusBar,
     public plt: Platform,
-    private router: Router,
     public connectionService: ConnectionService
   ) {
     this.connectionService.monitor().subscribe(isConnected => {
@@ -154,11 +151,20 @@ export class Tab1Page implements OnInit {
         this.fcm.onNotification().subscribe(data => {
           if (data.wasTapped) {
             // console.log(data);
-           //  console.log('Received in background');
-            this.router.navigate([data.landing_page, data.price]);
+            // console.log('Received in background');
+            this.pushes.push({
+              body: data.body,
+              title: data.title
+            });
+           // console.log(this.pushes);
           } else {
-            // console.log('Received in foreground');
-            this.router.navigate([data.landing_page, data.price]);
+           // console.log(data);
+           // console.log('Received in foreground');
+            this.pushes.push({
+              body: data.body,
+              title: data.title
+            });
+            // console.log(this.pushes);
           }
         });
 
