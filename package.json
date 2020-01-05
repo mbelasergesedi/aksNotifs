@@ -24,7 +24,7 @@
     "@angular/router": "~8.2.14",
     "@angular/service-worker": "^8.2.14",
     "@ionic-native/app-minimize": "^5.18.0",
-    "@ionic-native/app-version": "^5.18.0",
+    "@ionic-native/app-version": "^5.19.1",
     "@ionic-native/camera": "^5.17.1",
     "@ionic-native/core": "^5.18.0",
     "@ionic-native/device": "^5.19.0",

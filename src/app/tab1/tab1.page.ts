@@ -67,7 +67,7 @@ export class Tab1Page implements OnInit {
     categorie: 'OInfis',
     maxdata: 10
   };
-  status = 'ONLINE';
+  status = '';
   isConnected = true;
   interactions: any;
   rois: any;
@@ -101,7 +101,6 @@ export class Tab1Page implements OnInit {
       }
     });
   }
-
   ngOnInit() {
     this.statusBar.overlaysWebView(true);
     this.appVersion.getAppName();

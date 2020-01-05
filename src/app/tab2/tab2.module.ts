@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { Tab2Page } from './tab2.page';
 import { MomentModule } from 'ngx-moment';
+import { FooPipe } from '../foo.pipe';
 const routes: Routes = [
   {
     path: '',
@@ -24,6 +25,6 @@ const routes: Routes = [
     NgHttpLoaderModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [Tab2Page]
+  declarations: [Tab2Page, FooPipe]
 })
 export class Tab2PageModule { }
