@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
 import { Platform } from '@ionic/angular';
-import { NavController } from '@ionic/angular';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './services/AuthService';
 import { environment } from './environments/environment';
 import * as firebase from 'firebase';
 import { ConnectionService } from 'ng-connection-service';
-import { Router } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 @Component({
   selector: 'app-root',
@@ -17,13 +14,10 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
-    private navCtrl: NavController,
     private splashScreen: SplashScreen,
-    private router: Router,
     private statusBar: StatusBar,
     public authenticationService: AuthService,
-    private connectionService: ConnectionService,
-    private menu: MenuController
+    private connectionService: ConnectionService
   ) { }
   // tslint:disable-next-line: member-ordering
   isConnected: any;

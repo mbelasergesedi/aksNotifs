@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SecondPage implements OnInit {
 
-  constructor(private route: ActivatedRoute) { this.price = this.route.snapshot.params['price'];}
+  constructor(private route: ActivatedRoute) { this.price = this.route.snapshot.params.price; }
   price: any = '';
   ngOnInit() {
   }
