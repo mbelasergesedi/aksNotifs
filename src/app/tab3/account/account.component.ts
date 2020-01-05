@@ -8,6 +8,10 @@ import { map } from 'rxjs/operators';
 import { Customers } from '../../model/customers.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastController } from '@ionic/angular';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -29,6 +33,12 @@ export class AccountComponent implements OnInit {
     ]
   };
   enr: any;
+  uuid: any;
+  iddevice: any;
+  model: any;
+  platform: any;
+  manufacturer: any;
+  version: any;
   itemCollection: any;
   MyData: any;
   items: Observable<[any]>;
@@ -41,6 +51,8 @@ export class AccountComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private authenticateService: AuthenticateService,
               private villeService: VilleService,
+              private geolocation: Geolocation,
+              private uniqueDeviceID: UniqueDeviceID,
               private db: AngularFirestore,
               private qryCustomerService: QryCustomerService,
               private toastController: ToastController) {
@@ -91,6 +103,10 @@ export class AccountComponent implements OnInit {
       structure: new FormControl('', Validators.compose([
         Validators.required
       ])),
+      device: [],
+      version: [],
+      model: [],
+      manufacturer: [],
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
@@ -118,7 +134,23 @@ export class AccountComponent implements OnInit {
 
       // 2. S'il n'est pas présent, on l'inscrit dans la DB et dans système d'authentification;
       if (Object.keys(this.enregistrement).length === 0) {
-        this.qryCustomerService.createCustomer(data);
+        this.uniqueDeviceID.get()
+        .then((uuid: any) => this.uuid = uuid)
+        .catch((error: any) => this.error = error);
+
+        this.uniqueDeviceID.get()
+        .then((model: any) => this.model = model)
+        .catch((error: any) => this.error = error);
+
+        this.uniqueDeviceID.get()
+        .then((version: any) => this.version = version)
+        .catch((error: any) => this.error = error);
+
+        this.uniqueDeviceID.get()
+        .then((manufacturer: any) => this.manufacturer = manufacturer)
+        .catch((error: any) => this.error = error);
+
+        this.qryCustomerService.createCustomer({data, createdAt: firebase.firestore.FieldValue.serverTimestamp()});
         this.authenticateService.registerUser(this.account_form.get('email').value, this.account_form.get('password').value)
           .then(res => {
             this.errorMessage = '';

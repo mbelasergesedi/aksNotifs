@@ -29,6 +29,7 @@
 </ion-header>
 
 
+
 <ion-content
     fullscreen
     class="ion-padding"
@@ -58,6 +59,38 @@
                         </ion-select>
                     </ion-item>
                     <ion-item>
+                        <ion-input
+                            type="hidden"
+                            id="device"
+                            class="form-control"
+                            formControlName="device"
+                            value="{{this.uuid}}"
+                        ></ion-input>
+
+
+                        <ion-input
+                            type="hidden"
+                            id="version"
+                            class="form-control"
+                            formControlName="version"
+                            value="{{this.version}}"
+                        ></ion-input>
+                        <ion-input
+                            type="hidden"
+                            id="model"
+                            class="form-control"
+                            formControlName="model"
+                            value="{{this.model}}"
+                        ></ion-input>
+                        <ion-input
+                            type="hidden"
+                            id="manufacturer"
+                            class="form-control"
+                            formControlName="manufacturer"
+                            value="{{this.manufacturer}}"
+                        ></ion-input>
+
+
                         <ion-input
                             type="text"
                             placeholder
@@ -123,10 +156,6 @@
                             <ion-select-option value="Université">Université</ion-select-option>
                             <ion-select-option value="Depot pharmaceutique">Dépôt pharmaceutique</ion-select-option>
                         </ion-select>
-
-
-
-
                     </ion-item>
                     <ion-item>
                         <ion-input
