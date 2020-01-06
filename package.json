@@ -27,7 +27,7 @@
     "@ionic-native/app-version": "^5.19.1",
     "@ionic-native/camera": "^5.17.1",
     "@ionic-native/core": "^5.18.0",
-    "@ionic-native/device": "^4.20.0",
+    "@ionic-native/device": "^5.19.0",
     "@ionic-native/fcm": "^5.19.0",
     "@ionic-native/file": "^5.17.1",
     "@ionic-native/file-path": "^5.17.1",

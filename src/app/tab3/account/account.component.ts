@@ -9,7 +9,6 @@ import { Customers } from '../../model/customers.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastController } from '@ionic/angular';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
-import { Device } from '@ionic-native/device';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -50,14 +49,13 @@ export class AccountComponent implements OnInit {
   ville: any;
   successMessage: string;
   constructor(private formBuilder: FormBuilder,
-    private authenticateService: AuthenticateService,
-    private villeService: VilleService,
-    private geolocation: Geolocation,
-    private uniqueDeviceID: UniqueDeviceID,
-    private device: Device,
-    private db: AngularFirestore,
-    private qryCustomerService: QryCustomerService,
-    private toastController: ToastController) {
+              private authenticateService: AuthenticateService,
+              private villeService: VilleService,
+              private geolocation: Geolocation,
+              private uniqueDeviceID: UniqueDeviceID,
+              private db: AngularFirestore,
+              private qryCustomerService: QryCustomerService,
+              private toastController: ToastController) {
   }
   async logInToast() {
     const toast = await this.toastController.create({
@@ -137,14 +135,22 @@ export class AccountComponent implements OnInit {
       // 2. S'il n'est pas présent, on l'inscrit dans la DB et dans système d'authentification;
       if (Object.keys(this.enregistrement).length === 0) {
         this.uniqueDeviceID.get()
-          .then((uuid: any) => this.uuid = uuid)
-          .catch((error: any) => this.error = error);
+        .then((uuid: any) => this.uuid = uuid)
+        .catch((error: any) => this.error = error);
 
-        this.model = this.device.model;
-        this.version = this.device.version;
-        this.manufacturer = this.device.manufacturer;
+        this.uniqueDeviceID.get()
+        .then((model: any) => this.model = model)
+        .catch((error: any) => this.error = error);
 
-        this.qryCustomerService.createCustomer({ data, createdAt: firebase.firestore.FieldValue.serverTimestamp() });
+        this.uniqueDeviceID.get()
+        .then((version: any) => this.version = version)
+        .catch((error: any) => this.error = error);
+
+        this.uniqueDeviceID.get()
+        .then((manufacturer: any) => this.manufacturer = manufacturer)
+        .catch((error: any) => this.error = error);
+
+        this.qryCustomerService.createCustomer({data, createdAt: firebase.firestore.FieldValue.serverTimestamp()});
         this.authenticateService.registerUser(this.account_form.get('email').value, this.account_form.get('password').value)
           .then(res => {
             this.errorMessage = '';

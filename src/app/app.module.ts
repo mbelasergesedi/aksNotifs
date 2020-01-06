@@ -14,7 +14,7 @@ import { MomentModule } from 'ngx-moment';
 import { environment } from './environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 // Imported Plugin
-import { Device } from '@ionic-native/device';
+import { Device } from '@ionic-native/device/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { AppVersion } from '@ionic-native/app-version/ngx';
@@ -55,7 +55,6 @@ import { File } from '@ionic-native/file/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { FirebaseCrashlytics } from '@ionic-native/firebase-crashlytics/ngx';
 import { NgHttpLoaderModule } from 'ng-http-loader';
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
