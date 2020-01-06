@@ -14,7 +14,6 @@ import { MomentModule } from 'ngx-moment';
 import { environment } from './environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 // Imported Plugin
-import { Device } from '@ionic-native/device/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { AppVersion } from '@ionic-native/app-version/ngx';
@@ -86,7 +85,6 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     QryCustomerService,
     QryStatNotifs,
     QryQuotationsService,
-    Device,
     AppMinimize,
     Geolocation,
     AuthenticateService,
