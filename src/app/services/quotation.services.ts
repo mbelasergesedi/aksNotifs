@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable, of, Subject } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
 @Injectable()
 export class QryQuotationsService {
 
@@ -16,7 +18,7 @@ export class QryQuotationsService {
   customerRef: AngularFireList<AccountComponent> = null;
 
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore) { }
 
   form = new FormGroup({
     customerName: new FormControl(''),
@@ -30,8 +32,8 @@ export class QryQuotationsService {
     return new Promise<any>((resolve, reject) => {
       this.firestore
         .collection('quotations')
-        .add(data)
-        .then(res => {}, err => reject(err));
+        .add({ data, createdAt: firebase.firestore.FieldValue.serverTimestamp() })
+        .then(res => { }, err => reject(err));
     });
   }
 

@@ -63,10 +63,10 @@
                                 {{i.ATC}}<br>
                                 {{i.medessentiel}}<br>
                                 {{i.phychotrope}}<br>
-                                <div *ngIf="i.ATC.indexOf('N0') > -1">
+                                
+                                <div *ngIf="i.ATC.indexOf('N03') > -1">
                                     <ion-chip outline color="danger">
-                                        <ion-label>Les antiépileptiques , anticonvulsifs, anticonvulsivants ou
-                                            anticomitiaux.</ion-label>
+                                        <ion-label>Les antiépileptiques.</ion-label>
                                     </ion-chip>
                                 </div>
                             </ion-col>

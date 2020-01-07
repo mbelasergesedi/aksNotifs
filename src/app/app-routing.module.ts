@@ -77,6 +77,11 @@ const routes: Routes = [
   }
   ,
   {
+    path: 'addpharma',
+    loadChildren: () => import('./add-pharma/add-pharma.module').then(m => m.AddPharmaModule)
+  }
+  ,
+  {
     path: 'students',
     loadChildren: () => import('./tab3/accountStudent/account.module').then(m => m.AccountModule)
   }

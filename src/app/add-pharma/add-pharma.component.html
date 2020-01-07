@@ -1,0 +1,163 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="secondary">
+            <ion-button [routerLink]="['/tabs/tab1']">
+                <ion-icon
+                    slot="icon-only"
+                    name="home"
+                ></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="secondary">
+            <ion-button [routerLink]="['/login']">
+                <ion-icon
+                    slot="icon-only"
+                    name="person"
+                ></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Ajouter une pharmacie</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button [routerLink]="['/cartographie']">
+                <ion-icon
+                    slot="icon-only"
+                    name="pin"
+                ></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content
+    fullscreen
+    class="ion-padding"
+>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12">
+                <ion-icon name="arrow-back"></ion-icon>
+                <a [routerLink]="['/login']">Retour</a>
+            </ion-col>
+            <ion-col size="12">Inscrire une pharmacie</ion-col>
+            <ion-col size="12">
+                <form class="form">
+                    <ion-item>
+                        <ion-input
+                            type="hidden"
+                            id="device"
+                            value="{{this.uuid}}"
+                        ></ion-input>
+
+                        <ion-input
+                            type="hidden"
+                            id="version"
+                            value="{{this.version}}"
+                        ></ion-input>
+                        <ion-input
+                            type="hidden"
+                            id="model"
+                            value="{{this.model}}"
+                        ></ion-input>
+                        <ion-input
+                            type="hidden"
+                            id="manufacturer"
+                            value="{{this.manufacturer}}"
+                        ></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Ville</ion-label>
+                        <ion-select
+                            placeholder="Ville"
+                            id="ville"
+                        >
+                            <ion-select-option
+                                *ngFor="let item of ville"
+                                [value]="item.value"
+                            >
+                                {{item.value}}
+                            </ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input
+                            type="text"
+                            placeholder
+                            id="denomination"
+                            required
+                            placeholder="Dénomination"
+                            style="text-transform: capitalize"
+                        >
+                        </ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input
+                            type="text"
+                            placeholder
+                            id="adresse"
+                            required
+                            placeholder="Adresse"
+                            style="text-transform: capitalize"
+                        >
+                        </ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input
+                            type="text"
+                            placeholder
+                            id="autorisation"
+                            required
+                            placeholder="Numéro autorisation"
+                            style="text-transform: capitalize"
+                        >
+                        </ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input
+                            type="text"
+                            placeholder
+                            id="responsable"
+                            required
+                            placeholder="Responsable"
+                            style="text-transform: capitalize"
+                        >
+                        </ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input
+                            type="email"
+                            placeholder
+                            id="email"
+                            required
+                            placeholder="Email"
+                            style="text-transform: capitalize"
+                        >
+                        </ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input
+                            type="text"
+                            placeholder
+                            id="gsm"
+                            required
+                            placeholder="Gsm"
+                            style="text-transform: capitalize"
+                        >
+                        </ion-input>
+                    </ion-item>
+                    <ion-button
+                        expand="block"
+                        color="primary"
+                        class="submit-btn"
+                        type="submit"
+                    >
+                        Inscription
+                    </ion-button>
+                </form>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+<ion-footer>
+    <ion-toolbar color="primary">
+        <ion-title>Footer</ion-title>
+    </ion-toolbar>
+</ion-footer>

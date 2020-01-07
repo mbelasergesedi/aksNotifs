@@ -9,11 +9,11 @@ export class QryValidationService {
     private dbPath = '/DataValidation';
     customerRef: AngularFireList<Tab2Page> = null;
     constructor(private firestore: AngularFirestore) { }
-    ValidationCreate(data)  {
+    ValidationCreate(data) {
         return new Promise<any>((resolve, reject) => {
             this.firestore
                 .collection('DataValidation')
-                .add({data, createdAt: firebase.firestore.FieldValue.serverTimestamp()})
+                .add({ data, createdAt: firebase.firestore.FieldValue.serverTimestamp() })
                 .then(res => { }, err => reject(err));
         });
     }

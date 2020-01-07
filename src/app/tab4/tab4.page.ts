@@ -42,17 +42,17 @@ export class Tab4Page {
   successMessage: string;
 
   constructor(private formBuilder: FormBuilder,
-              private authenticateService: AuthenticateService,
-              private villeService: VilleService,
-              private db: AngularFirestore,
-              private camera: Camera,
-              private statusBar: StatusBar,
-              private geolocation: Geolocation,
-              private uniqueDeviceID: UniqueDeviceID,
-              private file: File,
-              private toastController: ToastController,
-              private qrySignalementService: QrySignalementService,
-              private router: Router) {
+    private authenticateService: AuthenticateService,
+    private villeService: VilleService,
+    private db: AngularFirestore,
+    private camera: Camera,
+    private statusBar: StatusBar,
+    private geolocation: Geolocation,
+    private uniqueDeviceID: UniqueDeviceID,
+    private file: File,
+    private toastController: ToastController,
+    private qrySignalementService: QrySignalementService,
+    private router: Router) {
 
   }
   // tslint:disable-next-line: use-lifecycle-interface
@@ -68,7 +68,7 @@ export class Tab4Page {
       console.log(resp.coords.longitude);
       this.longitude = resp.coords.longitude;
     }).catch((error) => {
-      console.log('Error getting location', error);
+      //  console.log('Error getting location', error);
     });
 
     const watch = this.geolocation.watchPosition();
@@ -124,7 +124,7 @@ export class Tab4Page {
           const imgBlob = new Blob([buffer], {
             type: 'image/jpeg'
           });
-          //console.log(imgBlob.type, imgBlob.size);
+          // console.log(imgBlob.type, imgBlob.size);
           resolve({
             fileName,
             imgBlob,
@@ -209,12 +209,12 @@ export class Tab4Page {
   tryRegister() {
     const data = this.profform.value;
     const lenom = data.nom;
-   // console.log(lenom.toUpperCase( ));
-    const nomS = lenom.toUpperCase( );
+    // console.log(lenom.toUpperCase( ));
+    const nomS = lenom.toUpperCase();
     this.nom = data.nom;
     this.categorie = data.categorie;
     this.itemCollection = this.db.collection<any[]>('customers', ref => ref.where('profession', '==',
-     data.categorie).where('nom', '==', nomS));
+      data.categorie).where('nom', '==', nomS));
     this.items = this.itemCollection.valueChanges().subscribe((val: any) => {
       this.enregistrement = val;
     }

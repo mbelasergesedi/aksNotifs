@@ -4,6 +4,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Tab4Page } from '../tab4/tab4.page'
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
 @Injectable()
 export class QrySignalementService {
     code: string;
@@ -21,7 +23,7 @@ export class QrySignalementService {
         return new Promise<any>((resolve, reject) => {
             this.firestore
                 .collection('signalement')
-                .add(data)
+                .add({ data, createdAt: firebase.firestore.FieldValue.serverTimestamp() })
                 .then(res => { }, err => reject(err));
         });
     }
