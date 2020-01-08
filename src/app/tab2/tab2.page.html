@@ -112,7 +112,11 @@
                     <ion-label>
                         <div *ngIf="i.dci">
                             <div>
-                                <ion-icon name="thumbs-up"></ion-icon>
+                                <ion-icon
+                                    name="thumbs-up"
+                                    class="iconSize"
+                                    color="success"
+                                ></ion-icon>
                                 <strong>
                                     Le code que vous avez entré est correct.
                                 </strong>
@@ -137,7 +141,11 @@
                         <br>
                         <div *ngIf="!i.dci">
                             <div>
-                                <ion-icon name="thumbs-down"></ion-icon>
+                                <ion-icon
+                                    name="thumbs-down"
+                                    class="iconSize"
+                                    color="danger"
+                                ></ion-icon>
                                 <strong>
                                     Le code que vous avez n'est pas correct
                                     ou n'existe

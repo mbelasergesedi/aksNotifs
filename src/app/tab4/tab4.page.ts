@@ -21,13 +21,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['./tab4.page.scss'],
 })
 export class Tab4Page {
-  // tslint:disable-next-line: variable-name
   signalement_form: FormGroup;
   profform: FormGroup;
   result;
   latitude: any;
   longitude: any;
-
   errorMessage = '';
   enr: any;
   itemCollection: any;
@@ -36,23 +34,22 @@ export class Tab4Page {
   enregistrement: any;
   [x: string]: any;
   list: Customers[];
-
   progress: number;
   imageDoc: string;
   successMessage: string;
-
+  ville: any;
   constructor(private formBuilder: FormBuilder,
-    private authenticateService: AuthenticateService,
-    private villeService: VilleService,
-    private db: AngularFirestore,
-    private camera: Camera,
-    private statusBar: StatusBar,
-    private geolocation: Geolocation,
-    private uniqueDeviceID: UniqueDeviceID,
-    private file: File,
-    private toastController: ToastController,
-    private qrySignalementService: QrySignalementService,
-    private router: Router) {
+              private authenticateService: AuthenticateService,
+              private villeService: VilleService,
+              private db: AngularFirestore,
+              private camera: Camera,
+              private statusBar: StatusBar,
+              private geolocation: Geolocation,
+              private uniqueDeviceID: UniqueDeviceID,
+              private file: File,
+              private toastController: ToastController,
+              private qrySignalementService: QrySignalementService,
+              private router: Router) {
 
   }
   // tslint:disable-next-line: use-lifecycle-interface
@@ -213,8 +210,8 @@ export class Tab4Page {
     const nomS = lenom.toUpperCase();
     this.nom = data.nom;
     this.categorie = data.categorie;
-    this.itemCollection = this.db.collection<any[]>('customers', ref => ref.where('profession', '==',
-      data.categorie).where('nom', '==', nomS));
+    this.itemCollection = this.db.collection<any[]>('customers', ref => ref.where('data.profession', '==',
+      data.categorie).where('data.nom', '==', nomS));
     this.items = this.itemCollection.valueChanges().subscribe((val: any) => {
       this.enregistrement = val;
     }

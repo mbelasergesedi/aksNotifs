@@ -27,9 +27,6 @@
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
-
-
-
 <ion-content
     fullscreen
     class="ion-padding"
@@ -58,7 +55,7 @@
                             <ion-select-option value="m">Monsieur</ion-select-option>
                         </ion-select>
                     </ion-item>
-                    <ion-item>
+    
                         <ion-input
                             type="hidden"
                             id="device"
@@ -66,8 +63,6 @@
                             formControlName="device"
                             value="{{this.uuid}}"
                         ></ion-input>
-
-
                         <ion-input
                             type="hidden"
                             id="version"
@@ -89,8 +84,8 @@
                             formControlName="manufacturer"
                             value="{{this.manufacturer}}"
                         ></ion-input>
-
-
+                    
+                    <ion-item>
                         <ion-input
                             type="text"
                             placeholder
@@ -98,7 +93,7 @@
                             formControlName="nom"
                             required
                             placeholder="Nom"
-                            style="text-transform: capitalize "
+                            style="text-transform:uppercase "
                         >
                         </ion-input>
                     </ion-item>
@@ -110,7 +105,7 @@
                             formControlName="prenom"
                             required
                             placeholder="Prénom"
-                            style="text-transform: capitalize "
+                            style="text-transform: uppercase "
                         >
                         </ion-input>
                     </ion-item>

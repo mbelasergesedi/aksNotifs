@@ -127,50 +127,64 @@ export class AccountComponent implements OnInit {
   tryRegister() {
     const data = this.account_form.value;
     // 1. On cherche si l'email de l'utilisateur est déjà présent dans la DB;
-    this.itemCollection = this.db.collection<any[]>('customers', ref => ref.where('email', '==',
+    this.itemCollection = this.db.collection<any[]>('customers', ref => ref.where('data.email', '==',
       this.account_form.get('email').value));
     this.items = this.itemCollection.valueChanges().subscribe(async (val: any) => {
       this.enregistrement = val;
-
+      console.log(this.enregistrement);
+      console.log(this.enregistrement.length);
       // 2. S'il n'est pas présent, on l'inscrit dans la DB et dans système d'authentification;
-      if (Object.keys(this.enregistrement).length === 0) {
+      if (this.enregistrement && this.enregistrement.constructor === Array && this.enregistrement.length === 0) {
         this.uniqueDeviceID.get()
-        .then((uuid: any) => this.uuid = uuid)
-        .catch((error: any) => this.error = error);
+          .then((uuid: any) => this.uuid = uuid)
+          .catch((error: any) => this.error = error);
 
         this.uniqueDeviceID.get()
-        .then((model: any) => this.model = model)
-        .catch((error: any) => this.error = error);
+          .then((model: any) => this.model = model)
+          .catch((error: any) => this.error = error);
 
         this.uniqueDeviceID.get()
-        .then((version: any) => this.version = version)
-        .catch((error: any) => this.error = error);
+          .then((version: any) => this.version = version)
+          .catch((error: any) => this.error = error);
 
         this.uniqueDeviceID.get()
-        .then((manufacturer: any) => this.manufacturer = manufacturer)
-        .catch((error: any) => this.error = error);
+          .then((manufacturer: any) => this.manufacturer = manufacturer)
+          .catch((error: any) => this.error = error);
 
-        this.qryCustomerService.createCustomer({data, createdAt: firebase.firestore.FieldValue.serverTimestamp()});
+        this.qryCustomerService.createCustomer({ data, createdAt: firebase.firestore.FieldValue.serverTimestamp() });
         this.authenticateService.registerUser(this.account_form.get('email').value, this.account_form.get('password').value)
-          .then(res => {
+          .then(() => {
             this.errorMessage = '';
             this.successMessage = 'Votre compte a été crée.';
+           // console.log( this.successMessage);
+           // console.log( this.account_form.get('email').value);
+            // console.log( this.account_form.get('password').value);
           }, err => {
             // console.log(err);
             this.errorMessage = err.message;
             this.successMessage = '';
           });
         // 3. Sinon on le previent qu'il est déjà présent dans la DB;
-      } else {
+        // } //else {
         // console.log('Utilisateur déjà présent');
         const toast = this.toastController.create({
-          message: 'Ce compte existe déjà.',
-          position: 'middle',
+         message: 'Félicitations ! Votre compte a été crée.',
+         position: 'middle',
           duration: 2000
         });
         (await toast).present();
+        // }
       }
-    }
-    );
+      // tslint:disable-next-line: max-line-length
+      if (this.enregistrement && this.enregistrement.constructor === Array && this.enregistrement.length !== 0)
+       {
+         const toast = this.toastController.create({
+        message: 'Désolé ce compte existe déjà et ne peut être dupliqué.',
+        position: 'middle',
+         duration: 2000
+       });
+         (await toast).present();
+       }
+    });
   }
 }
