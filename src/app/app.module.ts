@@ -36,6 +36,7 @@ import { QryStatNotifs } from './tab1/statnotif.service';
 import { ManageUsers } from './services/manageUsers.service';
 import { RoiService } from './services/roi.service';
 import { QryValidationService } from './services/datavalidation.service';
+import {OfficineService} from './services/officine.service';
 // Captcha
 import { QrySignalementService } from './services/signalement.service';
 import { InteractionSearch } from './services/interaction.service';
@@ -98,6 +99,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     QrySignalementService,
     DciSearch,
     VilleService,
+    OfficineService,
     AlldciService,
     UniqueDeviceID,
     AngularFireDatabase,

@@ -7,6 +7,7 @@ import { QrySignalementService } from '../services/signalement.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Customers } from '../model/customers.model';
+import {Pharma} from '../model/pharma.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
@@ -23,17 +24,23 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class Tab4Page {
   signalement_form: FormGroup;
   profform: FormGroup;
+  city: any;
+  pharmaform: FormGroup;
   result;
   latitude: any;
   longitude: any;
   errorMessage = '';
   enr: any;
   itemCollection: any;
+  itemCollectionpharma: any;
   MyData: any;
   items: Observable<[any]>;
+  itemspharma: Observable<[any]>;
   enregistrement: any;
+  pharma: any;
   [x: string]: any;
   list: Customers[];
+  listpharma: Pharma[];
   progress: number;
   imageDoc: string;
   successMessage: string;
@@ -202,6 +209,12 @@ export class Tab4Page {
         Validators.required,
       ])),
     });
+
+    // Validations patterns ListPharma
+    this.pharmaform = this.formBuilder.group({
+        ville: new FormControl('', Validators.compose([Validators.required,
+        ]))
+      });
   }
   tryRegister() {
     const data = this.profform.value;
@@ -214,6 +227,18 @@ export class Tab4Page {
       data.categorie).where('data.nom', '==', nomS));
     this.items = this.itemCollection.valueChanges().subscribe((val: any) => {
       this.enregistrement = val;
+    }
+    );
+  }
+  tryPharma() {
+    const data = this.pharmaform.value;
+    const ville = data.ville;
+    console.log(data.ville);
+    this.itemCollectionpharma = this.db.collection<any[]>('officine', ref => ref.where('data.ville', '==',
+      ville));
+    this.itemspharma = this.itemCollectionpharma.valueChanges().subscribe((val: any) => {
+      this.pharma = val;
+     // console.log(this.pharma);
     }
     );
   }

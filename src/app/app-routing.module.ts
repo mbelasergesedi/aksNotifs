@@ -16,6 +16,10 @@ const routes: Routes = [
     path: 'infos',
     loadChildren: () => import('./informations/informations.module').then(m => m.InformationsModule)
   },
+  {
+    path: 'tab4',
+    loadChildren: () => import('../app/tab4/tab4.module').then(m => m.Tab4PageModule)
+  },
   { path: 'second/:price', loadChildren: './second/second.module#SecondPageModule' },
   {
     path: 'infosdetails',

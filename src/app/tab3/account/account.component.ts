@@ -131,8 +131,8 @@ export class AccountComponent implements OnInit {
       this.account_form.get('email').value));
     this.items = this.itemCollection.valueChanges().subscribe(async (val: any) => {
       this.enregistrement = val;
-      console.log(this.enregistrement);
-      console.log(this.enregistrement.length);
+     // console.log(this.enregistrement);
+     // console.log(this.enregistrement.length);
       // 2. S'il n'est pas présent, on l'inscrit dans la DB et dans système d'authentification;
       if (this.enregistrement && this.enregistrement.constructor === Array && this.enregistrement.length === 0) {
         this.uniqueDeviceID.get()

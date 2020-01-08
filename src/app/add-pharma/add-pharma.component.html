@@ -35,38 +35,66 @@
         <ion-row>
             <ion-col size="12">
                 <ion-icon name="arrow-back"></ion-icon>
-                <a [routerLink]="['/login']">Retour</a>
+                <a [routerLink]="['/tab4']">Retour</a>
             </ion-col>
             <ion-col size="12">Inscrire une pharmacie</ion-col>
             <ion-col size="12">
-                <form class="form">
+                <form
+                    class="form"
+                    [formGroup]="pharma_form"
+                    (ngSubmit)="tryRegister(pharma_form.value)"
+                >
                     <ion-item>
                         <ion-input
                             type="hidden"
                             id="device"
                             value="{{this.uuid}}"
+                            class="form-control"
+                            formControlName="device"
                         ></ion-input>
 
                         <ion-input
                             type="hidden"
                             id="version"
                             value="{{this.version}}"
+                            class="form-control"
+                            formControlName="version"
                         ></ion-input>
                         <ion-input
                             type="hidden"
                             id="model"
                             value="{{this.model}}"
+                            class="form-control"
+                            formControlName="model"
                         ></ion-input>
                         <ion-input
                             type="hidden"
                             id="manufacturer"
                             value="{{this.manufacturer}}"
+                            class="form-control"
+                            formControlName="manufacturer"
+                        ></ion-input>
+                        <ion-input
+                            type="hidden"
+                            id="latitude"
+                            class="form-control"
+                            formControlName="latitude"
+                            value="{{this.lat}}"
+                        ></ion-input>
+                        <ion-input
+                            type="hidden"
+                            id="longitude"
+                            class="form-control"
+                            formControlName="longitude"
+                            value="{{this.lng}}"
                         ></ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-label>Ville</ion-label>
                         <ion-select
                             placeholder="Ville"
+                            class="form-control"
+                            formControlName="ville"
                             id="ville"
                         >
                             <ion-select-option
@@ -80,68 +108,94 @@
                     <ion-item>
                         <ion-input
                             type="text"
-                            placeholder
                             id="denomination"
                             required
                             placeholder="Dénomination"
                             style="text-transform: capitalize"
+                            class="form-control"
+                            formControlName="denomination"
                         >
                         </ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-input
                             type="text"
-                            placeholder
                             id="adresse"
                             required
                             placeholder="Adresse"
                             style="text-transform: capitalize"
+                            class="form-control"
+                            formControlName="adresse"
                         >
                         </ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-input
                             type="text"
-                            placeholder
                             id="autorisation"
                             required
                             placeholder="Numéro autorisation"
                             style="text-transform: capitalize"
+                            class="form-control"
+                            formControlName="autorisation"
                         >
                         </ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-input
                             type="text"
-                            placeholder
                             id="responsable"
                             required
                             placeholder="Responsable"
-                            style="text-transform: capitalize"
+                            class="form-control"
+                            formControlName="responsable"
+                            style="text-transform:uppercase"
                         >
                         </ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-input
                             type="email"
-                            placeholder
                             id="email"
                             required
                             placeholder="Email"
-                            style="text-transform: capitalize"
+                            class="form-control"
+                            formControlName="email"
+                            style="text-transform:lowercase"
                         >
                         </ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-input
-                            type="text"
-                            placeholder
+                            type="number"
                             id="gsm"
                             required
                             placeholder="Gsm"
                             style="text-transform: capitalize"
+                            class="form-control"
+                            formControlName="gsm"
                         >
                         </ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Groupe éléctrogène</ion-label>
+                        <ion-checkbox
+                            color="primary"
+                            id="ge"
+                            slot="start"
+                            class="form-control"
+                            formControlName="ge"
+                        ></ion-checkbox>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Frigo</ion-label>
+                        <ion-checkbox
+                            color="primary"
+                            id="frigo"
+                            slot="start"
+                            class="form-control"
+                            formControlName="frigo"
+                        ></ion-checkbox>
                     </ion-item>
                     <ion-button
                         expand="block"
