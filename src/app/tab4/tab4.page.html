@@ -126,8 +126,6 @@
                     <a [routerLink]="['/addpharma']">Ajouter une pharmacie</a>
                 </ion-label>
             </ion-col>
-
-
             <ion-col>
                 <form
                     class="form"
@@ -164,26 +162,28 @@
                     *ngFor="let item of pharma"
                 >
                     <ion-row>
-                        <ion-col>
-    
-                            {{item.data.denomination}} 
+                        <ion-col size="12">
+                            <strong>{{item.data.denomination | uppercase}}</strong>
+                            <br>
+                            <ion-icon name="call"></ion-icon>
+                            {{item.data.gsm}}
+                            <br>
+                            {{item.data.email}}
+                            <br>
+                            <ion-icon name="pin"></ion-icon>
+                            <br>
+                            {{item.data.adresse}}
+                            <br>
+                            {{item.data.ville}}
+                            <br>
+                            {{item.data.latitude}}
+                            {{item.data.longitude}}
+                            <agm-map [latitude]="item.data.latitude" [zoom]="15" [longitude]="item.data.longitude">
+                                <agm-marker  [latitude]="item.data.latitude" [longitude]="item.data.longitude"></agm-marker>
+                              </agm-map>
                         </ion-col>
-                        <ion-col>
-                            <div>
-                                <ion-icon name="call"></ion-icon>
-                                {{item.data.gsm}}
-                                <br>
-                                {{item.data.adresse}}
-                                <br>
-                                {{item.data.ville}}
-                                <br>
-                                {{item.data.email}}
-                                <br>
-                                {{item.data.latitude}}
-                                <br>
-                                {{item.data.longitude}}
-                            </div>
-                        </ion-col>
+
+
                     </ion-row>
                 </ion-col>
                 <!-- -Pas de résultat -->
@@ -195,7 +195,6 @@
                     Aucun résultat.
                 </ion-col>
             </ion-col>
-            
         </ion-row>
     </ion-grid>
 </ion-content>

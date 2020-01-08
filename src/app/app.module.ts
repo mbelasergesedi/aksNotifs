@@ -18,6 +18,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { AppMinimize } from '@ionic-native/app-minimize/ngx';
+import { AgmCoreModule } from '@agm/core';
 // Services
 import { AlldciService } from './services/alldci.service';
 import { DataService } from './services/item.service';
@@ -60,6 +61,9 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
   entryComponents: [],
   imports: [BrowserModule,
     FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDT1lJJGeMTZpZVKRZfHk0JtR_Dame0NzA'
+    }),
     MomentModule.forRoot({
       relativeTimeThresholdOptions: {
         m: 59

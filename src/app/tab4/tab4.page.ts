@@ -16,6 +16,7 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { ToastController } from '@ionic/angular';
 import * as firebase from 'firebase';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AgmCoreModule } from '@agm/core';
 @Component({
   selector: 'app-tab4',
   templateUrl: './tab4.page.html',
@@ -51,6 +52,7 @@ export class Tab4Page {
               private db: AngularFirestore,
               private camera: Camera,
               private statusBar: StatusBar,
+              private agmCoreModule: AgmCoreModule,
               private geolocation: Geolocation,
               private uniqueDeviceID: UniqueDeviceID,
               private file: File,
