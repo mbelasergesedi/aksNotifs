@@ -157,30 +157,35 @@
                         Recherchez
                     </ion-button>
                 </form>
-                <ion-col
-                    size="12"
-                    *ngFor="let item of pharma"
+                <ion-virtual-scroll
+                    [items]="pharma"
+                    approxItemHeight="20000px"
                 >
-                    <ion-row>
-                        <ion-col size="12">
-                            <strong>{{item.data.denomination | uppercase}}</strong>
-                            <br>
-                            <ion-icon name="call"></ion-icon>
-                            {{item.data.gsm}}
-                            <br>
-                            {{item.data.email}}
-                            <br>
-                            <ion-icon name="pin"></ion-icon>
-                            <br>
-                            {{item.data.adresse}}
-                            <br>
-                            {{item.data.ville}}
-                            <br>
-                            {{item.data.latitude}}
+                    <ion-col
+                        size="12"
+                        *ngFor="let item of pharma"
+                    >
+                        <ion-row>
+                            <ion-col size="12">
+                                <strong>{{item.data.denomination | uppercase}}</strong>
+                                <br>
+                                <ion-icon name="call"></ion-icon>
+                                {{item.data.gsm}}
+                                <br>
+                                {{item.data.email}}
+                                <br>
+                                <ion-icon name="pin"></ion-icon>
+                                <br>
+                                {{item.data.adresse}}
+                                <br>
+                                {{item.data.ville}}
+                                <br>
+                                {{item.data.latitude}}
                             {{item.data.longitude}}
-                        </ion-col>
-                    </ion-row>
-                </ion-col>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+                </ion-virtual-scroll>
                 <!-- -Pas de résultat -->
                 <ion-col
                     size="12"
