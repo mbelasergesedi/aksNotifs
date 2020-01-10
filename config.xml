@@ -5,6 +5,7 @@
     <author email="it@aksantimed.com" href="http://www.aksantimed.com/">AksantiMed</author>
     <content src="index.html" />
     <access origin="*" />
+    <access launch-external="yes" origin="whatsapp://*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

@@ -14,10 +14,8 @@ import * as firebase from 'firebase/app';
   styleUrls: ['./add-pharma.component.scss'],
 })
 export class AddPharmaComponent implements OnInit {
-
   votretexte: any;
   date: Date;
-
   lat: any;
   lng: any;
   uuid: any;
@@ -31,6 +29,7 @@ export class AddPharmaComponent implements OnInit {
   med: any;
   myResponse;
   latitude: number;
+  wa: number;
   longitude: number;
   device: number;
   cordonnees: number;
@@ -51,12 +50,12 @@ export class AddPharmaComponent implements OnInit {
   version: any;
   manufacturer: any;
   constructor(private formBuilder: FormBuilder,
-    private villeService: VilleService,
-    private geolocation: Geolocation,
-    private uniqueDeviceID: UniqueDeviceID,
-    private officineService: OfficineService,
-    private db: AngularFirestore,
-    private toastController: ToastController) { }
+              private villeService: VilleService,
+              private geolocation: Geolocation,
+              private uniqueDeviceID: UniqueDeviceID,
+              private officineService: OfficineService,
+              private db: AngularFirestore,
+              private toastController: ToastController) { }
   ngOnInit() {
     this.initForm();
     this.getVille();
@@ -111,6 +110,7 @@ export class AddPharmaComponent implements OnInit {
       ])),
       device: [],
       version: [],
+      wa:[],
       responsable: [],
       longitude: [],
       latitude: [],
