@@ -14,12 +14,13 @@ export class SimpleComponent implements OnInit {
   form: FormGroup;
   med: any;
   myResponse;
-
+  medterm: any;
+  occurence: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private textSearchService: TextSearchService) { }
-    private votretext: Observable<User>;
+    public votretext: Observable<User>;
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -29,12 +30,13 @@ export class SimpleComponent implements OnInit {
   }
   submit() {
     if (this.form.valid) {
-      const med = (this.form.value.votretext);
-      this.med = this.textSearchService.getCode(med).subscribe((data) => {
+      this.medterm = (this.form.value.votretext);
+      this.med = this.textSearchService.getCode( this.medterm).subscribe((data) => {
         this.myResponse = data;
-        //console.log(data);
+        // console.log(this.myResponse.length);
+        this.occurence = this.myResponse.length;
         //console.log(this.votretext);
       });
     }
-  }
+  }L
 }

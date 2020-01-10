@@ -19,6 +19,7 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { AppMinimize } from '@ionic-native/app-minimize/ngx';
 import { AgmCoreModule } from '@agm/core';
+import { NgHighlightModule } from 'ngx-text-highlight';
 // Services
 import { AlldciService } from './services/alldci.service';
 import { DataService } from './services/item.service';
@@ -70,11 +71,13 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
       }
     }),
     FormsModule,
+    NgHighlightModule,
     HttpClientModule,
     ReactiveFormsModule,
     AngularFirestoreModule, // Only required for database features
     AngularFireModule.initializeApp(environment.firebase), NgHttpLoaderModule.forRoot(),
-    IonicModule.forRoot({ hardwareBackButton: false }), IonicStorageModule.forRoot(), AppRoutingModule],
+    IonicModule.forRoot({ hardwareBackButton: false ,  scrollPadding: false,
+       scrollAssist: true}), IonicStorageModule.forRoot(), AppRoutingModule],
   providers: [
     StatusBar,
     FirebaseCrashlytics,

@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SimpleComponent } from './simple.component';
 import { NgHttpLoaderModule } from 'ng-http-loader';
+import { NgHighlightModule } from 'ngx-text-highlight';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
+    NgHighlightModule,
     NgHttpLoaderModule,
     RouterModule.forChild([
       {

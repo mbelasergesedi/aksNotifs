@@ -71,10 +71,14 @@
                         Recherche
                     </ion-button>
                 </form>
-                <p [innerHTML]="myResponse"></p>
+                
+                <div ngxTextHighlight [innerHTML]="myResponse" [searchTerm]="this.votretext"  [caseSensitive]="false">
+                </div>
                 <!-- Fin formulaire -->
             </ion-col>
+            <ion-col>{{this.occcurence}}</ion-col>
         </ion-row>
     </ion-grid>
 </ion-content>
+<ng-http-loader></ng-http-loader>
 <ion-footer></ion-footer>

@@ -83,6 +83,7 @@
     "ng2-search-filter": "^0.5.1",
     "ngx-auto-unsubscribe": "^3.0.1",
     "ngx-moment": "^3.5.0",
+    "ngx-text-highlight": "^0.1.6",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.5.3",
     "tslib": "^1.10.0",

@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { Tab4Page } from './tab4.page';
 import { AgmCoreModule } from '@agm/core';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 const routes: Routes = [
   {
     path: '',
@@ -18,6 +19,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     AgmCoreModule,
+    NgHttpLoaderModule,
     ReactiveFormsModule,
     HttpClientModule,
     IonicModule,

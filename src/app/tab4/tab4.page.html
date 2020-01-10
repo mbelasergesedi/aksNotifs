@@ -2,27 +2,18 @@
     <ion-toolbar color="primary">
         <ion-buttons slot="secondary">
             <ion-button [routerLink]="['/login']">
-                <ion-icon
-                    slot="icon-only"
-                    name="person"
-                ></ion-icon>
+                <ion-icon slot="icon-only" name="person"></ion-icon>
             </ion-button>
         </ion-buttons>
         <ion-title>Services</ion-title>
         <ion-buttons slot="primary">
             <ion-button [routerLink]="['/cartographie']">
-                <ion-icon
-                    slot="icon-only"
-                    name="pin"
-                ></ion-icon>
+                <ion-icon slot="icon-only" name="pin"></ion-icon>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
-<ion-content
-    fullscreen
-    class="ion-padding"
->
+<ion-content fullscreen class="ion-padding">
     <ion-grid>
         <ion-row>
             <ion-col size="12">
@@ -32,18 +23,10 @@
                 </ion-label>
             </ion-col>
             <ion-col>
-                <form
-                    class="form"
-                    [formGroup]="profform"
-                    (ngSubmit)="tryRegister(profform)"
-                >
+                <form class="form" [formGroup]="profform" (ngSubmit)="tryRegister(profform)">
                     <ion-item>
                         <ion-label>Catégorie</ion-label>
-                        <ion-select
-                            placeholder="categorie"
-                            id="categorie"
-                            formControlName="categorie"
-                        >
+                        <ion-select placeholder="categorie" id="categorie" formControlName="categorie">
                             <ion-select-option>Medecin</ion-select-option>
                             <ion-select-option selected>Pharmacien</ion-select-option>
                             <ion-select-option>Dentiste</ion-select-option>
@@ -53,31 +36,16 @@
                         </ion-select>
                     </ion-item>
                     <ion-item>
-                        <ion-input
-                            type="text"
-                            placeholder
-                            id="nom"
-                            autocapitalize
-                            placeholder="Entrer un nom de famille"
-                            formControlName="nom"
-                            required
-                        ></ion-input>
+                        <ion-input type="text" placeholder id="nom" autocapitalize
+                            placeholder="Entrer un nom de famille" formControlName="nom" required></ion-input>
                     </ion-item>
-                    <ion-button
-                        expand="block"
-                        color="primary"
-                        class="submit-btn"
-                        type="submit"
-                        [disabled]="!profform.valid"
-                    >
+                    <ion-button expand="block" color="primary" class="submit-btn" type="submit"
+                        [disabled]="!profform.valid">
                         <ion-icon name="search"></ion-icon>
-                        Recherchez
+                        Recherchez un professionel
                     </ion-button>
                 </form>
-                <ion-col
-                    size="12"
-                    *ngFor="let item of enregistrement"
-                >
+                <ion-col size="12" *ngFor="let item of enregistrement">
                     <ion-row>
                         <ion-col>
                             <div>
@@ -103,10 +71,7 @@
                     </ion-row>
                 </ion-col>
                 <!-- -Pas de résultat -->
-                <ion-col
-                    size="12"
-                    *ngIf="enregistrement?.length == 0"
-                >
+                <ion-col size="12" *ngIf="enregistrement?.length == 0">
                     <ion-icon name="information"></ion-icon>
                     Aucun résultat.
                 </ion-col>
@@ -127,44 +92,22 @@
                 </ion-label>
             </ion-col>
             <ion-col>
-                <form
-                    class="form"
-                    [formGroup]="pharmaform"
-                    (ngSubmit)="tryPharma(pharmaform)"
-                >
+                <form class="form" [formGroup]="pharmaform" (ngSubmit)="tryPharma(pharmaform)">
                     <ion-item>
                         <ion-label>Ville</ion-label>
-                        <ion-select
-                            placeholder="Ville"
-                            formControlName="ville"
-                            id="ville"
-                        >
-                            <ion-select-option
-                                *ngFor="let item of ville"
-                                [value]="item.value"
-                            >
+                        <ion-select placeholder="Ville" formControlName="ville" id="ville">
+                            <ion-select-option *ngFor="let item of ville" [value]="item.value">
                                 {{item.value}}
                             </ion-select-option>
                         </ion-select>
                     </ion-item>
-                    <ion-button
-                        expand="block"
-                        color="primary"
-                        class="submit-btn"
-                        type="submit"
-                    >
+                    <ion-button expand="block" color="primary" class="submit-btn" type="submit">
                         <ion-icon name="search"></ion-icon>
-                        Recherchez
+                        Recherchez une pharmacie
                     </ion-button>
                 </form>
-                <ion-virtual-scroll
-                    [items]="pharma"
-                    approxItemHeight="20000px"
-                >
-                    <ion-col
-                        size="12"
-                        *ngFor="let item of pharma"
-                    >
+                <ion-virtual-scroll [items]="pharma" approxItemHeight="20000px">
+                    <ion-col size="12" *ngFor="let item of pharma">
                         <ion-row>
                             <ion-col size="12">
                                 <strong>{{item.data.denomination | uppercase}}</strong>
@@ -172,7 +115,10 @@
                                 <ion-icon name="call"></ion-icon>
                                 {{item.data.gsm}}
                                 <br>
+                                <ion-icon name="logo-whatsapp"></ion-icon>
+                                {{item.data.wa}}<br>
                                 {{item.data.email}}
+                               
                                 <br>
                                 <ion-icon name="pin"></ion-icon>
                                 <br>
@@ -181,20 +127,18 @@
                                 {{item.data.ville}}
                                 <br>
                                 {{item.data.latitude}}
-                            {{item.data.longitude}}
+                                {{item.data.longitude}}
                             </ion-col>
                         </ion-row>
                     </ion-col>
                 </ion-virtual-scroll>
                 <!-- -Pas de résultat -->
-                <ion-col
-                    size="12"
-                    *ngIf="pharma?.length == 0"
-                >
+                <ion-col size="12" *ngIf="pharma?.length == 0">
                     <ion-icon name="information"></ion-icon>
                     Aucun résultat.
                 </ion-col>
             </ion-col>
         </ion-row>
     </ion-grid>
+    <ng-http-loader></ng-http-loader>
 </ion-content>

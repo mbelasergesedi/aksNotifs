@@ -104,7 +104,7 @@
                 </ion-button>
             </form>
             <ion-col text-center>
-                <h2>{{data.votretexte | number }}</h2>
+                <h2>{{data.votretexte }}</h2>
             </ion-col>
             <br>
             <div *ngFor="let i  of myResponse">
@@ -115,7 +115,7 @@
                                 <ion-icon
                                     name="thumbs-up"
                                     class="iconSize"
-                                    color="success"
+                                    color="primary"
                                 ></ion-icon>
                                 <strong>
                                     Le code que vous avez entré est correct.
