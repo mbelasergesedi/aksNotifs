@@ -79,16 +79,6 @@ const routes: Routes = [
             ]
         },
 
-        {
-          path: 'lostpassword',
-          children:
-            [
-              {
-                path: '',
-                loadChildren: '../lostpassword.module#LostpasswordModule'
-              }
-            ]
-        },
 
         {
           path: 'signalement',
