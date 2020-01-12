@@ -1,121 +1,52 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-buttons slot="secondary">
-            <ion-button [routerLink]="['/tabs/tab1']">
-                <ion-icon
-                    slot="icon-only"
-                    name="home"
-                ></ion-icon>
-            </ion-button>
-        </ion-buttons>
-        <ion-buttons slot="secondary">
-            <ion-button [routerLink]="['/login']">
-                <ion-icon
-                    slot="icon-only"
-                    name="person"
-                ></ion-icon>
-            </ion-button>
-        </ion-buttons>
-        <ion-title>Professionels</ion-title>
-        <ion-buttons slot="primary">
-            <ion-button [routerLink]="['/cartographie']">
-                <ion-icon
-                    slot="icon-only"
-                    name="pin"
-                ></ion-icon>
-            </ion-button>
-        </ion-buttons>
+        <ion-tabs>
+            <!-- Tab bar -->
+            <ion-tab-bar slot="top" color="primary">
+                <ion-title>Professionel</ion-title>
+                <ion-tab-button tab="students">
+                    <ion-icon name="person-add"></ion-icon>
+                    <ion-label>Insciption Etudiant</ion-label>
+                </ion-tab-button>
+            </ion-tab-bar>
+        </ion-tabs>
     </ion-toolbar>
 </ion-header>
-<ion-content
-    fullscreen
-    class="ion-padding"
->
+<ion-content fullscreen class="ion-padding">
     <ion-grid>
         <ion-row>
+            <ion-col size="12"><strong>Inscrivez-vous</strong></ion-col>
             <ion-col size="12">
-                <ion-icon name="arrow-back"></ion-icon>
-                <a [routerLink]="['/login']">Retour</a>
-            </ion-col>
-            <ion-col size="12">Inscrivez-vous</ion-col>
-            <ion-col size="12">
-                <form
-                    class="form"
-                    [formGroup]="account_form"
-                    (ngSubmit)="tryRegister(account_form.value)"
-                >
+                <form class="form" [formGroup]="account_form" (ngSubmit)="tryRegister(account_form.value)">
                     <ion-item>
                         <ion-label>Civilité</ion-label>
-                        <ion-select
-                            placeholder="Civilité"
-                            id="civilite"
-                            formControlName="civilite"
-                        >
+                        <ion-select placeholder="Civilité" id="civilite" formControlName="civilite">
                             <ion-select-option value="f">Madame, Mademoiselle</ion-select-option>
                             <ion-select-option value="m">Monsieur</ion-select-option>
                         </ion-select>
                     </ion-item>
-    
-                        <ion-input
-                            type="hidden"
-                            id="device"
-                            class="form-control"
-                            formControlName="device"
-                            value="{{this.uuid}}"
-                        ></ion-input>
-                        <ion-input
-                            type="hidden"
-                            id="version"
-                            class="form-control"
-                            formControlName="version"
-                            value="{{this.version}}"
-                        ></ion-input>
-                        <ion-input
-                            type="hidden"
-                            id="model"
-                            class="form-control"
-                            formControlName="model"
-                            value="{{this.model}}"
-                        ></ion-input>
-                        <ion-input
-                            type="hidden"
-                            id="manufacturer"
-                            class="form-control"
-                            formControlName="manufacturer"
-                            value="{{this.manufacturer}}"
-                        ></ion-input>
-                    
+                    <ion-input type="hidden" id="device" class="form-control" formControlName="device"
+                        value="{{this.uuid}}"></ion-input>
+                    <ion-input type="hidden" id="version" class="form-control" formControlName="version"
+                        value="{{this.version}}"></ion-input>
+                    <ion-input type="hidden" id="model" class="form-control" formControlName="model"
+                        value="{{this.model}}"></ion-input>
+                    <ion-input type="hidden" id="manufacturer" class="form-control" formControlName="manufacturer"
+                        value="{{this.manufacturer}}"></ion-input>
+
                     <ion-item>
-                        <ion-input
-                            type="text"
-                            placeholder
-                            id="nom"
-                            formControlName="nom"
-                            required
-                            placeholder="Nom"
-                            style="text-transform:uppercase"
-                        >
+                        <ion-input type="text" placeholder id="nom" formControlName="nom" required placeholder="Nom"
+                            style="text-transform:uppercase">
                         </ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input
-                            type="text"
-                            placeholder
-                            id="prenom"
-                            formControlName="prenom"
-                            required
-                            placeholder="Prénom"
-                            style="text-transform: uppercase "
-                        >
+                        <ion-input type="text" placeholder id="prenom" formControlName="prenom" required
+                            placeholder="Prénom" style="text-transform: uppercase ">
                         </ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-label>Profession/Occupation</ion-label>
-                        <ion-select
-                            placeholder="Profession/Occupation"
-                            id="profession"
-                            formControlName="profession"
-                        >
+                        <ion-select placeholder="Profession/Occupation" id="profession" formControlName="profession">
                             <ion-select-option value="Pharmacien">Pharmacien</ion-select-option>
                             <ion-select-option value="Medecin">Medecin</ion-select-option>
                             <ion-select-option value="Dentiste">Dentiste</ion-select-option>
@@ -125,67 +56,37 @@
                     </ion-item>
                     <ion-item>
                         <ion-label>Ville</ion-label>
-                        <ion-select
-                            placeholder="Ville"
-                            id="ville"
-                            formControlName="ville"
-                        >
-                            <ion-select-option
-                                *ngFor="let item of ville"
-                                [value]="item.value"
-                            >
+                        <ion-select placeholder="Ville" id="ville" formControlName="ville">
+                            <ion-select-option *ngFor="let item of ville" [value]="item.value">
                                 {{item.value}}
                             </ion-select-option>
                         </ion-select>
                     </ion-item>
                     <ion-item>
                         <ion-label>Structure</ion-label>
-                        <ion-select
-                            placeholder="Structure"
-                            id="structure"
-                            formControlName="structure"
-                        >
+                        <ion-select placeholder="Structure" id="structure" formControlName="structure">
                             <ion-select-option value="Pharmacie">Pharmacie</ion-select-option>
                             <ion-select-option value="Hopital/Clinique">Hopital/Clinique</ion-select-option>
-                            <ion-select-option value="Industrie pharmaceutique">Industrie pharmaceutique</ion-select-option>
+                            <ion-select-option value="Industrie pharmaceutique">Industrie pharmaceutique
+                            </ion-select-option>
                             <ion-select-option value="Université">Université</ion-select-option>
                             <ion-select-option value="Depot pharmaceutique">Dépôt pharmaceutique</ion-select-option>
                         </ion-select>
                     </ion-item>
                     <ion-item>
-                        <ion-input
-                            placeholder="Adresse Email"
-                            id="email"
-                            type="email"
-                            formControlName="email"
-                            required
-                        ></ion-input>
-                    </ion-item>
-                    <ion-item>
-                        <ion-input
-                            type="password"
-                            placeholder="Mot de passe"
-                            id="password"
-                            class="form-control"
-                            formControlName="password"
-                        >
+                        <ion-input placeholder="Adresse Email" id="email" type="email" formControlName="email" required>
                         </ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input
-                            type="number"
-                            placeholder="Téléphone"
-                            id="gsm"
-                            class="form-control"
-                        >
+                        <ion-input type="password" placeholder="Mot de passe" id="password" class="form-control"
+                            formControlName="password">
                         </ion-input>
                     </ion-item>
-                    <ion-button
-                        expand="block"
-                        color="primary"
-                        class="submit-btn"
-                        type="submit"
-                    >
+                    <ion-item>
+                        <ion-input type="number" placeholder="Téléphone" id="gsm" class="form-control">
+                        </ion-input>
+                    </ion-item>
+                    <ion-button expand="block" color="primary" class="submit-btn" type="submit">
                         Validez votre inscription
                     </ion-button>
                 </form>
@@ -193,8 +94,3 @@
         </ion-row>
     </ion-grid>
 </ion-content>
-<ion-footer>
-    <ion-toolbar color="primary">
-        <ion-title>Footer</ion-title>
-    </ion-toolbar>
-</ion-footer>

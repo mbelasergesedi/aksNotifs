@@ -49,12 +49,114 @@ const routes: Routes = [
             ]
         },
         {
+          path: 'tab8',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../tab8/tab8.module#Tab8PageModule'
+              }
+            ]
+        },
+              {
+          path: 'signalement',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../signalement/signalement.module#SignalementModule'
+              }
+            ]
+        },
+        {
+          path: 'createaccount',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../tab3/account/account.module#AccountModule'
+              }
+            ]
+        },
+
+        {
+          path: 'students',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../tab3/accountStudent/account.module#AccountModule'
+              }
+            ]
+        },
+
+        {
           path: 'tab5',
           children:
             [
               {
                 path: '',
                 loadChildren: '../tab5/tab5.module#Tab5PageModule'
+              }
+            ]
+        },
+        {
+          path: 'tab6',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../tab6/tab6.module#Tab6PageModule'
+              }
+            ]
+        },
+        {
+          path: 'quotation',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../quotations/quotations.module#QuotationsModule'
+              }
+            ]
+        },
+        {
+          path: 'cartographie',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../tab5/tab5.module#Tab5PageModule'
+              }
+            ]
+        },
+        {
+          path: 'simple',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../tab3/simple/simple.module#SimpleModule'
+              }
+            ]
+        },
+        {
+          path: 'dci',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../tab3/dci/dci.module#DciModule'
+              }
+            ]
+        },
+        {
+          path: 'interaction',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../tab3/interaction/interaction.module#InteractionModule'
               }
             ]
         },
@@ -82,4 +184,4 @@ const routes: Routes = [
       RouterModule
     ]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

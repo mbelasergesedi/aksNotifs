@@ -1,39 +1,30 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-buttons slot="secondary">
-            <ion-button [routerLink]="['/login']">
-                <ion-icon
-                    slot="icon-only"
-                    name="person"
-                ></ion-icon>
-            </ion-button>
-        </ion-buttons>
-        <ion-title>Accueil</ion-title>
-        <ion-buttons slot="primary">
-            <ion-button [routerLink]="['/cartographie']">
-                <ion-icon
-                    slot="icon-only"
-                    name="pin"
-                ></ion-icon>
-            </ion-button>
-        </ion-buttons>
+        <ion-tabs>
+            <!-- Tab bar -->
+            <ion-tab-bar slot="top" color="primary">
+                <ion-title>Accueil</ion-title>
+                <ion-tab-button tab="tab6">
+                    <ion-icon name="person"></ion-icon>
+                    <ion-label>Votre compte</ion-label>
+                </ion-tab-button>
+            </ion-tab-bar>
+        </ion-tabs>
     </ion-toolbar>
 </ion-header>
-<ion-content
-    fullscreen
-    class="ion-padding"
->
+<ion-content fullscreen class="ion-padding">
     <ion-grid>
         <ion-row>
+            <ion-note>
+                L'accès à certaines fonctionalités requiert que vous soyez authentifié.
+            </ion-note>
+            <!--
             <ion-col size="12">
                 <div *ngIf="this.status =='OFFLINE'">
                     Vous n'êtes pas connecté à Internet {{this.status}}
                 </div>
                 <div *ngIf="!this.userEmail">
-                    <ion-button
-                        [routerLink]="['/login']"
-                        expand="block"
-                    >
+                    <ion-button [routerLink]="['/login']" expand="block">
                         <ion-icon name="body"></ion-icon>
                         Authentifiez-vous
                     </ion-button>
@@ -44,52 +35,30 @@
                 <ion-note>
                     <div *ngIf="this.userEmail">
                         <span>Bienvenue {{this.userEmail}}</span>
-                        <ion-button
-                            [routerLink]="['/updatemydata']"
-                            [queryParams]="this.userEmail"
-                            expand="block"
-                        >
+                        <ion-button [routerLink]="['/updatemydata']" [queryParams]="this.userEmail" expand="block">
                             <ion-icon name="md-done-all"></ion-icon>
                             Modifier vos données
                         </ion-button>
                     </div>
                 </ion-note>
-            </ion-col>
+            </ion-col>-->
             <!-- Skeleton screen -->
             <div *ngIf="pushes">
-                <ion-col
-                    size="12"
-                    *ngFor="let item of pushes"
-                >
+                <ion-col size="12" *ngFor="let item of pushes">
                     {{item.title}}
                 </ion-col>
             </div>
             <div *ngIf="!interactions">
                 <div class="ion-padding custom-skeleton">
-                    <ion-skeleton-text
-                        animated
-                        style="width: 60%"
-                    ></ion-skeleton-text>
+                    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
                     <ion-skeleton-text animated></ion-skeleton-text>
-                    <ion-skeleton-text
-                        animated
-                        style="width: 88%"
-                    ></ion-skeleton-text>
-                    <ion-skeleton-text
-                        animated
-                        style="width: 70%"
-                    ></ion-skeleton-text>
-                    <ion-skeleton-text
-                        animated
-                        style="width: 60%"
-                    ></ion-skeleton-text>
+                    <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+                    <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+                    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
                 </div>
                 <ion-list>
                     <ion-list-header>
-                        <ion-skeleton-text
-                            animated
-                            style="width: 20%"
-                        ></ion-skeleton-text>
+                        <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
                     </ion-list-header>
                     <ion-item>
                         <ion-thumbnail slot="start">
@@ -97,55 +66,33 @@
                         </ion-thumbnail>
                         <ion-label>
                             <h3>
-                                <ion-skeleton-text
-                                    animated
-                                    style="width: 50%"
-                                ></ion-skeleton-text>
+                                <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
                             </h3>
                             <p>
-                                <ion-skeleton-text
-                                    animated
-                                    style="width: 80%"
-                                ></ion-skeleton-text>
+                                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
                             </p>
                             <p>
-                                <ion-skeleton-text
-                                    animated
-                                    style="width: 60%"
-                                ></ion-skeleton-text>
+                                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
                             </p>
                         </ion-label>
                     </ion-item>
                     <ion-item>
-                        <ion-skeleton-text
-                            animated
-                            style="width: 27px; height: 27px"
-                            slot="start"
-                        ></ion-skeleton-text>
+                        <ion-skeleton-text animated style="width: 27px; height: 27px" slot="start"></ion-skeleton-text>
                         <ion-label></ion-label>
                     </ion-item>
                 </ion-list>
             </div>
-            <ion-col
-                size="12"
-                *ngFor="let item of interactions"
-            >
+            <ion-col size="12" *ngFor="let item of interactions">
                 <span *ngIf="item.categorie==='Alerte'"></span>
                 <ion-label>
                     <strong>{{item.titre}}</strong>
                     <br>
                 </ion-label>
-                <h6
-                    ion-text
-                    color="light"
-                >
+                <h6 ion-text color="light">
                     {{item.dateposte}}
                 </h6>
                 <span *ngIf="item.categorie==='Alerte'">
-                    <ion-badge
-                        color="danger"
-                        slot="end"
-                    >
+                    <ion-badge color="danger" slot="end">
                         Alerte
                     </ion-badge>
                 </span>
