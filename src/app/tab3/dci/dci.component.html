@@ -1,24 +1,26 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-tabs>
-            <!-- Tab bar -->
-            <ion-tab-bar slot="top" color="primary">
-                <ion-title>Recherche par DCI</ion-title>
-                <ion-tab-button tab="tab3">
-                    <ion-icon name="person"></ion-icon>
-                    <ion-label>Base de données</ion-label>
-                </ion-tab-button>
-            </ion-tab-bar>
-        </ion-tabs>
+        <ion-title>Recherche par DCI</ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-content
-    fullscreen
-    class="ion-padding"
->
+<ion-content fullscreen class="ion-padding">
     <ion-grid>
+        <ion-tab-bar>
+            <ion-tab-button tab="tab3">
+                <ion-icon name="filing"></ion-icon>
+                <ion-label>Base de données</ion-label>
+            </ion-tab-button>
+            <ion-tab-button tab="quotation">
+                <ion-icon name="basket"></ion-icon>
+                <ion-label>Prix(Quotation)</ion-label>
+            </ion-tab-button>
+            <ion-tab-button tab="signalement">
+                <ion-icon name="hand"></ion-icon>
+                <ion-label>Signalement</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
         <ion-row>
-            <ion-col size="12"> Recherchez par DCI</ion-col>
+            <ion-col size="12"> Recherchez par DCI: Dénomination Commune Internationale</ion-col>
             <ion-col size="12">
                 <ion-note>
                     Recherchez par DCI pour obtenir les médicaments associés.
@@ -61,7 +63,7 @@
                                 {{i.ATC}}<br>
                                 {{i.medessentiel}}<br>
                                 {{i.phychotrope}}<br>
-                                
+
                                 <div *ngIf="i.ATC.indexOf('N03') > -1">
                                     <ion-chip outline color="danger">
                                         <ion-label>Les antiépileptiques.</ion-label>

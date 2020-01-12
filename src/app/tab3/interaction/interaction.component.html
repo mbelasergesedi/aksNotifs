@@ -1,24 +1,26 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-tabs>
-            <!-- Tab bar -->
-            <ion-tab-bar slot="top" color="primary">
-                <ion-title>Interactions</ion-title>
-                <ion-tab-button tab="tab3">
-                    <ion-icon name="person"></ion-icon>
-                    <ion-label>Base de données</ion-label>
-                </ion-tab-button>
-            </ion-tab-bar>
-        </ion-tabs>
+        <ion-title>Interactions</ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-content
-    fullscreen
-    class="ion-padding"
->
+<ion-content fullscreen class="ion-padding">
     <ion-grid>
+        <ion-tab-bar>
+            <ion-tab-button tab="tab3">
+                <ion-icon name="filing"></ion-icon>
+                <ion-label>Base de données</ion-label>
+            </ion-tab-button>
+            <ion-tab-button tab="quotation">
+                <ion-icon name="basket"></ion-icon>
+                <ion-label>Prix(Quotation)</ion-label>
+            </ion-tab-button>
+            <ion-tab-button tab="signalement">
+                <ion-icon name="hand"></ion-icon>
+                <ion-label>Signalement</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
         <ion-row>
- 
+
             <ion-col size="12">Interactions médicamenteuses</ion-col>
             <ion-col size="12">
                 <ion-note>
@@ -26,67 +28,33 @@
                 </ion-note>
             </ion-col>
             <ion-col size="12">
-                <div
-                    class="reactive-form"
-                    style="margin-top: 10px;"
-                >
-                    <form
-                        autocomplete="off"
-                        novalidate
-                        [formGroup]="reactiveForm"
-                        (ngSubmit)="submitReactiveForm($event)"
-                    >
+                <div class="reactive-form" style="margin-top: 10px;">
+                    <form autocomplete="off" novalidate [formGroup]="reactiveForm"
+                        (ngSubmit)="submitReactiveForm($event)">
                         <div class="container">
                             <div class="ng-autocomplete">
-                                <ng-autocomplete
-                                    [data]="dci"
-                                    formControlName="name"
-                                    [initialValue]
-                                    [placeHolder]
-                                    [searchKeyword]="keyword"
-                                    historyIdentifier="dci"
-                                    [historyHeading]="historyHeading"
-                                    historyListMaxNumber="3"
-                                    notFoundText="Oooops pas de résultat"
-                                    isLoading="true"
-                                    initialValue="true"
-                                    [itemTemplate]="itemTemplateStatic"
-                                    [notFoundTemplate]="notFoundTemplate"
-                                    [debounceTime]="50"
-                                >
+                                <ng-autocomplete [data]="dci" formControlName="name" [initialValue] [placeHolder]
+                                    [searchKeyword]="keyword" historyIdentifier="dci" [historyHeading]="historyHeading"
+                                    historyListMaxNumber="3" notFoundText="Oooops pas de résultat" isLoading="true"
+                                    initialValue="true" [itemTemplate]="itemTemplateStatic"
+                                    [notFoundTemplate]="notFoundTemplate" [debounceTime]="50">
                                 </ng-autocomplete>
 
 
-                                <ng-template
-                                    #itemTemplateStatic
-                                    let-item
-                                >
+                                <ng-template #itemTemplateStatic let-item>
                                     <a [innerHTML]="item.ATCNM_F"></a>
                                 </ng-template>
-                                <ng-template
-                                    #notFoundTemplate
-                                    let-notFound
-                                >
+                                <ng-template #notFoundTemplate let-notFound>
                                     <div [innerHTML]="notFound"></div>
                                 </ng-template>
                             </div>
-                            <ion-button
-                                expand="block"
-                                color="primary"
-                                [disabled]="reactiveForm.invalid"
-                                (click)="save_outage_index()"
-                                ion-button
-                                type="submit"
-                                block
-                            >
+                            <ion-button expand="block" color="primary" [disabled]="reactiveForm.invalid"
+                                (click)="save_outage_index()" ion-button type="submit" block>
                                 Recherchez
                             </ion-button>
                         </div>
                     </form>
-                    <ion-virtual-scroll
-                        [items]="inter"
-                        approxItemHeight="20000px"
-                    >
+                    <ion-virtual-scroll [items]="inter" approxItemHeight="20000px">
                         <ion-grid *ngFor="let i  of inter">
                             <ion-label>
                                 <strong>{{i.titre}}</strong>
@@ -98,10 +66,7 @@
                                             <ion-icon name="add"></ion-icon>
                                             <strong>{{a.sousTitre}}</strong>
                                         </ion-label>
-                                        <ion-chip
-                                            outline
-                                            color="danger"
-                                        >
+                                        <ion-chip outline color="danger">
                                             <ion-label>{{a.emploi}}</ion-label>
                                         </ion-chip>
                                         {{a.conseq}}

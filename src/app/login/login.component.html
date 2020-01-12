@@ -7,14 +7,8 @@
                     value="Log in"
                     (click)="authService.logoutUser();logoutToast('top')"
                 >
-                </ion-icon>
+                </ion-icon>Deconnection.
             </form>
-            <ion-button [routerLink]="['/tabs/tab1']">
-                <ion-icon
-                    slot="icon-only"
-                    name="home"
-                ></ion-icon>
-            </ion-button>
         </ion-buttons>
         <ion-title>Authentification</ion-title>
     </ion-toolbar>
@@ -91,15 +85,14 @@
         <ion-icon name="body"></ion-icon>
         Mot de passe perdu ?
     </ion-button>
-    <p>
-        <strong>Pas encore de compte ?</strong>
-    </p>
-    <p class="go-to-register">
-        <ion-icon name="text" class="iconSize" color="primary"></ion-icon>
-        <a (click)="goToRegisterPage()">Créer un compte (Professionels).</a>
-    </p>
-    <p class="go-to-register">
-        <ion-icon name="school" class="iconSize" color="primary"></ion-icon>
-        <a (click)="goToRegisterPageStudent()">Créer un compte (Etudiants).</a>
-    </p>
+    <ion-tab-bar>
+        <ion-tab-button tab="createaccount">
+            <ion-icon name="person-add"></ion-icon>
+            <ion-label>Inscription (professionnel)</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="students">
+            <ion-icon name="person-add"></ion-icon>
+            <ion-label>Inscription (étudiant)</ion-label>
+        </ion-tab-button>
+    </ion-tab-bar>
 </ion-content>

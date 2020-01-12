@@ -68,7 +68,27 @@ const routes: Routes = [
               }
             ]
         },
-
+        {
+          path: 'login',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../login/login.module#LoginModule'
+              }
+            ]
+        },
+  
+        {
+          path: 'lostpassword',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: './lostpassword.module#LostpasswordModule'
+              }
+            ]
+        },
 
         {
           path: 'signalement',

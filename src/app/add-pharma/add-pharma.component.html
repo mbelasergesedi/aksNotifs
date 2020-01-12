@@ -1,205 +1,98 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-tabs>
-            <!-- Tab bar -->
-            <ion-tab-bar slot="top" color="primary">
-                <ion-title>Services</ion-title>
-                <ion-tab-button tab="tab4">
-                    <ion-icon name="person"></ion-icon>
-                    <ion-label>Professionels</ion-label>
-                </ion-tab-button>
-                <ion-tab-button tab="tab8">
-                    <ion-icon name="basket"></ion-icon>
-                    <ion-label>Pharmacies</ion-label>
-                </ion-tab-button>
-            </ion-tab-bar>
-        </ion-tabs>
+        <ion-title>Services</ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-content
-    fullscreen
-    class="ion-padding"
->
+<ion-content fullscreen class="ion-padding">
     <ion-grid>
+        <ion-toolbar color="primary">
+            <ion-tabs>
+                <!-- Tab bar -->
+                <ion-tab-bar>
+                    <ion-tab-button tab="tab4">
+                        <ion-icon name="person"></ion-icon>
+                        <ion-label>Professionels</ion-label>
+                    </ion-tab-button>
+                    <ion-tab-button tab="tab8">
+                        <ion-icon name="basket"></ion-icon>
+                        <ion-label>Pharmacies</ion-label>
+                    </ion-tab-button>
+                </ion-tab-bar>
+            </ion-tabs>
+        </ion-toolbar>
         <ion-row>
             <ion-col size="12">Inscrire une pharmacie</ion-col>
             <ion-col size="12">
-                <form
-                    class="form"
-                    [formGroup]="pharma_form"
-                    (ngSubmit)="tryRegister(pharma_form.value)"
-                >
+                <form class="form" [formGroup]="pharma_form" (ngSubmit)="tryRegister(pharma_form.value)">
                     <ion-item>
-                        <ion-input
-                            type="hidden"
-                            id="device"
-                            value="{{this.uuid}}"
-                            class="form-control"
-                            formControlName="device"
-                        ></ion-input>
+                        <ion-input type="hidden" id="device" value="{{this.uuid}}" class="form-control"
+                            formControlName="device"></ion-input>
 
-                        <ion-input
-                            type="hidden"
-                            id="version"
-                            value="{{this.version}}"
-                            class="form-control"
-                            formControlName="version"
-                        ></ion-input>
-                        <ion-input
-                            type="hidden"
-                            id="model"
-                            value="{{this.model}}"
-                            class="form-control"
-                            formControlName="model"
-                        ></ion-input>
-                        <ion-input
-                            type="hidden"
-                            id="manufacturer"
-                            value="{{this.manufacturer}}"
-                            class="form-control"
-                            formControlName="manufacturer"
-                        ></ion-input>
-                        <ion-input
-                            type="hidden"
-                            id="latitude"
-                            class="form-control"
-                            formControlName="latitude"
-                            value="{{this.lat}}"
-                        ></ion-input>
-                        <ion-input
-                            type="hidden"
-                            id="longitude"
-                            class="form-control"
-                            formControlName="longitude"
-                            value="{{this.lng}}"
-                        ></ion-input>
+                        <ion-input type="hidden" id="version" value="{{this.version}}" class="form-control"
+                            formControlName="version"></ion-input>
+                        <ion-input type="hidden" id="model" value="{{this.model}}" class="form-control"
+                            formControlName="model"></ion-input>
+                        <ion-input type="hidden" id="manufacturer" value="{{this.manufacturer}}" class="form-control"
+                            formControlName="manufacturer"></ion-input>
+                        <ion-input type="hidden" id="latitude" class="form-control" formControlName="latitude"
+                            value="{{this.lat}}"></ion-input>
+                        <ion-input type="hidden" id="longitude" class="form-control" formControlName="longitude"
+                            value="{{this.lng}}"></ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-label>Ville</ion-label>
-                        <ion-select
-                            placeholder="Ville"
-                            class="form-control"
-                            formControlName="ville"
-                            id="ville"
-                        >
-                            <ion-select-option
-                                *ngFor="let item of ville"
-                                [value]="item.value"
-                            >
+                        <ion-select placeholder="Ville" class="form-control" formControlName="ville" id="ville">
+                            <ion-select-option *ngFor="let item of ville" [value]="item.value">
                                 {{item.value}}
                             </ion-select-option>
                         </ion-select>
                     </ion-item>
                     <ion-item>
-                        <ion-input
-                            type="text"
-                            id="denomination"
-                            required
-                            placeholder="Dénomination"
-                            style="text-transform: capitalize"
-                            class="form-control"
-                            formControlName="denomination"
-                        >
+                        <ion-input type="text" id="denomination" required placeholder="Dénomination"
+                            style="text-transform: capitalize" class="form-control" formControlName="denomination">
                         </ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input
-                            type="text"
-                            id="adresse"
-                            required
-                            placeholder="Adresse"
-                            style="text-transform: capitalize"
-                            class="form-control"
-                            formControlName="adresse"
-                        >
+                        <ion-input type="text" id="adresse" required placeholder="Adresse"
+                            style="text-transform: capitalize" class="form-control" formControlName="adresse">
                         </ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input
-                            type="text"
-                            id="autorisation"
-                            required
-                            placeholder="Numéro autorisation"
-                            style="text-transform: capitalize"
-                            class="form-control"
-                            formControlName="autorisation"
-                        >
+                        <ion-input type="text" id="autorisation" required placeholder="Numéro autorisation"
+                            style="text-transform: capitalize" class="form-control" formControlName="autorisation">
                         </ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input
-                            type="text"
-                            id="responsable"
-                            required
-                            placeholder="Responsable"
-                            class="form-control"
-                            formControlName="responsable"
-                            style="text-transform:uppercase"
-                        >
+                        <ion-input type="text" id="responsable" required placeholder="Responsable" class="form-control"
+                            formControlName="responsable" style="text-transform:uppercase">
                         </ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input
-                            type="email"
-                            id="email"
-                            required
-                            placeholder="Email"
-                            class="form-control"
-                            formControlName="email"
-                            style="text-transform:lowercase"
-                        >
+                        <ion-input type="email" id="email" required placeholder="Email" class="form-control"
+                            formControlName="email" style="text-transform:lowercase">
                         </ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input
-                            type="number"
-                            id="gsm"
-                            required
-                            placeholder="Gsm"
-                            style="text-transform: capitalize"
-                            class="form-control"
-                            formControlName="gsm"
-                        >
+                        <ion-input type="number" id="gsm" required placeholder="Gsm" style="text-transform: capitalize"
+                            class="form-control" formControlName="gsm">
                         </ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input
-                            type="number"
-                            id="wa"
-                            required
-                            placeholder="WhatsApp"
-                            style="text-transform: capitalize"
-                            class="form-control"
-                            formControlName="wa"
-                        >
+                        <ion-input type="number" id="wa" required placeholder="WhatsApp"
+                            style="text-transform: capitalize" class="form-control" formControlName="wa">
                         </ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-label>Groupe éléctrogène</ion-label>
-                        <ion-checkbox
-                            color="primary"
-                            id="ge"
-                            slot="start"
-                            class="form-control"
-                            formControlName="ge"
-                        ></ion-checkbox>
+                        <ion-checkbox color="primary" id="ge" slot="start" class="form-control" formControlName="ge">
+                        </ion-checkbox>
                     </ion-item>
                     <ion-item>
                         <ion-label>Frigo</ion-label>
-                        <ion-checkbox
-                            color="primary"
-                            id="frigo"
-                            slot="start"
-                            class="form-control"
-                            formControlName="frigo"
-                        ></ion-checkbox>
+                        <ion-checkbox color="primary" id="frigo" slot="start" class="form-control"
+                            formControlName="frigo"></ion-checkbox>
                     </ion-item>
-                    <ion-button
-                        expand="block"
-                        color="primary"
-                        class="submit-btn"
-                        type="submit"
-                    >
+                    <ion-button expand="block" color="primary" class="submit-btn" type="submit">
                         Inscription
                     </ion-button>
                 </form>
@@ -207,4 +100,3 @@
         </ion-row>
     </ion-grid>
 </ion-content>
-

@@ -1,22 +1,24 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-tabs>
-            <!-- Tab bar -->
-            <ion-tab-bar slot="top" color="primary">
-                <ion-title>Recherche simple</ion-title>
-                <ion-tab-button tab="tab3">
-                    <ion-icon name="person"></ion-icon>
-                    <ion-label>Base de données</ion-label>
-                </ion-tab-button>
-            </ion-tab-bar>
-        </ion-tabs>
+        <ion-title>Recherche simple</ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-content
-    fullscreen
-    class="ion-padding"
->
+<ion-content fullscreen class="ion-padding">
     <ion-grid>
+        <ion-tab-bar>
+            <ion-tab-button tab="tab3">
+                <ion-icon name="filing"></ion-icon>
+                <ion-label>Base de données</ion-label>
+            </ion-tab-button>
+            <ion-tab-button tab="quotation">
+                <ion-icon name="basket"></ion-icon>
+                <ion-label>Prix(Quotation)</ion-label>
+            </ion-tab-button>
+            <ion-tab-button tab="signalement">
+                <ion-icon name="hand"></ion-icon>
+                <ion-label>Signalement</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
         <ion-row>
             <ion-col size="12">Entrer un terme.</ion-col>
             <ion-col size="12">
@@ -25,7 +27,7 @@
                     <br>
                     <br>
                     Vous pouvez rechercher par:
-                       Nom commercial
+                    Nom commercial
                     <br>
                     DCI: Dénomination Commune Internationale
                     <br>
@@ -35,37 +37,22 @@
             <ion-col size="12">
                 <!-- Debut formulaire -->
                 <!-- If user is loaded show the form, else show the loading template -->
-                <form
-                    [formGroup]="form"
-                    (ngSubmit)="submit()"
-                >
+                <form [formGroup]="form" (ngSubmit)="submit()">
                     <ion-item>
-                        <ion-input
-                            type="text"
-                            placeholder="Entrer un terme"
-                            id="votretext"
-                            class="form-control"
-                            formControlName="votretext"
-                        >
+                        <ion-input type="text" placeholder="Entrer un terme" id="votretext" class="form-control"
+                            formControlName="votretext">
                         </ion-input>
                     </ion-item>
-                    <ion-button
-                        expand="block"
-                        color="primary"
-                        ion-button
-                        type="submit"
-                        block
-                        [disabled]="!form.valid"
-                    >
+                    <ion-button expand="block" color="primary" ion-button type="submit" block [disabled]="!form.valid">
                         Recherche
                     </ion-button>
                 </form>
-                
-                <div ngxTextHighlight [innerHTML]="myResponse" [searchTerm]="this.votretext"  [caseSensitive]="false">
+
+                <div ngxTextHighlight [innerHTML]="myResponse" [searchTerm]="this.votretext" [caseSensitive]="false">
                 </div>
                 <!-- Fin formulaire -->
             </ion-col>
-            <ion-col>{{this.occcurence}}</ion-col>
+            <ion-col></ion-col>
         </ion-row>
     </ion-grid>
 </ion-content>

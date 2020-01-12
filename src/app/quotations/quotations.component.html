@@ -1,24 +1,25 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-tabs>
-            <!-- Tab bar -->
-            <ion-tab-bar slot="top" color="primary">
-                <ion-title>Quotation</ion-title>
-                <ion-tab-button tab="tab3">
-                    <ion-icon name="person"></ion-icon>
-                    <ion-label>Base de données</ion-label>
-                </ion-tab-button>
-                <ion-tab-button tab="quotation">
-                    <ion-icon name="basket"></ion-icon>
-                    <ion-label>Prix</ion-label>
-                </ion-tab-button>
-            </ion-tab-bar>
-        </ion-tabs>
+        <ion-title>Quotation</ion-title>
     </ion-toolbar>
 </ion-header>
 <ion-content fullscreen class="ion-padding">
     <ion-grid>
-        <ion-row>
+        <ion-tab-bar>
+            <ion-tab-button tab="tab3">
+                <ion-icon name="filing"></ion-icon>
+                <ion-label>Base de données</ion-label>
+            </ion-tab-button>
+            <ion-tab-button tab="quotation">
+                <ion-icon name="basket"></ion-icon>
+                <ion-label>Prix(Quotation)</ion-label>
+            </ion-tab-button>
+            <ion-tab-button tab="signalement">
+                <ion-icon name="hand"></ion-icon>
+                <ion-label>Signalement</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
+        <ion-row><ion-label><strong>Quotation</strong></ion-label>
             <ion-col size="12">
                 <ion-note>
                     La demande de quotation ne sera valable que si vous êtes enregistrés

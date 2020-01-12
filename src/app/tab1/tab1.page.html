@@ -1,19 +1,16 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-tabs>
-            <!-- Tab bar -->
-            <ion-tab-bar slot="top" color="primary">
-                <ion-title>Accueil</ion-title>
-                <ion-tab-button tab="tab6">
-                    <ion-icon name="person"></ion-icon>
-                    <ion-label>Votre compte</ion-label>
-                </ion-tab-button>
-            </ion-tab-bar>
-        </ion-tabs>
+        <ion-title>Accueil</ion-title>
     </ion-toolbar>
 </ion-header>
 <ion-content fullscreen class="ion-padding">
     <ion-grid>
+        <ion-tab-bar>
+            <ion-tab-button tab="login">
+                <ion-icon name="person"></ion-icon>
+                <ion-label>Votre compte</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
         <ion-row>
             <ion-note>
                 L'accès à certaines fonctionalités requiert que vous soyez authentifié.
