@@ -1,30 +1,19 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-buttons slot="secondary">
-            <ion-button [routerLink]="['/']">
-                <ion-icon
-                    slot="icon-only"
-                    name="home"
-                ></ion-icon>
-            </ion-button>
-        </ion-buttons>
-        <ion-buttons slot="secondary">
-            <ion-button [routerLink]="['/login']">
-                <ion-icon
-                    slot="icon-only"
-                    name="person"
-                ></ion-icon>
-            </ion-button>
-        </ion-buttons>
-        <ion-title>Ajouter une pharmacie</ion-title>
-        <ion-buttons slot="primary">
-            <ion-button [routerLink]="['/cartographie']">
-                <ion-icon
-                    slot="icon-only"
-                    name="pin"
-                ></ion-icon>
-            </ion-button>
-        </ion-buttons>
+        <ion-tabs>
+            <!-- Tab bar -->
+            <ion-tab-bar slot="top" color="primary">
+                <ion-title>Services</ion-title>
+                <ion-tab-button tab="tab4">
+                    <ion-icon name="person"></ion-icon>
+                    <ion-label>Professionels</ion-label>
+                </ion-tab-button>
+                <ion-tab-button tab="tab8">
+                    <ion-icon name="basket"></ion-icon>
+                    <ion-label>Pharmacies</ion-label>
+                </ion-tab-button>
+            </ion-tab-bar>
+        </ion-tabs>
     </ion-toolbar>
 </ion-header>
 <ion-content
@@ -33,10 +22,6 @@
 >
     <ion-grid>
         <ion-row>
-            <ion-col size="12">
-                <ion-icon name="arrow-back"></ion-icon>
-                <a [routerLink]="['/tab4']">Retour</a>
-            </ion-col>
             <ion-col size="12">Inscrire une pharmacie</ion-col>
             <ion-col size="12">
                 <form
@@ -222,8 +207,4 @@
         </ion-row>
     </ion-grid>
 </ion-content>
-<ion-footer>
-    <ion-toolbar color="primary">
-        <ion-title>Footer</ion-title>
-    </ion-toolbar>
-</ion-footer>
+

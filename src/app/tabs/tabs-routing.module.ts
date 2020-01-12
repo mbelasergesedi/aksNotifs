@@ -58,7 +58,19 @@ const routes: Routes = [
               }
             ]
         },
+        {
+          path: 'addpharma',
+          children:
+            [
               {
+                path: '',
+                loadChildren: '../add-pharma/add-pharma.module#AddPharmaModule'
+              }
+            ]
+        },
+
+
+        {
           path: 'signalement',
           children:
             [
