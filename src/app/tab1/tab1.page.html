@@ -15,30 +15,18 @@
             <ion-note>
                 L'accès à certaines fonctionalités requiert que vous soyez authentifié.
             </ion-note>
-            <!--
+
             <ion-col size="12">
                 <div *ngIf="this.status =='OFFLINE'">
                     Vous n'êtes pas connecté à Internet {{this.status}}
                 </div>
-                <div *ngIf="!this.userEmail">
-                    <ion-button [routerLink]="['/login']" expand="block">
-                        <ion-icon name="body"></ion-icon>
-                        Authentifiez-vous
-                    </ion-button>
-                    <ion-note>
-                        L'accès à certaines fonctionalités requiert que vous soyez authentifié.
-                    </ion-note>
-                </div>
+
                 <ion-note>
                     <div *ngIf="this.userEmail">
                         <span>Bienvenue {{this.userEmail}}</span>
-                        <ion-button [routerLink]="['/updatemydata']" [queryParams]="this.userEmail" expand="block">
-                            <ion-icon name="md-done-all"></ion-icon>
-                            Modifier vos données
-                        </ion-button>
                     </div>
                 </ion-note>
-            </ion-col>-->
+            </ion-col>
             <!-- Skeleton screen -->
             <div *ngIf="pushes">
                 <ion-col size="12" *ngFor="let item of pushes">
