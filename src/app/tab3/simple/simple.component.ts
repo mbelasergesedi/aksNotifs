@@ -16,6 +16,8 @@ export class SimpleComponent implements OnInit {
   medterm: any;
   occurence: any;
   resultsTotal: any;
+  list;
+  listTotal: any;
   constructor(
     private formBuilder: FormBuilder,
     private textSearchService: TextSearchService) { }
@@ -30,7 +32,7 @@ export class SimpleComponent implements OnInit {
       this.searchedTerm = (this.form.value.votretext);
       this.med = this.textSearchService.getCode(this.searchedTerm).subscribe((data) => {
         this.results = data;
-        this.resultsTotal = this.results.total;
+        this.listTotal = this.results.total;
       });
     }
   }

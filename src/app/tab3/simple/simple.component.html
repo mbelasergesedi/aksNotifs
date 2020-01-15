@@ -49,7 +49,7 @@
                 </form>
 
                 <ion-grid *ngFor="let item of results">
-                    <span [innerHTML]="item.name"></span>
+                    <span [innerHTML]="item.name | highlight: searchedTerm"></span>
                 </ion-grid>
             </ion-col>
             <ion-col></ion-col>
