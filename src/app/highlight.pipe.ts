@@ -14,10 +14,9 @@ export class HighlightPipe implements PipeTransform {
     if (!searchText) { return results; }
 
     const value = results.replace(
-      searchText, `<span style='background-color:yellow'>${searchText}</span>` );
-    console.log('value', value);
-
-    return this._sanitizer.bypassSecurityTrustHtml(value);
+      searchText, `<span style='background-color:yellow'>${searchText}</span>`);
+    // console.log('value', value);
+    return value;
   }
 }
 
