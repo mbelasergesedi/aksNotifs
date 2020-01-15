@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpClientModule, HttpParams } from '@angular/common/http';
-import { Observable, of, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+
 export interface User {
-  med: string;
-  mycode: string;
+  total: number;
+  results: Array<object>;
 }
 const CodeObject = {
   votretexte: '',
 };
 @Injectable()
 export class TextSearchService {
-  baseURL = 'https://www.aksantimed.com/sms/remotepharma.cfc?';
+  baseURL = 'http://www.aksantimed.com/sms/remotepharma.cfc?';
   HttpClient: any;
   constructor(
     private http: HttpClient) { }

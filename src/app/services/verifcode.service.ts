@@ -20,16 +20,12 @@ const CodeObject = {
 @Injectable()
 // tslint:disable-next-line: class-name
 export class ResultatVerificationService {
-
-
   baseURL = 'https://www.aksantimed.com/ionic/remotepharma.cfc?';
   HttpClient: any;
   constructor(
-
     private http: HttpClient) { }
   getResponse(code, cordonnees): Observable<User[]> {
     return this.http.get<User[]>
       (this.baseURL + 'method=' + 'choosepharma' + '&medcode=' + code + '&coordonees=' + cordonnees );
-
   }
 }

@@ -40,7 +40,7 @@
                 <form [formGroup]="form" (ngSubmit)="submit()">
                     <ion-item>
                         <ion-input type="text" placeholder="Entrer un terme" id="votretext" class="form-control"
-                            formControlName="votretext">
+                            formControlName="votretext" [(ngModel)]="searchedTerm">
                         </ion-input>
                     </ion-item>
                     <ion-button expand="block" color="primary" ion-button type="submit" block [disabled]="!form.valid">
@@ -48,9 +48,9 @@
                     </ion-button>
                 </form>
 
-                <div ngxTextHighlight [innerHTML]="myResponse" [searchTerm]="this.votretext" [caseSensitive]="false">
-                </div>
-                <!-- Fin formulaire -->
+                <ion-grid *ngFor="let item of results">
+                    <span [innerHTML]="item.name"></span>
+                </ion-grid>
             </ion-col>
             <ion-col></ion-col>
         </ion-row>

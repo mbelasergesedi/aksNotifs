@@ -20,7 +20,6 @@
             </ion-tab-button>
         </ion-tab-bar>
         <ion-row>
-
             <!-- Formulaire de signalement -->
             <ion-col size="12">
                 <ion-label><strong>Signalement</strong></ion-label>
@@ -30,51 +29,53 @@
                     Une anomalie constatée, un médicament douteux? Signalez aux autorités.
                 </ion-note>
             </ion-col>
-            <form class="form" [formGroup]="signalement_form" (ngSubmit)="Signalement(signalement_form)">
-                <ion-col size="12">
-                    <ion-item>
-                        <ion-input type="text" placeholder="Entrer le nom du médicament" id="medicament"
-                            formControlName="medicament"></ion-input>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>Ville</ion-label>
-                        <ion-select placeholder="Choix" id="ville" formControlName="ville">
-                            <ion-select-option *ngFor="let item of ville" [value]="item.value">
-                                {{item.value}}
-                            </ion-select-option>
-                        </ion-select>
-                    </ion-item>
-                    <ion-item>
-                        <ion-input type="number" placeholder="Votre Gsm" id="telephone" placeholder="Gsm..."
-                            formControlName="telephone">
-                        </ion-input>
-                        <ion-input type="hidden" placeholder id="latitude" placeholder="Gsm..." value></ion-input>
-                        <ion-input type="hidden" placeholder id="longitude" placeholder="Gsm..."
-                            value="{{this.longitude}}"></ion-input>
-                        <ion-input type="hidden" placeholder id="deviceid" placeholder="Gsm..." value></ion-input>
-                    </ion-item>
-                    <ion-item>
-                        <ion-icon name="camera" (click)="pickImage()"></ion-icon>
-                        Prendre une photo
-                        <ion-list>
-                            <ion-list-header>
-                                <ion-label>{{progress}} %</ion-label>
-                                <ion-input type="hidden" placeholder id="image" value="{{imageDoc}}" name="image">
-                                </ion-input>
-                            </ion-list-header>
-                            <ion-progress-bar value="{{progress}}"></ion-progress-bar>
-                        </ion-list>
-                    </ion-item>
-                    <ion-item>
-                        <ion-textarea rows="3" cols="20" placeholder="Entrer votre message ici..." id="description"
-                            formControlName="description"></ion-textarea>
-                    </ion-item>
-                </ion-col>
-                <ion-button expand="block" color="primary" class="submit-btn" type="submit" (click)="Signalement('top')"
-                    [disabled]="!signalement_form.valid">
-                    Postez votre signalement
-                </ion-button>
-            </form>
+            <ion-col size="12">
+                <form class="form" [formGroup]="signalement_form" (ngSubmit)="Signalement(signalement_form)">
+                    <ion-col size="12">
+                        <ion-item>
+                            <ion-input type="text" placeholder="Entrer le nom du médicament" id="medicament"
+                                formControlName="medicament"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Ville</ion-label>
+                            <ion-select placeholder="Choix" id="ville" formControlName="ville">
+                                <ion-select-option *ngFor="let item of ville" [value]="item.value">
+                                    {{item.value}}
+                                </ion-select-option>
+                            </ion-select>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input type="number" placeholder="Votre Gsm" id="telephone" placeholder="Gsm..."
+                                formControlName="telephone">
+                            </ion-input>
+                            <ion-input type="hidden" placeholder id="latitude" placeholder="Gsm..." value></ion-input>
+                            <ion-input type="hidden" placeholder id="longitude" placeholder="Gsm..."
+                                value="{{this.longitude}}"></ion-input>
+                            <ion-input type="hidden" placeholder id="deviceid" placeholder="Gsm..." value></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-icon name="camera" (click)="pickImage()"></ion-icon>
+                            Prendre une photo
+                            <ion-list>
+                                <ion-list-header>
+                                    <ion-label>{{progress}} %</ion-label>
+                                    <ion-input type="hidden" placeholder id="image" value="{{imageDoc}}" name="image">
+                                    </ion-input>
+                                </ion-list-header>
+                                <ion-progress-bar value="{{progress}}"></ion-progress-bar>
+                            </ion-list>
+                        </ion-item>
+                        <ion-item>
+                            <ion-textarea rows="3" cols="20" placeholder="Entrer votre message ici..." id="description"
+                                formControlName="description"></ion-textarea>
+                        </ion-item>
+                    </ion-col>
+                    <ion-button expand="block" color="primary" class="submit-btn" type="submit"
+                        (click)="Signalement('top')" [disabled]="!signalement_form.valid">
+                        Postez votre signalement
+                    </ion-button>
+                </form>
+            </ion-col>
         </ion-row>
     </ion-grid>
 </ion-content>

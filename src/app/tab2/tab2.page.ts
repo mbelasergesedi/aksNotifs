@@ -83,7 +83,6 @@ export class Tab2Page implements OnInit, OnDestroy {
       const mycode = (data.votretext);
       this.code = this.resultatVerificationService.getResponse(mycode, this.lat).subscribe((MYdata) => {
         this.myResponse = MYdata;
-        // console.log(data);
         this.qryValidationService.ValidationCreate(data);
       });
     }

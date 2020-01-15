@@ -7,7 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SimpleComponent } from './simple.component';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { NgHighlightModule } from 'ngx-text-highlight';
-
+import {HighlightPipe} from '../../highlight.pipe';
+import {SearchPipe} from '../../search.pipe';
 @NgModule({
   imports: [
     CommonModule,
@@ -23,6 +24,6 @@ import { NgHighlightModule } from 'ngx-text-highlight';
       }
     ])
   ],
-  declarations: [SimpleComponent]
+  declarations: [SimpleComponent, HighlightPipe, SearchPipe]
 })
 export class SimpleModule {}
