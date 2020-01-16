@@ -20,7 +20,7 @@ export class AddPharmaComponent implements OnInit {
   lng: any;
   uuid: any;
   iddevice: any;
-
+  validate: any;
   [x: string]: any;
   title = 'angular-http-spinner-loader';
   status = true;
@@ -115,6 +115,7 @@ export class AddPharmaComponent implements OnInit {
       longitude: [],
       latitude: [],
       ge: [],
+      validate: [],
       frigo: [],
       model: [],
       manufacturer: [],
