@@ -1,22 +1,20 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-buttons slot="secondary">
-            <form>
-                <ion-icon name="log-out" value="Log in" (click)="authService.logoutUser();logoutToast('top')">
-                </ion-icon>Deconnection.
-            </form>
-        </ion-buttons>
         <ion-title>Authentification</ion-title>
     </ion-toolbar>
 </ion-header>
 <ion-tab-bar>
     <ion-tab-button tab="createaccount">
         <ion-icon name="person-add"></ion-icon>
-        <ion-label>Inscription (professionnel)</ion-label>
+        <ion-label>Professionnel</ion-label>
     </ion-tab-button>
     <ion-tab-button tab="students">
         <ion-icon name="person-add"></ion-icon>
-        <ion-label>Inscription (étudiant)</ion-label>
+        <ion-label>Etudiant</ion-label>
+    </ion-tab-button>
+    <ion-tab-button>
+        <ion-icon name="log-out" value="Log in" (click)="authService.logoutUser();logoutToast('top')"></ion-icon>
+        <ion-label>Deconnection</ion-label>
     </ion-tab-button>
 </ion-tab-bar>
 <ion-content fullscreen class="ion-padding">

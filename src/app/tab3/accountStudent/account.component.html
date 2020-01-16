@@ -3,16 +3,16 @@
         <ion-tabs>
             <!-- Tab bar -->
             <ion-tab-bar slot="top" color="primary">
-                <ion-title>Etudiants</ion-title>
-                <ion-tab-button tab="students">
+                <ion-title>Etudiant</ion-title>
+                <ion-tab-button tab="createaccount">
                     <ion-icon name="person-add"></ion-icon>
-                    <ion-label>Insciption Etudiant</ion-label>
+                    <ion-label>Insciption Professionel</ion-label>
                 </ion-tab-button>
             </ion-tab-bar>
         </ion-tabs>
     </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content fullscreen class="ion-padding">
     <ion-grid>
         <ion-row>
             <ion-col size="12">Inscrivez-vous</ion-col>
@@ -22,117 +22,52 @@
                 </ion-note>
             </ion-col>
             <ion-col>
-                <form
-                    class="form"
-                    [formGroup]="account_form"
-                    (ngSubmit)="tryRegister(account_form)"
-                >
+                <form class="form" [formGroup]="account_form" (ngSubmit)="tryRegister(account_form)">
                     <ion-item>
                         <ion-label>Civilité</ion-label>
-                        <ion-select
-                            placeholder="civilite"
-                            id="civilite"
-                            formControlName="civilite"
-                        >
+                        <ion-select placeholder="civilite" id="civilite" formControlName="civilite">
                             <ion-select-option value="f">Madame, Mademoiselle</ion-select-option>
                             <ion-select-option value="m">Monsieur</ion-select-option>
                         </ion-select>
                     </ion-item>
                     <ion-item>
-
-
-
-
-                        <ion-input
-                            type="text"
-                            placeholder="Nom"
-                            id="nom"
-                            formControlName="nom"
-                            required
-                            style="text-transform: capitalize "
-                        >
+                        <ion-input type="text" placeholder="Nom" id="nom" formControlName="nom" required
+                        style="text-transform: uppercase">
                         </ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input
-                            type="text"
-                            placeholder="Prénom"
-                            id="prenom"
-                            formControlName="prenom"
-                            required
-                            style="text-transform: capitalize "
-                        >
+                        <ion-input type="text" placeholder="Prénom" id="prenom" formControlName="prenom" required
+                        style="text-transform: uppercase">
                         </ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-label>Institutions</ion-label>
-
-
-
-
-                        <ion-select
-                            placeholder="Institutions"
-                            id="ecole"
-                            formControlName="ecole"
-                        >
-                            <ion-select-option
-                                *ngFor="let item of school"
-                                [value]="item.value"
-                            >
+                        <ion-select placeholder="Institutions" id="ecole" formControlName="ecole">
+                            <ion-select-option *ngFor="let item of school" [value]="item.value">
                                 {{item.value}}
                             </ion-select-option>
                         </ion-select>
                     </ion-item>
                     <ion-item>
-                        <ion-input
-                            type="text"
-                            placeholder="Adresse Email"
-                            id="email"
-                            class="form-control"
-                            formControlName="email"
-                        >
+                        <ion-input type="text" placeholder="Adresse Email" id="email" class="form-control"
+                            formControlName="email">
                         </ion-input>
                     </ion-item>
                     <ion-item>
-
-
-
-
-                        <ion-input
-                            type="password"
-                            placeholder="Mot de passe"
-                            id="password"
-                            class="form-control"
-                            formControlName="password"
-                        >
+                        <ion-input type="password" placeholder="Mot de passe" id="password" class="form-control"
+                            formControlName="password">
                         </ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input
-                            type="password"
-                            placeholder="Entrer de nouveau le mot de passe"
-                            id="password"
-                            class="form-control"
-                            formControlName="password"
-                        >
+                        <ion-input type="password" placeholder="Entrer de nouveau le mot de passe" id="password"
+                            class="form-control" formControlName="password">
                         </ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input
-                            type="number"
-                            placeholder="Gsm"
-                            id="gsm"
-                            class="form-control"
-                        >
+                        <ion-input type="number" placeholder="Gsm" id="gsm" class="form-control">
                         </ion-input>
                     </ion-item>
-                    <ion-button
-                        expand="block"
-                        color="primary"
-                        ion-button
-                        type="submit"
-                        block
-                    >
+                    <ion-button expand="block" color="primary" ion-button type="submit" block>
                         Validez votre inscription
                     </ion-button>
                 </form>

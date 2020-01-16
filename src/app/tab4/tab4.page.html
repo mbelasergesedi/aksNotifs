@@ -3,10 +3,9 @@
         <ion-title>Services</ion-title>
     </ion-toolbar>
 </ion-header>
-
 <ion-content fullscreen class="ion-padding">
     <ion-grid>
-        <ion-toolbar color="primary">
+        <ion-toolbar>
             <ion-tabs>
                 <!-- Tab bar -->
                 <ion-tab-bar>
@@ -41,8 +40,8 @@
                         </ion-select>
                     </ion-item>
                     <ion-item>
-                        <ion-input type="text" placeholder id="nom" autocapitalize
-                            placeholder="Entrer un nom de famille" formControlName="nom" required></ion-input>
+                        <ion-input type="text" placeholder id="nom" placeholder="Nom" formControlName="nom" required
+                        style="text-transform: uppercase"></ion-input>
                     </ion-item>
                     <ion-button expand="block" color="primary" class="submit-btn" type="submit"
                         [disabled]="!profform.valid">

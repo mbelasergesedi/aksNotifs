@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthenticateService } from '../../services/authentication.service';
-import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SchoolsService } from '../../services/school.service';
 import { VilleService } from '../../services/city.service';
 import { QryCustomerService } from '../../services/customers.service';
-
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Customers } from '../../model/customers.model';
+import { ToastController } from '@ionic/angular';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { AngularFirestore } from '@angular/fire/firestore';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -48,7 +51,10 @@ export class AccountComponent implements OnInit {
               private authenticateService: AuthenticateService,
               private schoolsService: SchoolsService,
               private villeService: VilleService,
+              private toastController: ToastController,
+              private geolocation: Geolocation,
               private db: AngularFirestore,
+              private uniqueDeviceID: UniqueDeviceID,
               private qryCustomerService: QryCustomerService,
               private router: Router) { }
 
@@ -134,27 +140,64 @@ export class AccountComponent implements OnInit {
   tryRegister() {
     const data = this.account_form.value;
     // 1. On cherche si l'email de l'utilisateur est déjà présent dans la DB;
-    this.itemCollection = this.db.collection<any[]>('customers', ref => ref.where('email', '==',
+    this.itemCollection = this.db.collection<any[]>('customers', ref => ref.where('data.email', '==',
       this.account_form.get('email').value));
-    this.items = this.itemCollection.valueChanges().subscribe((val: any) => {
+    this.items = this.itemCollection.valueChanges().subscribe(async (val: any) => {
       this.enregistrement = val;
-
+     // console.log(this.enregistrement);
+     // console.log(this.enregistrement.length);
       // 2. S'il n'est pas présent, on l'inscrit dans la DB et dans système d'authentification;
-      if (Object.keys(this.enregistrement).length === 0) {
-        this.qryCustomerService.createCustomer(data);
+      if (this.enregistrement && this.enregistrement.constructor === Array && this.enregistrement.length === 0) {
+        this.uniqueDeviceID.get()
+          .then((uuid: any) => this.uuid = uuid)
+          .catch((error: any) => this.error = error);
+
+        this.uniqueDeviceID.get()
+          .then((model: any) => this.model = model)
+          .catch((error: any) => this.error = error);
+
+        this.uniqueDeviceID.get()
+          .then((version: any) => this.version = version)
+          .catch((error: any) => this.error = error);
+
+        this.uniqueDeviceID.get()
+          .then((manufacturer: any) => this.manufacturer = manufacturer)
+          .catch((error: any) => this.error = error);
+
+        this.qryCustomerService.createCustomer({ data, createdAt: firebase.firestore.FieldValue.serverTimestamp() });
         this.authenticateService.registerUser(this.account_form.get('email').value, this.account_form.get('password').value)
-          .then(res => {
-           //  console.log(res);
+          .then(() => {
             this.errorMessage = '';
             this.successMessage = 'Votre compte a été crée.';
+           // console.log( this.successMessage);
+           // console.log( this.account_form.get('email').value);
+            // console.log( this.account_form.get('password').value);
           }, err => {
             // console.log(err);
             this.errorMessage = err.message;
             this.successMessage = '';
           });
         // 3. Sinon on le previent qu'il est déjà présent dans la DB;
-      } else { console.log('Utilisateur déjà présent'); }
-    }
-    );
+        // } //else {
+        // console.log('Utilisateur déjà présent');
+        const toast = this.toastController.create({
+         message: 'Félicitations ! Votre compte a été crée.',
+         position: 'middle',
+          duration: 2000
+        });
+        (await toast).present();
+        // }
+      }
+      // tslint:disable-next-line: max-line-length
+      if (this.enregistrement && this.enregistrement.constructor === Array && this.enregistrement.length !== 0)
+       {
+         const toast = this.toastController.create({
+        message: 'Désolé ce compte existe déjà et ne peut être dupliqué.',
+        position: 'middle',
+         duration: 2000
+       });
+         (await toast).present();
+       }
+    });
   }
 }
