@@ -138,11 +138,9 @@ export class AccountComponent implements OnInit {
         this.uniqueDeviceID.get()
           .then((uuid: any) => this.uuid = uuid)
           .catch((error: any) => this.error = error);
-
         this.uniqueDeviceID.get()
           .then((model: any) => this.model = model)
           .catch((error: any) => this.error = error);
-
         this.uniqueDeviceID.get()
           .then((version: any) => this.version = version)
           .catch((error: any) => this.error = error);
@@ -176,8 +174,7 @@ export class AccountComponent implements OnInit {
         // }
       }
       // tslint:disable-next-line: max-line-length
-      if (this.enregistrement && this.enregistrement.constructor === Array && this.enregistrement.length !== 0)
-       {
+      if (this.enregistrement && this.enregistrement.constructor === Array && this.enregistrement.length !== 0) {
          const toast = this.toastController.create({
         message: 'Désolé ce compte existe déjà et ne peut être dupliqué.',
         position: 'middle',
