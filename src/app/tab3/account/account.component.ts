@@ -60,6 +60,7 @@ export class AccountComponent implements OnInit {
               private toastController: ToastController) {
   }
   async logInToast() {
+    await firebase.auth().signOut();
     const toast = await this.toastController.create({
       position: 'middle',
       message: 'Vous êtes deconnecté.',
