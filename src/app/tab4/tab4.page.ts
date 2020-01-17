@@ -17,6 +17,7 @@ import { ToastController } from '@ionic/angular';
 import * as firebase from 'firebase';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AgmCoreModule } from '@agm/core';
+import { TitleCasePipe } from '@angular/common';
 @Component({
   selector: 'app-tab4',
   templateUrl: './tab4.page.html',
@@ -49,6 +50,7 @@ export class Tab4Page {
   constructor(private formBuilder: FormBuilder,
               private authenticateService: AuthenticateService,
               private villeService: VilleService,
+              private titlecasePipe: TitleCasePipe,
               private db: AngularFirestore,
               private camera: Camera,
               private statusBar: StatusBar,
@@ -226,7 +228,7 @@ export class Tab4Page {
     this.nom = data.nom;
     this.categorie = data.categorie;
     this.itemCollection = this.db.collection<any[]>('customers', ref => ref.where('data.profession', '==',
-      data.categorie).where('data.nom', '==', nomS));
+      data.categorie).where('data.nom', '==', nomS.toLowerCase()));
     this.items = this.itemCollection.valueChanges().subscribe((val: any) => {
       this.enregistrement = val;
     }

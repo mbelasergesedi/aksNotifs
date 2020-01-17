@@ -33,6 +33,7 @@ export class AccountComponent implements OnInit {
     ]
   };
   enr: any;
+  gsm: any;
   uuid: any;
   iddevice: any;
   model: any;
@@ -47,6 +48,7 @@ export class AccountComponent implements OnInit {
   list: Customers[];
   signupForm: FormGroup;
   ville: any;
+  mypost;
   successMessage: string;
   constructor(private formBuilder: FormBuilder,
               private authenticateService: AuthenticateService,
@@ -68,6 +70,7 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
     this.initForm();
     this.getVille();
+    this.mypost();
   }
   getVille() {
     this.villeService.getVille().snapshotChanges().pipe(
@@ -131,8 +134,8 @@ export class AccountComponent implements OnInit {
       this.account_form.get('email').value));
     this.items = this.itemCollection.valueChanges().subscribe(async (val: any) => {
       this.enregistrement = val;
-     // console.log(this.enregistrement);
-     // console.log(this.enregistrement.length);
+      // console.log(this.enregistrement);
+      // console.log(this.enregistrement.length);
       // 2. S'il n'est pas présent, on l'inscrit dans la DB et dans système d'authentification;
       if (this.enregistrement && this.enregistrement.constructor === Array && this.enregistrement.length === 0) {
         this.uniqueDeviceID.get()
@@ -151,16 +154,14 @@ export class AccountComponent implements OnInit {
           .then((manufacturer: any) => this.manufacturer = manufacturer)
           .catch((error: any) => this.error = error);
 
-        this.qryCustomerService.createCustomer({ data, createdAt: firebase.firestore.FieldValue.serverTimestamp() });
+        this.qryCustomerService.createCustomer({
+          data, createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
         this.authenticateService.registerUser(this.account_form.get('email').value, this.account_form.get('password').value)
           .then(() => {
             this.errorMessage = '';
             this.successMessage = 'Votre compte a été crée.';
-           // console.log( this.successMessage);
-           // console.log( this.account_form.get('email').value);
-            // console.log( this.account_form.get('password').value);
           }, err => {
-            // console.log(err);
             this.errorMessage = err.message;
             this.successMessage = '';
           });
@@ -168,23 +169,22 @@ export class AccountComponent implements OnInit {
         // } //else {
         // console.log('Utilisateur déjà présent');
         const toast = this.toastController.create({
-         message: 'Félicitations ! Votre compte a été crée.',
-         position: 'middle',
+          message: 'Félicitations ! Votre compte a été crée. Vos données seront visibles après validation.',
+          position: 'middle',
           duration: 2000
         });
         (await toast).present();
         // }
       }
       // tslint:disable-next-line: max-line-length
-      if (this.enregistrement && this.enregistrement.constructor === Array && this.enregistrement.length !== 0)
-       {
-         const toast = this.toastController.create({
-        message: 'Désolé ce compte existe déjà et ne peut être dupliqué.',
-        position: 'middle',
-         duration: 2000
-       });
-         (await toast).present();
-       }
+      if (this.enregistrement && this.enregistrement.constructor === Array && this.enregistrement.length !== 0) {
+        const toast = this.toastController.create({
+          message: 'Désolé ce compte existe déjà et ne peut être dupliqué.',
+          position: 'middle',
+          duration: 2000
+        });
+        (await toast).present();
+      }
     });
   }
 }

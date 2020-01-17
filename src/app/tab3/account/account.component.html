@@ -33,15 +33,14 @@
                         value="{{this.model}}"></ion-input>
                     <ion-input type="hidden" id="manufacturer" class="form-control" formControlName="manufacturer"
                         value="{{this.manufacturer}}"></ion-input>
-
                     <ion-item>
                         <ion-input type="text" placeholder id="nom" formControlName="nom" required placeholder="Nom"
-                        style="text-transform: uppercase">
+                            style="text-transform:capitalize;">
                         </ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-input type="text" placeholder id="prenom" formControlName="prenom" required
-                            placeholder="Prénom" style="text-transform: uppercase">
+                            placeholder="Prénom" style="text-transform:capitalize;">
                         </ion-input>
                     </ion-item>
                     <ion-item>
@@ -83,7 +82,8 @@
                         </ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input type="number" placeholder="Téléphone" id="gsm" class="form-control">
+                        <ion-input type="number" placeholder="Téléphone" id="gsm" class="form-control"
+                            formControlName="gsm">
                         </ion-input>
                     </ion-item>
                     <ion-button expand="block" color="primary" class="submit-btn" type="submit">

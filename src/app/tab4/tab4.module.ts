@@ -13,7 +13,6 @@ const routes: Routes = [
     component: Tab4Page
   }
 ];
-
 @NgModule({
   imports: [
     CommonModule,
