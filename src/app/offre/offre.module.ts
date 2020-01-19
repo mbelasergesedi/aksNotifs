@@ -3,20 +3,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
-import { QuotationsComponent } from './quotations.component';
-
-
+import { OffreComponent } from './offre.component';
 @NgModule({
   imports: [
     CommonModule,
     AutocompleteLibModule,
     FormsModule,
-
     Ng2SearchPipeModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -24,10 +19,10 @@ import { QuotationsComponent } from './quotations.component';
     RouterModule.forChild([
       {
         path: '',
-        component: QuotationsComponent
+        component: OffreComponent
       }
     ])
   ],
-  declarations: [QuotationsComponent]
+  declarations: [OffreComponent]
 })
-export class QuotationsModule { }
+export class OffreModule { }

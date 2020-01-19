@@ -91,6 +91,26 @@ const routes: Routes = [
             ]
         },
         {
+          path: 'alloffre',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../all-offres/all-offres.module#AllOffreModule'
+              }
+            ]
+        },
+        {
+          path: 'offre',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../offre/offre.module#OffreModule'
+              }
+            ]
+        },
+        {
           path: 'createaccount',
           children:
             [

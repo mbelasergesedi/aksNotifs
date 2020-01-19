@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { VilleService } from '../services/city.service';
-import { QryQuotationsService } from '../services/quotation.services';
+import { QryOffreService } from '../services/offre.services';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Customers } from '../model/customers.model';
@@ -10,13 +10,16 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastController } from '@ionic/angular';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { QryQuotationsService } from '../services/quotation.services';
+import { AffichService } from '../services/publicationDelay.service';
+import 'firebase/firestore';
 @AutoUnsubscribe()
 @Component({
-  selector: 'app-quotations',
-  templateUrl: './quotations.component.html',
-  styleUrls: ['./quotations.component.scss'],
+  selector: 'app-offre',
+  templateUrl: './offre.component.html',
+  styleUrls: ['./offre.component.scss'],
 })
-export class QuotationsComponent implements OnInit, OnDestroy {
+export class OffreComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line: variable-name
   quotation_form: FormGroup;
   errorMessage = '';
@@ -40,10 +43,13 @@ export class QuotationsComponent implements OnInit, OnDestroy {
   list: Customers[];
   signupForm: FormGroup;
   ville: any;
+  affichage: any;
   successMessage: string;
   constructor(private formBuilder: FormBuilder,
               private villeService: VilleService,
               private db: AngularFirestore,
+              private affichService: AffichService,
+              private qryOffreService: QryOffreService,
               private statusBar: StatusBar,
               private qryQuotationsService: QryQuotationsService,
               private toastController: ToastController,
@@ -52,6 +58,7 @@ export class QuotationsComponent implements OnInit, OnDestroy {
     this.statusBar.overlaysWebView(false);
     this.initForm();
     this.getVille();
+    this.getAffichageList();
   }
   getVille() {
     this.villeService.getVille().snapshotChanges().pipe(
@@ -66,6 +73,19 @@ export class QuotationsComponent implements OnInit, OnDestroy {
       // console.log(this.ville);
     });
   }
+  getAffichageList() {
+    this.affichService.getAffichageList().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(affichage => {
+      this.afficsRef = affichage;
+      this.affichage = affichage;
+      // console.log(this.affichage);
+    });
+  }
   initForm() {
     // Validations patterns
     this.quotation_form = this.formBuilder.group({
@@ -78,11 +98,22 @@ export class QuotationsComponent implements OnInit, OnDestroy {
       nom: new FormControl('', Validators.compose([
         Validators.required
       ])),
+      validate: new FormControl('', Validators.compose([
+      ])),
+      payed: new FormControl('', Validators.compose([
+      ])),
+      dci: new FormControl('', Validators.compose([
+      ])),
+      amm: new FormControl('', Validators.compose([
+      ])),
       quantite: new FormControl('', Validators.compose([
         Validators.minLength(5),
         Validators.required
       ])),
       ville: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      affichage: new FormControl('', Validators.compose([
         Validators.required
       ])),
       type: new FormControl('', Validators.compose([
@@ -98,11 +129,11 @@ export class QuotationsComponent implements OnInit, OnDestroy {
   }
   tryRegister() {
     const data = this.quotation_form.value;
-    this.qryQuotationsService.createQuotation(data);
+    this.qryOffreService.createOffre(data);
   }
   async quotationToast() {
     const toast = await this.toastController.create({
-      message: 'Vous demande de quotation des prix a été envoyée.',
+      message: 'Vous offre de quotation a été envoyée.Elle sera visible après validation et reception du paiement.',
       position: 'middle',
       duration: 6000
     });

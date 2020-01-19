@@ -13,7 +13,6 @@ export class Tab3Page implements OnInit {
   interactions: any;
   userEmail: string;
   userName: string;
-
   status = '';
   isConnected = true;
   navCtrl: any;

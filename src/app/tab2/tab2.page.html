@@ -3,10 +3,7 @@
         <ion-title>Code</ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-content
-    fullscreen
-    class="ion-padding"
->
+<ion-content fullscreen class="ion-padding">
     <ion-grid>
         <ion-row>
             <ion-col size="12">
@@ -21,114 +18,63 @@
             </ion-col>
         </ion-row>
         <ion-col size="12">
-            <form
-                class="form"
-                [formGroup]="form"
-                (ngSubmit)="submit()"
-            >
+            <form class="form" [formGroup]="form" (ngSubmit)="submit()">
                 <ion-item>
-                    <ion-input
-                        type="tel"
-                        placeholder="Entre votre code"
-                        id="votretext"
-                        class="form-control"
-                        formControlName="votretext"
-                        maxlength="12"
-                        [(ngModel)]="data.votretexte"
-                    ></ion-input>
+                    <ion-input type="tel" placeholder="Entre votre code" id="votretext" class="form-control"
+                        formControlName="votretext" maxlength="12" [(ngModel)]="data.votretexte"></ion-input>
                 </ion-item>
-                <ion-input
-                    type="hidden"
-                    id="latitude"
-                    class="form-control"
-                    formControlName="latitude"
-                    value="{{this.lat}}"
-                ></ion-input>
-                <ion-input
-                    type="hidden"
-                    id="longitude"
-                    class="form-control"
-                    formControlName="longitude"
-                    value="{{this.lng}}"
-                ></ion-input>
-                <ion-input
-                    type="hidden"
-                    id="device"
-                    class="form-control"
-                    formControlName="device"
-                    value="{{this.uuid}}"
-                ></ion-input>
+                <ion-input type="hidden" id="latitude" class="form-control" formControlName="latitude"
+                    value="{{this.lat}}"></ion-input>
+                <ion-input type="hidden" id="longitude" class="form-control" formControlName="longitude"
+                    value="{{this.lng}}"></ion-input>
+                <ion-input type="hidden" id="device" class="form-control" formControlName="device"
+                    value="{{this.uuid}}"></ion-input>
                 <div class="validation-errors">
                     <ng-container *ngFor="let validation of validation_messages.votretext">
-                        <div
-                            class="error-message"
-                            *ngIf="form.get('votretext').hasError(validation.type) && (form.get('votretext').dirty || form.get('votretext').touched)"
-                        >
+                        <div class="error-message"
+                            *ngIf="form.get('votretext').hasError(validation.type) && (form.get('votretext').dirty || form.get('votretext').touched)">
                             {{ validation.message }}
                         </div>
                     </ng-container>
                 </div>
-                <ion-button
-                    expand="block"
-                    color="primary"
-                    ion-button
-                    type="submit"
-                    block
-                    [disabled]="!form.valid"
-                >
+                <ion-button expand="block" color="primary" ion-button type="submit" block [disabled]="!form.valid">
                     Validez votre code
                 </ion-button>
             </form>
             <ion-col text-center>
                 <h2>{{data.votretexte }}</h2>
             </ion-col>
-            <br>
             <div *ngFor="let i  of myResponse">
-                <div>
-                    <ion-label>
-                        <div *ngIf="i.dci">
-                            <div>
-                                <ion-icon
-                                    name="thumbs-up"
-                                    class="iconSize"
-                                    color="primary"
-                                ></ion-icon>
-                                <strong>
-                                    Le code que vous avez entré est correct.
-                                </strong>
-                            </div>
-                            <br>
-                            <div>
-                                <strong>{{i.produit}}</strong>
-                            </div>
-                            <br>
-                            Fabricant:{{i.fabricant}}
-                            <br>
-                            DCI:{{i.dci}}
-                            <br>
-                            <br>
-                            Numéro de lot: {{i.lot}}
-                            <br>
-                            Première validation: {{i.days}}
-                            <br>
-                            Date de péremption: {{i.peremption}}
-                            <br>
-                        </div>
+                <div *ngIf="i.dci">
+                    <div>
+                        <ion-chip color="success">
+                            <ion-label> Le code que vous avez entré est correct.</ion-label>
+                        </ion-chip>
+                    </div>
+                    <ion-item>
+                        <strong>{{i.produit}}</strong>
+                    </ion-item>
+                    <ion-note>
+                        Fabricant: {{i.fabricant}}
                         <br>
-                        <div *ngIf="!i.dci">
-                            <div>
-                                <ion-icon
-                                    name="thumbs-down"
-                                    class="iconSize"
-                                    color="danger"
-                                ></ion-icon>
-                                <strong>
-                                    Le code que vous avez n'est pas correct
-                                    ou n'existe
-                                </strong>
-                            </div>
-                        </div>
-                    </ion-label>
+                        DCI: {{i.dci}}
+                        <br>
+                        <br>
+                        Numéro de lot: {{i.lot}}
+                        <br>
+                        Première validation: {{i.days}}
+                        <br>
+                        Date de péremption: {{i.peremption}}
+                    </ion-note>
+                </div>
+                <br>
+                <div *ngIf="!i.dci">
+                    <div>
+                        <ion-chip color="danger">
+                            <ion-label> Le code que vous avez n'est pas correct
+                                ou n'existe pas!</ion-label>
+                        </ion-chip>
+                    </div>
                 </div>
             </div>
         </ion-col>

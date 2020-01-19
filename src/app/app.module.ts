@@ -41,6 +41,10 @@ import { ManageUsers } from './services/manageUsers.service';
 import { RoiService } from './services/roi.service';
 import { QryValidationService } from './services/datavalidation.service';
 import { OfficineService } from './services/officine.service';
+import { AffichService } from './services/publicationDelay.service';
+import { QryOffreService } from './services/offre.services';
+import { AllOffService } from './services/alloffre.service';
+
 // Captcha
 import { QrySignalementService } from './services/signalement.service';
 import { InteractionSearch } from './services/interaction.service';
@@ -74,7 +78,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     }),
     FormsModule,
     NgHighlightModule,
-   
+
     HttpClientModule,
     ReactiveFormsModule,
     AngularFirestoreModule, // Only required for database features
@@ -88,10 +92,13 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     TitleCasePipe,
     FirebaseCrashlytics,
     AuthService,
+    AffichService,
     GaleniqueService,
     DataService,
+    AllOffService,
     AnatomiqueService,
     TextSearchService,
+    QryOffreService,
     NotificationsService,
     QryValidationService,
     RoiService,

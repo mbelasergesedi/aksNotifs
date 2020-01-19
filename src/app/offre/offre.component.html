@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Offre</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen class="ion-padding">
+  <ion-grid>
+    <ion-tab-bar>
+      <ion-tab-button tab="tab3">
+        <ion-icon name="filing"></ion-icon>
+        <ion-label>Base de données</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="quotation">
+        <ion-icon name="basket"></ion-icon>
+        <ion-label>Demande</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="offre">
+        <ion-icon name="journal"></ion-icon>
+        <ion-label>Offre</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+    <ion-row>
+      <ion-tab-button tab="alloffre">
+        <ion-icon name="journal"></ion-icon>
+        <ion-label>Consulter les offres</ion-label>
+      </ion-tab-button>
+      <ion-col size="12">
+        <ion-label><strong>Offre</strong></ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <ion-note>
+          L'offre ne sera valable que si vous êtes enregistrés
+          comme opérateur officiel.
+        </ion-note>
+      </ion-col>
+      <ion-col size="12">
+        <form class="form" [formGroup]="quotation_form" (ngSubmit)="tryRegister(quotation_form)">
+          <ion-item>
+            <ion-label>Organisation</ion-label>
+            <ion-select placeholder="Type" id="secteur" formControlName="secteur">
+              <ion-select-option value="Dépôt pharmaceutique">Dépôt pharmaceutique</ion-select-option>
+              <ion-select-option value="ONG">ONG</ion-select-option>
+              <ion-select-option value="Pharmacie">Pharmacie</ion-select-option>
+            </ion-select>
+            <ion-input type="hidden" id="validate" class="form-control" formControlName="validate"
+            value="N"></ion-input>
+            <ion-input type="hidden" id="payed" class="form-control" formControlName="payed"
+            value="N"></ion-input>
+            <ion-input type="hidden" id="dci" class="form-control" formControlName="dci"
+            value="N"></ion-input>
+            <ion-input type="hidden" id="amm" class="form-control" formControlName="amm"
+            value="N"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" placeholder="Votre dénomination" id="denomination" formControlName="denomination"
+              required style="text-transform:capitalize;">
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" placeholder="Nom commercial du produit" id="nom" formControlName="nom" required
+              style="text-transform:capitalize;">
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="number" placeholder="Quantité proposée" id="quantite" formControlName="quantite" required>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Localisation</ion-label>
+            <ion-select placeholder="Ville" id="ville" formControlName="ville">
+              <ion-select-option *ngFor="let item of ville" [value]="item.value">
+                {{ item.value }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>Type</ion-label>
+            <ion-select placeholder="Choix" id="type" formControlName="type">
+              <ion-select-option value="Generique">Générique</ion-select-option>
+              <ion-select-option value="Marque">Marque</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-input placeholder="Email" id="email" type="email" formControlName="email" required>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="number" placeholder="GSM" id="gsm" class="form-control" formControlName="gsm" required>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Périodicité affichage</ion-label>
+            <ion-select placeholder="Choix" id="affichage" formControlName="affichage">
+              <ion-select-option *ngFor="let item of affichage" [value]="item.prix">
+                {{ item.categorie }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-button expand="block" color="primary" class="submit-btn" type="submit" [disabled]="!quotation_form.valid"
+            (click)="quotationToast('top'); clicked = true">
+            Publiez votre offre
+          </ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
