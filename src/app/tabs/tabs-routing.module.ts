@@ -101,6 +101,16 @@ const routes: Routes = [
             ]
         },
         {
+          path: 'alldemande',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../alldemande/alldemande.module#AlldemandeModule'
+              }
+            ]
+        },
+        {
           path: 'offre',
           children:
             [
