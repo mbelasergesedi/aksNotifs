@@ -8,6 +8,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class Tab5Page implements OnInit {
   constructor(private statusBar: StatusBar, ) { }
   ngOnInit() {
-    this.statusBar.overlaysWebView(true);
+    this.statusBar.overlaysWebView(false);
   }
 }

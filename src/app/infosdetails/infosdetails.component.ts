@@ -24,7 +24,7 @@ export class InfosdetailsComponent implements OnInit {
   constructor(private db: AngularFirestore, private route: ActivatedRoute, private statusBar: StatusBar) { }
 
   ngOnInit() {
-    this.statusBar.overlaysWebView(true);
+    this.statusBar.overlaysWebView(false);
     const queryParamMap = this.route.snapshot['queryParamMap'];
     // console.log(queryParamMap['params'].key);
     //this.itemCollection = this.db.collection<any[]>('notifications', ref => ref.where('key', '==',

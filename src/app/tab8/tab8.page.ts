@@ -63,7 +63,7 @@ export class Tab8Page {
   }
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
-    this.statusBar.overlaysWebView(true);
+    this.statusBar.overlaysWebView(false);
     this.initForm();
     this.getVille();
     this.geolocation.getCurrentPosition().then((resp) => {

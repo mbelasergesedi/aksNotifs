@@ -23,7 +23,7 @@ export class Tab3Page implements OnInit {
               public connectionService: ConnectionService) { }
 
   ngOnInit() {
-    this.statusBar.overlaysWebView(true);
+    this.statusBar.overlaysWebView(false);
     // tslint:disable-next-line: no-unused-expression
     this.userEmail;
     // tslint:disable-next-line: no-unused-expression

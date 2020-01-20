@@ -35,14 +35,11 @@
               <ion-select-option value="ONG">ONG</ion-select-option>
               <ion-select-option value="Pharmacie">Pharmacie</ion-select-option>
             </ion-select>
-            <ion-input type="hidden" id="validate" class="form-control" formControlName="validate"
-            value="N"></ion-input>
-            <ion-input type="hidden" id="payed" class="form-control" formControlName="payed"
-            value="N"></ion-input>
-            <ion-input type="hidden" id="dci" class="form-control" formControlName="dci"
-            value="N"></ion-input>
-            <ion-input type="hidden" id="amm" class="form-control" formControlName="amm"
-            value="N"></ion-input>
+            <ion-input type="hidden" id="validate" class="form-control" formControlName="validate" value="N">
+            </ion-input>
+            <ion-input type="hidden" id="payed" class="form-control" formControlName="payed" value="N"></ion-input>
+            <ion-input type="hidden" id="dci" class="form-control" formControlName="dci" value="N"></ion-input>
+            <ion-input type="hidden" id="amm" class="form-control" formControlName="amm" value="N"></ion-input>
           </ion-item>
           <ion-item>
             <ion-input type="text" placeholder="Votre dénomination" id="denomination" formControlName="denomination"
@@ -56,6 +53,12 @@
           </ion-item>
           <ion-item>
             <ion-input type="number" placeholder="Quantité proposée" id="quantite" formControlName="quantite" required>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Prix global</ion-label>
+            <ion-input type="number" placeholder="Dollars américain" id="prix" formControlName="prix"
+              required>
             </ion-input>
           </ion-item>
           <ion-item>

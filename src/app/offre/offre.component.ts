@@ -98,6 +98,8 @@ export class OffreComponent implements OnInit, OnDestroy {
       nom: new FormControl('', Validators.compose([
         Validators.required
       ])),
+      prix: new FormControl('', Validators.compose([
+      ])),
       validate: new FormControl('', Validators.compose([
       ])),
       payed: new FormControl('', Validators.compose([

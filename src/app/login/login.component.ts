@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     toast.present();
   }
   ngOnInit() {
-    this.statusBar.overlaysWebView(true);
+    this.statusBar.overlaysWebView(false);
     this.schoolsService.getSchool().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>

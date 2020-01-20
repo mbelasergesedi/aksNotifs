@@ -52,7 +52,7 @@ export class SignalementComponent implements OnInit {
               private router: Router) {
 }
 ngOnInit() {
-  this.statusBar.overlaysWebView(true);
+  this.statusBar.overlaysWebView(false);
   this.initForm();
   this.getVille();
   this.geolocation.getCurrentPosition().then((resp) => {

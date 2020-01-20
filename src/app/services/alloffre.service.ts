@@ -12,4 +12,5 @@ export class AllOffService {
     return this.firestore.collection(
       'offres').snapshotChanges();
   }
+
 }

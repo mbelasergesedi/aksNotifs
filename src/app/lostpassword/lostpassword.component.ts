@@ -28,7 +28,7 @@ export class LostpasswordComponent implements OnInit {
     ]
   };
   ngOnInit() {
-    this.statusBar.overlaysWebView(true);
+    this.statusBar.overlaysWebView(false);
     this.resetPassword_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required,

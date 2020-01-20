@@ -21,7 +21,7 @@ export class InformationsComponent implements OnInit, OnDestroy {
   items: Observable<[any]>;
   constructor(private db: AngularFirestore, private statusBar: StatusBar , private route: ActivatedRoute) { }
   ngOnInit() {
-    this.statusBar.overlaysWebView(true);
+    this.statusBar.overlaysWebView(false);
     this.loading = true;
     const queryParamMap = this.route.snapshot['queryParamMap'];
     this.notifs = this.db.collection('notifications',
