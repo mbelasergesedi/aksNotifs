@@ -42,7 +42,7 @@ export class Tab2Page implements OnInit, OnDestroy {
               private qryValidationService: QryValidationService,
               private statusBar: StatusBar,
               private uniqueDeviceID: UniqueDeviceID,
-              private resultatVerificationService: ResultatVerificationService,
+              private resultatVerificationService: ResultatVerificationService
   ) { }
   // tslint:disable-next-line: variable-name
   validation_messages = {
@@ -88,7 +88,7 @@ export class Tab2Page implements OnInit, OnDestroy {
     }
   }
   ngOnDestroy() {
-    // We'll throw an error if it doesn't
+   
   }
 }
 

@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MomentModule } from 'ngx-moment';
 import { TitleCasePipe } from '@angular/common';
+import { AngularFireAuth } from "@angular/fire/auth";
 // Environments
 import { environment } from './environments/environment';
 import { HttpClientModule } from '@angular/common/http';
@@ -78,7 +79,6 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     }),
     FormsModule,
     NgHighlightModule,
-
     HttpClientModule,
     ReactiveFormsModule,
     AngularFirestoreModule, // Only required for database features
@@ -90,6 +90,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
   providers: [
     StatusBar,
     TitleCasePipe,
+    AngularFireAuth,
     FirebaseCrashlytics,
     AuthService,
     AffichService,
