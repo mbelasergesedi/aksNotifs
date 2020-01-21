@@ -100,6 +100,8 @@ export class AccountComponent implements OnInit {
       prenom: new FormControl('', Validators.compose([
         Validators.required
       ])),
+      postnom: new FormControl('', Validators.compose([
+      ])),
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')

@@ -95,6 +95,8 @@ export class AccountComponent implements OnInit {
       nom: new FormControl('', Validators.compose([
         Validators.required
       ])),
+      postnom: new FormControl('', Validators.compose([
+      ])),
       prenom: new FormControl('', Validators.compose([
         Validators.required
       ])),
