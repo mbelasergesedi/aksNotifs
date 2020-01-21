@@ -54,30 +54,30 @@
                             </ion-button>
                         </div>
                     </form>
-                    <ion-virtual-scroll [items]="inter" approxItemHeight="20000px">
-                        <ion-grid *ngFor="let i  of inter">
-                            <ion-label>
-                                <strong>{{i.titre}}</strong>
-                            </ion-label>
-                            <ion-grid *ngIf="i.assocList">
-                                <ion-grid *ngFor="let a of i.assocList">
-                                    <ion-list>
-                                        <ion-label>
-                                            <ion-icon name="add"></ion-icon>
-                                            <strong>{{a.sousTitre}}</strong>
-                                        </ion-label>
-                                        <ion-chip outline color="danger">
-                                            <ion-label>{{a.emploi}}</ion-label>
-                                        </ion-chip>
-                                        {{a.conseq}}
-                                        <br>
-                                        {{a.emploiDesc}}
-                                        <br>
-                                    </ion-list>
-                                </ion-grid>
+
+                    <ion-grid *ngFor="let i  of inter">
+                        <ion-label>
+                            <strong>{{i.titre}}</strong>
+                        </ion-label>
+                        <ion-grid *ngIf="i.assocList">
+                            <ion-grid *ngFor="let a of i.assocList">
+                                <ion-list>
+                                    <ion-label>
+                                        <ion-icon name="add"></ion-icon>
+                                        <strong>{{a.sousTitre}}</strong>
+                                    </ion-label>
+                                    <ion-chip outline color="danger">
+                                        <ion-label>{{a.emploi}}</ion-label>
+                                    </ion-chip>
+                                    {{a.conseq}}
+                                    <br>
+                                    {{a.emploiDesc}}
+                                    <br>
+                                </ion-list>
                             </ion-grid>
                         </ion-grid>
-                    </ion-virtual-scroll>
+                    </ion-grid>
+
                 </div>
             </ion-col>
         </ion-row>
