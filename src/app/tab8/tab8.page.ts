@@ -235,7 +235,7 @@ export class Tab8Page {
   tryPharma() {
     const data = this.pharmaform.value;
     const ville = data.ville;
-    console.log(data.ville);
+    // console.log(data.ville);
     this.itemCollectionpharma = this.db.collection<any[]>('officine', ref => ref.where('data.ville', '==',
       ville));
     this.itemspharma = this.itemCollectionpharma.valueChanges().subscribe((val: any) => {
