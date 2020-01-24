@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AuthsService } from '../../services/authServices';
 
 @Component({
-  selector: 'app-forgot-password',
-  templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.scss']
+  selector: 'app-verify-email',
+  templateUrl: './verify-email.component.html',
+  styleUrls: ['./verify-email.component.scss']
 })
-
-export class ForgotPasswordComponent implements OnInit {
+export class VerifyEmailComponent implements OnInit {
 
   constructor(
     public authsService: AuthsService

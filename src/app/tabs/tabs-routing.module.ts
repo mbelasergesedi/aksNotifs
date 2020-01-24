@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 
+
+// Import canActivate guard services
+import { AuthGuard } from '../shared/guard/auth.guard';
+import { SecureInnerPagesGuard } from '../shared/guard/secure-inner-pages.guard.ts.guard';
 const routes: Routes = [
   {
     path: 'tabs',
@@ -202,6 +206,50 @@ const routes: Routes = [
               }
             ]
         },
+        {
+          path: 'sign-in',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../components/sign-in/sign-in.module#SignInModule'
+              }
+            ]
+        },
+        {
+          path: 'sign-up',
+          children:
+            [
+              {
+                path: '',
+                canActivate: [SecureInnerPagesGuard],
+                loadChildren: '../components/sign-up/sign-up.module#SignUpModule'
+              }
+            ]
+        },
+        {
+          path: 'forgot-password',
+          children:
+            [
+              {
+                path: '',
+                canActivate: [SecureInnerPagesGuard],
+                loadChildren: '../components/forgot-password/forgot-password.module#ForgotPasswordModule'
+              }
+            ]
+        },
+        {
+          path: 'verify-email-address',
+          children:
+            [
+              {
+                path: '',
+                canActivate: [SecureInnerPagesGuard],
+                loadChildren: '../components/forgot-password/forgot-password.module#VerifyEmailModule'
+              }
+            ]
+        },
+
         {
           path: 'interaction',
           children:

@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MomentModule } from 'ngx-moment';
 import { TitleCasePipe } from '@angular/common';
-import { AngularFireAuth } from "@angular/fire/auth";
+import { AngularFireAuth } from '@angular/fire/auth';
 // Environments
 import { environment } from './environments/environment';
 import { HttpClientModule } from '@angular/common/http';
@@ -45,6 +45,7 @@ import { OfficineService } from './services/officine.service';
 import { AffichService } from './services/publicationDelay.service';
 import { QryOffreService } from './services/offre.services';
 import { AllOffService } from './services/alloffre.service';
+import { AuthsService } from './services/authServices';
 
 // Captcha
 import { QrySignalementService } from './services/signalement.service';
@@ -100,6 +101,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     AnatomiqueService,
     TextSearchService,
     QryOffreService,
+    AuthsService,
     NotificationsService,
     QryValidationService,
     RoiService,
